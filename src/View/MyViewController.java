@@ -7,6 +7,7 @@ import algorithms.mazeGenerators.MyMazeGenerator;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Alert;
 
 import java.net.URL;
 import java.util.Observable;
@@ -16,6 +17,8 @@ import java.util.ResourceBundle;
 public class MyViewController implements Initializable, Observer {
     public MyViewModel viewModel;
     public MazeDisplayer mazeDisplayer = new MazeDisplayer();
+    public static int row;
+    public static int col;
 
     public void setViewModel(MyViewModel viewModel) {
         this.viewModel = viewModel;
@@ -28,12 +31,21 @@ public class MyViewController implements Initializable, Observer {
 
     }
 
+    //Function that does stuff upon loading the MyView fxml
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+//        Alert a = new Alert(Alert.AlertType.ERROR);
+//        a.setContentText("ballalala");
+//        a.show();
+        if (this.viewModel != null){
+            this.viewModel.generateMaze(row, col);
+            this.mazeDisplayer.drawMaze(this.viewModel.getMaze());
+        }
 
     }
     //TODO erase
     public void generateMaze(ActionEvent actionEvent) {
+
 
     }
 

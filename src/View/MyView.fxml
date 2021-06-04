@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<?import View.MazeDisplayer?>
+<?import View.*?>
 <BorderPane prefHeight="720.0" prefWidth="954.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="View.MyViewController">
    <top>
       <VBox BorderPane.alignment="CENTER">

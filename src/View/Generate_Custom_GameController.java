@@ -19,6 +19,9 @@ public class Generate_Custom_GameController extends ASceneChanger{
 
 
     public void Generate_Maze_Custom_Click(ActionEvent actionEvent) throws IOException {
+        MyViewController.row = Integer.parseInt(textField_mazeRows.getText());
+        MyViewController.col = Integer.parseInt(textField_mazeColumns.getText());
+
         change_scene(actionEvent, "MyView.fxml");
 
 

@@ -13,4 +13,12 @@ public class GameOptionsController extends ASceneChanger {
     public void Custom_Game_Click(ActionEvent actionEvent) throws IOException {
         change_scene(actionEvent, "Generate_Custom_Game.fxml");
     }
+//
+//    easy_game_click(){
+//        MyViewController.row = 10;
+//        MyViewController.col = 10;
+//        change_scene();
+//    }
+
+
 }
