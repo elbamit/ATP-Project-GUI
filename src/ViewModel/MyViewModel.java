@@ -5,6 +5,7 @@ import Model.MovementDirection;
 import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.Position;
 import algorithms.search.Solution;
+import javafx.event.ActionEvent;
 import javafx.scene.input.KeyEvent;
 
 
@@ -73,12 +74,20 @@ public class MyViewModel extends Observable implements Observer {
         model.updatePlayerLocation(direction);
     }
 
+    public void Load(Object object_loadedMaze) {
+        model.Load(object_loadedMaze);
+    }
+
     public void setPlayerPosition(Position pos){
         this.model.setPlayerPosition(pos);
     }
 
     public void restartGame() {
         this.model.restart_Game();
+    }
+
+    public void saveGame() {
+        this.model.saveGame();
     }
 
     //TODO add a moveplayer with mouse

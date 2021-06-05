@@ -9,7 +9,9 @@ import algorithms.search.Solution;
 import Server.ServerStrategyGenerateMaze;
 import Server.ServerStrategySolveSearchProblem;
 import Client.IClientStrategy;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
+import javafx.stage.FileChooser;
 
 import java.io.*;
 import java.net.InetAddress;
@@ -98,7 +100,7 @@ public class MyModel extends Observable implements IModel {
         this.maze = maze;
         this.solution = null;
         setChanged();
-        notifyObservers(this.maze);
+        notifyObservers(maze);
     }
 
     @Override
@@ -210,6 +212,44 @@ public class MyModel extends Observable implements IModel {
     public Solution getSolution() {
         return this.solution;
     }
+
+    @Override
+    public void Load(Object object_loadedMaze) {
+        Maze loadedMaze = new Maze((byte[]) object_loadedMaze);
+        this.player_Position = loadedMaze.getStartPosition();
+        setMaze(loadedMaze);
+    }
+
+    @Override
+    public void saveGame() {
+        FileChooser chooser = new FileChooser();
+        chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Game","*.atpgame"));
+
+        File file = chooser.showSaveDialog(null);
+        if(file != null){
+            try{
+                File file_to_save = new File(file.getPath());
+
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(file_to_save));
+                Object o = this.getMaze().toByteArray();
+                objectOutputStream.writeObject(o);
+                objectOutputStream.flush();
+                objectOutputStream.close();
+
+            }
+            catch(Exception e){
+                Alert a = new Alert((Alert.AlertType.ERROR));
+                a.setContentText("Sorry... titkasher le aba ");
+                a.show();
+            }
+        }
+        else{
+            Alert a = new Alert((Alert.AlertType.ERROR));
+            a.setContentText("Sorry... titkasher le aba ");
+            a.show();
+        }
+    }
+
 
     //Function that restarts the game by putting the player back to its start position
     public void restart_Game(){

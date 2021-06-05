@@ -16,7 +16,7 @@
       <Button layoutX="478.0" layoutY="372.0" mnemonicParsing="false" onAction="#Wide_Game_Click" prefHeight="68.0" prefWidth="136.0" text="Wide" />
       <Button layoutX="787.0" layoutY="372.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="136.0" text="Load" />
       <Button layoutX="185.0" layoutY="497.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="136.0" text="Invisible" />
-      <Button layoutX="478.0" layoutY="497.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="136.0" text="Load Maze" />
+      <Button layoutX="478.0" layoutY="497.0" mnemonicParsing="false" onAction="#Load_Game_Click" prefHeight="68.0" prefWidth="136.0" text="Load Maze" />
       <VBox prefHeight="34.0" prefWidth="1245.0">
          <children>
             <MenuBar prefHeight="48.0" prefWidth="1251.0">

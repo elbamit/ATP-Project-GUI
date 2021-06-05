@@ -3,6 +3,7 @@ package Model;
 import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.Position;
 import algorithms.search.Solution;
+import javafx.event.ActionEvent;
 
 import java.util.Observer;
 
@@ -19,4 +20,7 @@ public interface IModel {
     void restart_Game();
     Solution getSolution();
 
+    void Load(Object object_loadedMaze);
+
+    void saveGame();
 }

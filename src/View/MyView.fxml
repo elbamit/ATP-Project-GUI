@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<?import View.MazeDisplayer?>
+<?import View.* ?>
 <BorderPane onMouseClicked="#mouseClicked" prefHeight="389.0" prefWidth="954.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MyViewController">
    <top>
       <VBox BorderPane.alignment="CENTER">
@@ -19,7 +19,7 @@
                   <Menu mnemonicParsing="false" text="File">
                      <items>
                         <MenuItem mnemonicParsing="false" text="New" />
-                        <MenuItem disable="true" mnemonicParsing="false" text="Save" />
+                        <MenuItem mnemonicParsing="false" onAction="#SaveGame" text="Save" />
                         <MenuItem mnemonicParsing="false" text="Load" />
                      </items>
                   </Menu>
@@ -43,7 +43,7 @@
    <center>
       <Pane onKeyPressed="#KeyPressed" prefHeight="395.0" prefWidth="698.0" BorderPane.alignment="CENTER">
          <children>
-            <MazeDisplayer fx:id="mazeDisplayer" height="400.0" imageFileNamePlayer="./resources/images/mario.png" imageFileNameGoal="./resources/images/melech.jpeg" imageFileNameWall="./resources/images/wall.png"  width="400.0" />
+            <MazeDisplayer fx:id="mazeDisplayer" height="400.0" imageFileNameGoal="./resources/images/melech.jpeg" imageFileNamePlayer="./resources/images/mario.png" imageFileNameWall="./resources/images/wall.png" width="400.0" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

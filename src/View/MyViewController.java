@@ -14,8 +14,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.Observable;
 import java.util.Observer;
@@ -26,6 +27,7 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
     public MazeDisplayer mazeDisplayer = new MazeDisplayer();
     public static int row;
     public static int col;
+    public static boolean loaded=false;
 
 
     public void setViewModel(MyViewModel viewModel) {
@@ -69,11 +71,60 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
             model.addObserver(viewModel1);
             setViewModel(viewModel1);
         }
+        if (loaded){
 
-        generateMazeAuto();
+            try {
+                Load_Maze_and_display();
+            } catch (IOException e) {
+            }
+        }
+        else{
+            generateMazeAuto();
+        }
 
     }
 
+    public void SaveGame(ActionEvent actionEvent) {
+        this.viewModel.saveGame();
+    }
+
+    private void Load_Maze_and_display() throws IOException {
+        //open window for user to load
+        FileChooser chooser = new FileChooser();
+        chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Game","*.atpgame"));
+        chooser.setTitle("Choose Maze File");
+        File file = chooser.showOpenDialog(null);
+        if (file != null) {
+            try {
+                File loaded_file = new File(file.getPath());
+                FileInputStream inputStream = new FileInputStream(loaded_file);
+                ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+                Object o = (Object) objectInputStream.readObject();
+                //Maze loadedMaze = (Maze) o[0];
+                viewModel.Load(o);
+                objectInputStream.close();
+                inputStream.close();
+
+            } catch (Exception e) {
+                Alert a = new Alert((Alert.AlertType.ERROR));
+                a.setContentText("No maze to Load ! Ya ben zone");
+                a.show();
+                MyViewController.row = 10;
+                MyViewController.col = 10;
+
+            }
+        }
+        else{
+            Alert a = new Alert((Alert.AlertType.ERROR));
+            a.setContentText("No maze to Load ! ya Sharmota");
+            a.show();
+            MyViewController.row = 10;
+            MyViewController.col = 10;
+
+        }
+        loaded = false;
+
+    }
 
     private void generateMazeAuto() {
         viewModel.generateMaze(row,col);
