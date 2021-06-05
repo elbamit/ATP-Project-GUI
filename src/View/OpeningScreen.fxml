@@ -20,7 +20,7 @@
           <Menu mnemonicParsing="false" text="File">
             <items>
               <MenuItem mnemonicParsing="false" text="New" />
-                  <MenuItem mnemonicParsing="false" text="Save" />
+                  <MenuItem disable="true" mnemonicParsing="false" text="Save" />
                   <MenuItem mnemonicParsing="false" text="Load" />
             </items>
           </Menu>
@@ -29,9 +29,12 @@
               <MenuItem mnemonicParsing="false" text="Properties" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="More">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+                  <MenuItem mnemonicParsing="false" text="Help" />
+               </items></Menu>
           <Menu mnemonicParsing="false" text="Exit" />
-            <Menu mnemonicParsing="false" text="Help" />
-            <Menu mnemonicParsing="false" text="About" />
         </menus>
       </MenuBar>
       <Button layoutX="310.0" layoutY="280.0" mnemonicParsing="false" onAction="#Start_Game_Click" prefHeight="132.0" prefWidth="307.0" text="Start game">

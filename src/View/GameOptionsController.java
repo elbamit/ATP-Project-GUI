@@ -21,13 +21,7 @@ public class GameOptionsController extends ASceneChanger {
         change_scene(actionEvent, "MyView.fxml");
     }
 
-
-//
-//    easy_game_click(){
-//        MyViewController.row = 10;
-//        MyViewController.col = 10;
-//        change_scene();
-//    }
+    //TODO MAKE ALL THE BUTTONS CLICKS (FOR ALL OPTIONS)
 
 
 }

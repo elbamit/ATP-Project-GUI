@@ -17,7 +17,6 @@ import java.util.Observer;
 import java.util.ResourceBundle;
 
 public class MyViewController implements Initializable, Observer,IView{
-    //private static MyViewController instance = null;
     public MyViewModel viewModel;
     public MazeDisplayer mazeDisplayer = new MazeDisplayer();
     public static int row;
@@ -33,7 +32,7 @@ public class MyViewController implements Initializable, Observer,IView{
     public void update(Observable o, Object arg) {
         if (o == viewModel) {
             if (arg instanceof Maze) {
-                mazeDisplayer.drawMaze((Maze) arg);
+                displayMaze((Maze) arg);
             }
             else if(arg instanceof Position){
                 mazeDisplayer.drawMaze(viewModel.getMaze(),(Position)arg);
@@ -41,6 +40,7 @@ public class MyViewController implements Initializable, Observer,IView{
         }
 
     }
+
 
     public void mouseClicked(MouseEvent mouseEvent) {
         mazeDisplayer.requestFocus();
@@ -50,9 +50,6 @@ public class MyViewController implements Initializable, Observer,IView{
     //Function that does stuff upon loading the MyView fxml
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        Alert a = new Alert(Alert.AlertType.ERROR);
-//        a.setContentText("ballalala");
-//        a.show();
         if (this.viewModel == null){
             MyModel model = new MyModel();
             model.startServers();
@@ -60,19 +57,12 @@ public class MyViewController implements Initializable, Observer,IView{
             MyViewModel viewModel1 = new MyViewModel(model);
             model.addObserver(viewModel1);
             setViewModel(viewModel1);
-/*            this.viewModel.generateMaze(row, col);
-            this.mazeDisplayer.drawMaze(this.viewModel.getMaze());*/
         }
+
         generateMazeAuto();
-        //drawMazeAuto();
 
     }
 
-
-
-    private void drawMazeAuto() {
-        mazeDisplayer.drawMaze(viewModel.getMaze());
-    }
 
     private void generateMazeAuto() {
         viewModel.generateMaze(row,col);
@@ -82,26 +72,18 @@ public class MyViewController implements Initializable, Observer,IView{
         keyEvent.consume();
     }
 
-    //TODO erase
-    public void generateMaze(ActionEvent actionEvent) {
+    public void generateNewMaze(ActionEvent actionEvent) {
         viewModel.generateMaze(row,col);
     }
 
-    //TODO erase
+    //TODO
     public void solveMaze(ActionEvent actionEvent) {
-        AMazeGenerator gener = new SimpleMazeGenerator();
-        Maze m = null;
-        try {
-            m = gener.generate(10,10);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        mazeDisplayer.drawMaze(m);
+
     }
 
 
     @Override
     public void displayMaze(Maze maze) {
-
+        mazeDisplayer.drawMaze(maze);
     }
 }

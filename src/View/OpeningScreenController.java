@@ -17,19 +17,6 @@ public class OpeningScreenController extends ASceneChanger{
 
 
     public void Start_Game_Click(ActionEvent actionEvent) throws IOException {
-/*        MyModel model = new MyModel();
-        model.startServers();
-
-        MyViewModel viewModel = new MyViewModel(model);
-        model.addObserver(viewModel);
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("MyView.fxml"));
-        //FXMLLoader.load((getClass().getResource("MyView.fxml")));
-        //MyViewController view = MyViewController.getInstance();
-        loader.load();
-        MyViewController view = loader.getController();
-        view.setViewModel(viewModel);*/
-
         change_scene(actionEvent, "GameOptions.fxml");
     }
 }

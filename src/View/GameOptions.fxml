@@ -16,12 +16,12 @@
       <Button layoutX="787.0" layoutY="372.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="136.0" text="Load" />
       <Button layoutX="185.0" layoutY="497.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="136.0" text="Invisible" />
       <Button layoutX="478.0" layoutY="497.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="136.0" text="Load Maze" />
-      <MenuBar layoutX="11.0" layoutY="9.0" prefHeight="25.0" prefWidth="1234.0">
+      <MenuBar layoutX="10.0" layoutY="12.0" prefHeight="25.0" prefWidth="913.0">
          <menus>
             <Menu mnemonicParsing="false" text="File">
                <items>
                   <MenuItem mnemonicParsing="false" text="New" />
-                  <MenuItem mnemonicParsing="false" text="Save" />
+                  <MenuItem disable="true" mnemonicParsing="false" text="Save" />
                   <MenuItem mnemonicParsing="false" text="Load" />
                </items>
             </Menu>
@@ -30,9 +30,13 @@
                   <MenuItem mnemonicParsing="false" text="Properties" />
                </items>
             </Menu>
+            <Menu mnemonicParsing="false" text="More">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+                  <MenuItem mnemonicParsing="false" text="Help" />
+               </items>
+            </Menu>
             <Menu mnemonicParsing="false" text="Exit" />
-            <Menu mnemonicParsing="false" text="Help" />
-            <Menu mnemonicParsing="false" text="About" />
          </menus>
       </MenuBar>
    </children>

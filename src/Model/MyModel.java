@@ -9,6 +9,8 @@ import algorithms.search.Solution;
 import Server.ServerStrategyGenerateMaze;
 import Server.ServerStrategySolveSearchProblem;
 import Client.IClientStrategy;
+import javafx.scene.control.Alert;
+
 import java.io.*;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -71,7 +73,8 @@ public class MyModel extends Observable implements IModel {
                         setPlayerPosition(new_maze.getStartPosition());
 
                     } catch (Exception e) {
-                        e.printStackTrace();
+                        Alert a = new Alert(Alert.AlertType.ERROR);
+                        a.setContentText("");
                     }
                 }
             });

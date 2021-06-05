@@ -91,6 +91,7 @@ public class MazeDisplayer extends Canvas {
         }
     }
 
+    //TODO
     private void drawSolution(GraphicsContext gc, double cellHeight, double cellWidth) {
 
     }
