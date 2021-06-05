@@ -20,8 +20,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Configurations config = Configurations.getInstance();
-        config.setProperty(4, "MyMazeGenerator", "DepthFirstSearch");
+//        Configurations config = Configurations.getInstance();
+//        config.setProperty(4, "MyMazeGenerator", "DepthFirstSearch");
 
         //
 /*

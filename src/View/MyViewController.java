@@ -3,10 +3,7 @@ package View;
 import Model.MyModel;
 import Server.Configurations;
 import ViewModel.MyViewModel;
-import algorithms.mazeGenerators.AMazeGenerator;
-import algorithms.mazeGenerators.Maze;
-import algorithms.mazeGenerators.MyMazeGenerator;
-import algorithms.mazeGenerators.Position;
+import algorithms.mazeGenerators.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
@@ -92,7 +89,7 @@ public class MyViewController implements Initializable, Observer,IView{
 
     //TODO erase
     public void solveMaze(ActionEvent actionEvent) {
-        AMazeGenerator gener = new MyMazeGenerator();
+        AMazeGenerator gener = new SimpleMazeGenerator();
         Maze m = null;
         try {
             m = gener.generate(10,10);
