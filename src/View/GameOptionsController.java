@@ -21,6 +21,24 @@ public class GameOptionsController extends ASceneChanger {
         change_scene(actionEvent, "MyView.fxml");
     }
 
+    public void Medium_Game_Click(ActionEvent actionEvent) throws IOException {
+        MyViewController.row = 25;
+        MyViewController.col = 25;
+        change_scene(actionEvent, "MyView.fxml");
+    }
+
+    public void Hard_Game_Click(ActionEvent actionEvent) throws IOException {
+        MyViewController.row = 40;
+        MyViewController.col = 40;
+        change_scene(actionEvent, "MyView.fxml");
+    }
+
+    public void Wide_Game_Click(ActionEvent actionEvent) throws IOException {
+        MyViewController.row = 10;
+        MyViewController.col = 40;
+        change_scene(actionEvent, "MyView.fxml");
+    }
+
     //TODO MAKE ALL THE BUTTONS CLICKS (FOR ALL OPTIONS)
 
 
