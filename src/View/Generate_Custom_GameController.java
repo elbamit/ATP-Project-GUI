@@ -31,13 +31,13 @@ public class Generate_Custom_GameController extends ASceneChanger{
             MyViewController.col = Integer.parseInt(textField_mazeColumns.getText());
             change_scene(actionEvent, "MyView.fxml");
 
-            } catch (Exception e) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Incorrect input - sizes should be numbers between 3-1000");
-                textField_mazeRows.clear();
-                textField_mazeColumns.clear();
-                alert.show();
-            }
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Incorrect input - sizes should be numbers between 3-1000");
+            textField_mazeRows.clear();
+            textField_mazeColumns.clear();
+            alert.show();
+        }
 
     }
 

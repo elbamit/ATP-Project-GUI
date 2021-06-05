@@ -80,7 +80,7 @@ public class MyModel extends Observable implements IModel {
                     }
                 }
             });
-        client.communicateWithServer();
+            client.communicateWithServer();
         }catch (UnknownHostException e) {
             e.printStackTrace();
         }

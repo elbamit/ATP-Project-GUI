@@ -14,25 +14,10 @@ public abstract class ASceneChanger {
         Node node = (Node) actionEvent.getSource();
         Stage thisStage = (Stage) node.getScene().getWindow();
 
-
         //Loads the Game options scene into the stage
         Scene new_scene = new Scene(FXMLLoader.load(getClass().getResource(fxml_name)));
         thisStage.setScene(new_scene);
         thisStage.sizeToScene();
         thisStage.show();
     }
-    public void change_scene(Stage thisStage, String fxml_name) throws IOException {
-        //Gets the stage that we are inside right now
-/*        Node node = (Node) actionEvent.getSource();
-        Stage thisStage = (Stage) node.getScene().getWindow();*/
-
-
-        //Loads the Game options scene into the stage
-        Scene new_scene = new Scene(FXMLLoader.load(getClass().getResource(fxml_name)));
-        thisStage.setScene(new_scene);
-        thisStage.sizeToScene();
-        thisStage.show();
-    }
-
-
 }
