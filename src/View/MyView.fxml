@@ -9,28 +9,32 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<?import View.*?>
+<?import View.MazeDisplayer?>
 <BorderPane onMouseClicked="#mouseClicked" prefHeight="389.0" prefWidth="954.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MyViewController">
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <MenuBar>
+            <MenuBar prefHeight="25.0" prefWidth="913.0">
                <menus>
                   <Menu mnemonicParsing="false" text="File">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem mnemonicParsing="false" text="New" />
+                        <MenuItem disable="true" mnemonicParsing="false" text="Save" />
+                        <MenuItem mnemonicParsing="false" text="Load" />
                      </items>
                   </Menu>
-                  <Menu mnemonicParsing="false" text="Edit">
+                  <Menu mnemonicParsing="false" text="Options">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <MenuItem mnemonicParsing="false" text="Properties" />
                      </items>
                   </Menu>
-                  <Menu mnemonicParsing="false" text="Help">
+                  <Menu mnemonicParsing="false" text="More">
                      <items>
                         <MenuItem mnemonicParsing="false" text="About" />
+                        <MenuItem mnemonicParsing="false" text="Help" />
                      </items>
                   </Menu>
+                  <Menu mnemonicParsing="false" text="Exit" />
                </menus>
             </MenuBar>
          </children>
@@ -39,7 +43,7 @@
    <center>
       <Pane onKeyPressed="#KeyPressed" prefHeight="395.0" prefWidth="698.0" BorderPane.alignment="CENTER">
          <children>
-            <MazeDisplayer fx:id="mazeDisplayer" height="400.0" imageFileNamePlayer="./resources/images/mario.png" imageFileNameWall="./resources/images/wall.png" width="400.0" />
+            <MazeDisplayer fx:id="mazeDisplayer" height="400.0" imageFileNamePlayer="./resources/images/mario.png" imageFileNameGoal="./resources/images/melech.jpeg" imageFileNameWall="./resources/images/wall.png"  width="400.0" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -49,8 +53,9 @@
    <left>
       <Pane prefHeight="696.0" prefWidth="146.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="17.0" layoutY="14.0" mnemonicParsing="false" onAction="#generateNewMaze" prefHeight="59.0" prefWidth="110.0" text="New Game" />
-            <Button layoutX="17.0" layoutY="113.0" mnemonicParsing="false" onAction="#solveMaze" prefHeight="59.0" prefWidth="110.0" text="Solve" />
+            <Button layoutX="9.0" layoutY="26.0" mnemonicParsing="false" onAction="#Restart_Game_Click" prefHeight="33.0" prefWidth="129.0" text="Restart Game" />
+            <Button layoutX="8.0" layoutY="84.0" mnemonicParsing="false" onAction="#SolveMaze" prefHeight="34.0" prefWidth="132.0" text="Solve" />
+            <Button layoutX="6.0" layoutY="144.0" mnemonicParsing="false" onAction="#Back_To_Game_Options" prefHeight="36.0" prefWidth="135.0" text="Back to game options" />
          </children>
       </Pane>
    </left>

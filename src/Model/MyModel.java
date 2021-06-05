@@ -84,7 +84,7 @@ public class MyModel extends Observable implements IModel {
         }
     }
 
-    private void setPlayerPosition(Position startPosition) {
+    public void setPlayerPosition(Position startPosition) {
         this.player_Position = startPosition;
         setChanged();
         notifyObservers(startPosition);
@@ -188,6 +188,7 @@ public class MyModel extends Observable implements IModel {
                                 //updates this.solution to be mazeSolution
                                 setSolution(mazeSolution);
 
+
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -212,7 +213,7 @@ public class MyModel extends Observable implements IModel {
 
     //Function that restarts the game by putting the player back to its start position
     public void restart_Game(){
-        setPlayerPosition(getMaze().getStartPosition());
+        setPlayerPosition(this.getMaze().getStartPosition());
     }
 
 }

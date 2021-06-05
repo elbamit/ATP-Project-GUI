@@ -2,6 +2,7 @@ package View;
 
 import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.Position;
+import algorithms.search.MazeState;
 import algorithms.search.Solution;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -19,14 +20,7 @@ public class MazeDisplayer extends Canvas {
 
     StringProperty imageFileNameWall = new SimpleStringProperty();
     StringProperty imageFileNamePlayer = new SimpleStringProperty();
-
-    public String imageFileNameWallProperty() {
-        return imageFileNameWall.get();
-    }
-
-    public void setImageFileNameWall(String imageFileNameWall) {
-        this.imageFileNameWall.set(imageFileNameWall);
-    }
+    StringProperty imageFileNameGoal = new SimpleStringProperty();
 
     public String getImageFileNameWall() {
         return imageFileNameWall.get();
@@ -36,17 +30,41 @@ public class MazeDisplayer extends Canvas {
         return imageFileNamePlayer.get();
     }
 
+    //TODO change the picture
+    public String getImageFileNameGoal() { return imageFileNameGoal.get(); }
+
+    public String imageFileNameWallProperty() {
+        return imageFileNameWall.get();
+    }
+
+    public String imageFileNameGoalProperty() {
+        return imageFileNamePlayer.get();
+    }
+
     public String imageFileNamePlayerProperty() {
         return imageFileNamePlayer.get();
+    }
+
+
+    public void setImageFileNameWall(String imageFileNameWall) {
+        this.imageFileNameWall.set(imageFileNameWall);
+    }
+
+    public void setImageFileNameGoal(String imageFileNameGoal) {
+        this.imageFileNameGoal.set(imageFileNameGoal);
     }
 
     public void setImageFileNamePlayer(String imageFileNamePlayer) {
         this.imageFileNamePlayer.set(imageFileNamePlayer);
     }
 
+
+
+
     public void setPlayer_position(Position player_position) {
         this.player_position = player_position;
     }
+
 
     public Solution getSolution() {
         return solution;
@@ -64,6 +82,13 @@ public class MazeDisplayer extends Canvas {
     public void drawMaze(Maze maze,Position player_position){
         this.maze = maze;
         this.player_position = player_position;
+        draw();
+    }
+
+    public void drawMaze(Maze maze, Position position, Solution solution) {
+        this.maze = maze;
+        this.player_position = position;
+        this.solution = solution;
         draw();
     }
 
@@ -88,12 +113,44 @@ public class MazeDisplayer extends Canvas {
                 drawSolution(gc,cellHeight,cellWidth);
             }
             drawPlayer(gc, cellHeight, cellWidth);
+
+            drawGoal(gc, cellHeight, cellWidth);
+
         }
     }
 
-    //TODO
-    private void drawSolution(GraphicsContext gc, double cellHeight, double cellWidth) {
+    private void drawGoal(GraphicsContext gc, double cellHeight, double cellWidth) {
+        double x = this.maze.getGoalPosition().getColumnIndex() * cellWidth;
+        double y = this.maze.getGoalPosition().getRowIndex() * cellHeight;
 
+        gc.setFill(Color.BLUE);
+
+        Image GoalImage = null;
+        try {
+            GoalImage = new Image(new FileInputStream(getImageFileNameGoal()));
+        } catch (Exception e) {
+
+        }
+        if(GoalImage == null)
+            gc.fillRect(x, y, cellWidth, cellHeight);
+        else
+            gc.drawImage(GoalImage, x, y, cellWidth, cellHeight);
+    }
+
+
+
+
+    private void drawSolution(GraphicsContext gc, double cellHeight, double cellWidth) {
+        gc.setFill(Color.YELLOW);
+        for (int i = 0; i < this.solution.getSolutionPath().size() - 1; i++){
+            MazeState curr_state = (MazeState)this.solution.getSolutionPath().get(i);
+            int curr_row = curr_state.getPos().getRowIndex();
+            int curr_col = curr_state.getPos().getColumnIndex();
+
+            double x = curr_col * cellWidth;
+            double y = curr_row * cellHeight;
+            gc.fillRect(x,y,cellWidth,cellHeight);
+        }
     }
 
     private void draw_Maze_Walls(GraphicsContext gc, double cellHeight, double cellWidth) {
@@ -139,4 +196,9 @@ public class MazeDisplayer extends Canvas {
             graphicsContext.drawImage(playerImage, x, y, cellWidth, cellHeight);
     }
 
+
+    public void deleteSolutionPath() {
+        this.solution = null;
+        this.draw();
+    }
 }

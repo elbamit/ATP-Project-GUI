@@ -12,8 +12,11 @@ public interface IModel {
     void updatePlayerLocation(MovementDirection direction);
     int getPlayerRow();
     int getPlayerCol();
+    void setPlayerPosition(Position startPosition);
     void assignObserver(Observer o);
     void solveMaze();
+    void setMaze(Maze maze);
+    void restart_Game();
     Solution getSolution();
 
 }

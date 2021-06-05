@@ -73,6 +73,14 @@ public class MyViewModel extends Observable implements Observer {
         model.updatePlayerLocation(direction);
     }
 
+    public void setPlayerPosition(Position pos){
+        this.model.setPlayerPosition(pos);
+    }
+
+    public void restartGame() {
+        this.model.restart_Game();
+    }
+
     //TODO add a moveplayer with mouse
     //TODO add a configuration method
 
