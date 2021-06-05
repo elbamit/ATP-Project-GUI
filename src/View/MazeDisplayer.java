@@ -44,14 +44,9 @@ public class MazeDisplayer extends Canvas {
         this.imageFileNamePlayer.set(imageFileNamePlayer);
     }
 
-
-
-
     public void setPlayer_position(Position player_position) {
         this.player_position = player_position;
     }
-
-
 
     public Solution getSolution() {
         return solution;
@@ -66,6 +61,12 @@ public class MazeDisplayer extends Canvas {
         this.player_position = this.maze.getStartPosition();
         draw();
     }
+    public void drawMaze(Maze maze,Position player_position){
+        this.maze = maze;
+        this.player_position = player_position;
+        draw();
+    }
+
 
     private void draw(){
         if(this.maze != null){

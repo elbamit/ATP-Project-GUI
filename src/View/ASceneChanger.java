@@ -20,5 +20,4 @@ public abstract class ASceneChanger {
         thisStage.sizeToScene();
         thisStage.show();
     }
-
 }

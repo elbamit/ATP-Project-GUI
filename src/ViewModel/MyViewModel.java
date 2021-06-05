@@ -3,6 +3,7 @@ package ViewModel;
 import Model.IModel;
 import Model.MovementDirection;
 import algorithms.mazeGenerators.Maze;
+import algorithms.mazeGenerators.Position;
 import algorithms.search.Solution;
 import javafx.scene.input.KeyEvent;
 
@@ -60,6 +61,10 @@ public class MyViewModel extends Observable implements Observer {
             case NUMPAD7 -> direction = MovementDirection.UP_LEFT;
             case NUMPAD9 -> direction = MovementDirection.UP_RIGHT;
             case NUMPAD3 -> direction = MovementDirection.DOWN_RIGHT;
+            case UP -> direction = MovementDirection.UP;
+            case DOWN -> direction = MovementDirection.DOWN;
+            case LEFT -> direction = MovementDirection.LEFT;
+            case RIGHT -> direction = MovementDirection.RIGHT;
             default -> {
                 // no need to move the player...
                 return;
