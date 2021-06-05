@@ -73,6 +73,10 @@ public class MyViewModel extends Observable implements Observer {
         model.updatePlayerLocation(direction);
     }
 
+    public void Load(Object object_loadedMaze) {
+        model.Load(object_loadedMaze);
+    }
+
     //TODO add a moveplayer with mouse
     //TODO add a configuration method
 

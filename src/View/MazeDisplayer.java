@@ -67,7 +67,6 @@ public class MazeDisplayer extends Canvas {
         draw();
     }
 
-
     private void draw(){
         if(this.maze != null){
             double canvasHeight = getHeight();

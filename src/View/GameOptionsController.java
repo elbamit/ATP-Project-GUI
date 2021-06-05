@@ -4,9 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 
+import java.io.File;
 import java.io.IOException;
 
 public class GameOptionsController extends ASceneChanger {
@@ -39,6 +41,12 @@ public class GameOptionsController extends ASceneChanger {
         change_scene(actionEvent, "MyView.fxml");
     }
 
+
+    public void Load_Game_Click(ActionEvent actionEvent) throws IOException {
+        MyViewController.loaded=true;
+        change_scene(actionEvent, "MyView.fxml");
+
+    }
     //TODO MAKE ALL THE BUTTONS CLICKS (FOR ALL OPTIONS)
 
 

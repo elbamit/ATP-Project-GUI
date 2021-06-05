@@ -210,6 +210,13 @@ public class MyModel extends Observable implements IModel {
         return this.solution;
     }
 
+    @Override
+    public void Load(Object object_loadedMaze) {
+        Maze loadedMaze = (Maze) object_loadedMaze;
+        this.player_Position = loadedMaze.getStartPosition();
+        setMaze(loadedMaze);
+    }
+
     //Function that restarts the game by putting the player back to its start position
     public void restart_Game(){
         setPlayerPosition(getMaze().getStartPosition());
