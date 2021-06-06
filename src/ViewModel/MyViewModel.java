@@ -7,6 +7,7 @@ import algorithms.mazeGenerators.Position;
 import algorithms.search.Solution;
 import javafx.event.ActionEvent;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 
 
 import java.util.Observable;
@@ -74,6 +75,10 @@ public class MyViewModel extends Observable implements Observer {
         model.updatePlayerLocation(direction);
     }
 
+    public void movePlayer(MouseEvent mouseEvent, double mouseX, double mouseY, double cellHeight, double cellWidth){
+        this.model.updatePlayerLocation(mouseEvent, mouseX, mouseY, cellHeight, cellWidth);
+    }
+
     public void Load(Object object_loadedMaze) {
         model.Load(object_loadedMaze);
     }
@@ -90,7 +95,7 @@ public class MyViewModel extends Observable implements Observer {
         this.model.saveGame();
     }
 
-    //TODO add a moveplayer with mouse
+
     //TODO add a configuration method
 
 }

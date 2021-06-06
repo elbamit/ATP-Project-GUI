@@ -1,6 +1,7 @@
 package View;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -14,8 +15,10 @@ import java.io.IOException;
 
 public class Generate_Custom_GameController extends ASceneChanger{
 
-    public TextField textField_mazeRows;
-    public TextField textField_mazeColumns;
+    @FXML
+    private TextField textField_mazeRows;
+    @FXML
+    private TextField textField_mazeColumns;
 
 
     public void Generate_Maze_Custom_Click(ActionEvent actionEvent) throws IOException {
@@ -52,5 +55,17 @@ public class Generate_Custom_GameController extends ASceneChanger{
         } catch(NumberFormatException e){
             return false;
         }
+    }
+
+    public void Load_Game_From_Menu_Bar_Click(ActionEvent actionEvent) throws IOException {
+        MyViewController.loaded=true;
+        Stage stage =(Stage) textField_mazeRows.getScene().getWindow();
+        change_scene_stage(stage, "MyView.fxml");
+    }
+
+    public void Back_to_game_options_From_Menu_click(ActionEvent actionEvent) throws IOException {
+        MyViewController.loaded=true;
+        Stage stage =(Stage) textField_mazeRows.getScene().getWindow();
+        change_scene_stage(stage, "GameOptions.fxml");
     }
 }

@@ -4,6 +4,7 @@ import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.Position;
 import algorithms.search.Solution;
 import javafx.event.ActionEvent;
+import javafx.scene.input.MouseEvent;
 
 import java.util.Observer;
 
@@ -23,4 +24,6 @@ public interface IModel {
     void Load(Object object_loadedMaze);
 
     void saveGame();
+
+    void updatePlayerLocation(MouseEvent mouseEvent, double mouseX, double mouseY, double cellHeight, double cellWidth);
 }

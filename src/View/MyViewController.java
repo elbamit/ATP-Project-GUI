@@ -29,10 +29,17 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
     public static int col;
     public static boolean loaded=false;
 
+    private double MouseX;
+    private double MouseY;
+    private boolean Drag_started = false;
+
 
     public void setViewModel(MyViewModel viewModel) {
-        this.viewModel = viewModel;
-        this.viewModel.addObserver(this);
+        if (this.viewModel == null){
+            this.viewModel = viewModel;
+            this.viewModel.addObserver(this);
+        }
+
     }
 
     @Override
@@ -61,16 +68,16 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
     //Function that does stuff upon loading the MyView fxml
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if (this.viewModel == null){
+        if (this.viewModel== null){
+
             MyModel model = new MyModel();
             model.startServers();
 
-            //TODO CHECK WHY THERE IS AN ERROR WHEN STARTING EASY THEN GOING BACK THEN PRESSING EASY AGAIN
-            System.out.println("gogogogo");
             MyViewModel viewModel1 = new MyViewModel(model);
             model.addObserver(viewModel1);
             setViewModel(viewModel1);
         }
+
         if (loaded){
 
             try {
@@ -163,4 +170,45 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
 
 
     }
+
+    public void DragDetected(MouseEvent mouseEvent) {
+        this.MouseX = mouseEvent.getX();
+        this.MouseY = mouseEvent.getY();
+        this.Drag_started = true;
+    }
+
+    public void MouseDragged(MouseEvent mouseEvent) {
+        if (this.Drag_started && enough_drag(mouseEvent, this.MouseX, this.MouseY)){
+            this.viewModel.movePlayer(mouseEvent, this.MouseX, this.MouseY, this.mazeDisplayer.getCellHeight(), this.mazeDisplayer.getCellWidth());
+            this.MouseX = mouseEvent.getX();
+            this.MouseY = mouseEvent.getY();
+        }
+    }
+
+    public void MousePressed(MouseEvent mouseEvent) {
+        MouseX = mouseEvent.getX();
+        MouseY = mouseEvent.getY();
+    }
+
+    public void MouseReleased(MouseEvent mouseEvent) {
+        this.Drag_started = false;
+        this.MouseX = mouseEvent.getX();
+        this.MouseY = mouseEvent.getY();
+        mouseEvent.consume();
+    }
+
+    private boolean enough_drag(MouseEvent mouseEvent, double mouseX, double mouseY){
+        double cell_height = this.mazeDisplayer.getCellHeight();
+        double cell_width = this.mazeDisplayer.getCellWidth();
+
+        if (Math.abs(mouseX-mouseEvent.getX()) >= cell_width || Math.abs(mouseY-mouseEvent.getY()) >= cell_height){
+            return true;
+        }
+
+       else {
+           return false;
+        }
+    }
+
+
 }

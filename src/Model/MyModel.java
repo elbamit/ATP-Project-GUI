@@ -11,6 +11,7 @@ import Server.ServerStrategySolveSearchProblem;
 import Client.IClientStrategy;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 
 import java.io.*;
@@ -101,6 +102,7 @@ public class MyModel extends Observable implements IModel {
         this.solution = null;
         setChanged();
         notifyObservers(maze);
+
     }
 
     @Override
@@ -148,8 +150,77 @@ public class MyModel extends Observable implements IModel {
                     setPlayerPosition(getPlayerRow()-1, getPlayerCol()-1);
             }
         }
+    }
 
+    @Override
+    public void updatePlayerLocation(MouseEvent mouseEvent, double mouseX, double mouseY, double cellHeight, double cellWidth) {
+        MovementDirection direction;
+        if(this.maze != null){
 
+            //Checks DOWN
+            if(mouseEvent.getY() > mouseY && Math.abs(mouseEvent.getY() - mouseY) >= cellHeight){
+
+                //DOWN-RIGHT
+                if (mouseEvent.getX() > mouseX && Math.abs(mouseEvent.getX() - mouseX) >= cellWidth){
+                    direction = MovementDirection.DOWN_RIGHT;
+                    updatePlayerLocation(direction);
+                    return;
+                }
+
+                //DOWN-LEFT
+                else if (mouseEvent.getX() < mouseX && Math.abs(mouseEvent.getX() - mouseX) >= cellWidth){
+                    direction = MovementDirection.DOWN_LEFT;
+                    updatePlayerLocation(direction);
+                    return;
+                }
+
+                //DOWN
+                else{
+                    direction = MovementDirection.DOWN;
+                    updatePlayerLocation(direction);
+                    return;
+                }
+            }
+
+            //Checks UP
+            else if(mouseEvent.getY() < mouseY && Math.abs(mouseEvent.getY() - mouseY) >= cellHeight){
+
+                //UP-RIGHT
+                if (mouseEvent.getX() > mouseX && Math.abs(mouseEvent.getX() - mouseX) >= cellWidth){
+                    direction = MovementDirection.UP_RIGHT;
+                    updatePlayerLocation(direction);
+                    return;
+                }
+
+                //UP-LEFT
+                else if (mouseEvent.getX() < mouseX && Math.abs(mouseEvent.getX() - mouseX) >= cellWidth){
+                    direction = MovementDirection.UP_LEFT;
+                    updatePlayerLocation(direction);
+                    return;
+                }
+
+                //UP
+                else{
+                    direction = MovementDirection.UP;
+                    updatePlayerLocation(direction);
+                    return;
+                }
+            }
+
+            //Checks RIGHT/LEFT
+            else{
+                if(mouseEvent.getX() > mouseX && Math.abs(mouseEvent.getX() - mouseX) >= cellWidth){
+                    direction = MovementDirection.RIGHT;
+                    updatePlayerLocation(direction);
+                    return;
+                }
+                else if(mouseEvent.getX() < mouseX && Math.abs(mouseEvent.getX() - mouseX) >= cellWidth){
+                    direction = MovementDirection.LEFT;
+                    updatePlayerLocation(direction);
+                    return;
+                }
+            }
+        }
     }
 
     @Override
@@ -249,6 +320,8 @@ public class MyModel extends Observable implements IModel {
             a.show();
         }
     }
+
+
 
 
     //Function that restarts the game by putting the player back to its start position

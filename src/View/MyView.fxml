@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<?import View.* ?>
+<?import View.MazeDisplayer?>
 <BorderPane onMouseClicked="#mouseClicked" prefHeight="389.0" prefWidth="954.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MyViewController">
    <top>
       <VBox BorderPane.alignment="CENTER">
@@ -41,7 +41,7 @@
       </VBox>
    </top>
    <center>
-      <Pane onKeyPressed="#KeyPressed" prefHeight="395.0" prefWidth="698.0" BorderPane.alignment="CENTER">
+      <Pane onDragDetected="#DragDetected" onKeyPressed="#KeyPressed" onMouseDragged="#MouseDragged" onMousePressed="#MousePressed" onMouseReleased="#MouseReleased" prefHeight="395.0" prefWidth="698.0" BorderPane.alignment="CENTER">
          <children>
             <MazeDisplayer fx:id="mazeDisplayer" height="400.0" imageFileNameGoal="./resources/images/melech.jpeg" imageFileNamePlayer="./resources/images/mario.png" imageFileNameWall="./resources/images/wall.png" width="400.0" />
          </children>

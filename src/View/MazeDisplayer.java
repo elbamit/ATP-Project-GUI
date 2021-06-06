@@ -95,19 +95,14 @@ public class MazeDisplayer extends Canvas {
 
     private void draw(){
         if(this.maze != null){
-            double canvasHeight = getHeight();
-            double canvasWidth = getWidth();
-            int maze_rows = this.maze.getMaze_matrix().length;
-            int maze_cols = this.maze.getMaze_matrix()[0].length;
 
-            double cellHeight = canvasHeight / maze_rows;
-            double cellWidth = canvasWidth / maze_cols;
+            double cellHeight = getCellHeight();
+            double cellWidth = getCellWidth();
 
             GraphicsContext gc = getGraphicsContext2D();
 
             //Clears the entire canvas
-            gc.clearRect(0,0,canvasHeight,canvasWidth);
-
+            gc.clearRect(0,0,getHeight(),getWidth());
             draw_Maze_Walls(gc, cellHeight, cellWidth);
             if(this.solution != null){
                 drawSolution(gc,cellHeight,cellWidth);
@@ -176,6 +171,7 @@ public class MazeDisplayer extends Canvas {
                 }
             }
         }
+
     }
 
     private void drawPlayer(GraphicsContext graphicsContext, double cellHeight, double cellWidth) {
@@ -201,4 +197,20 @@ public class MazeDisplayer extends Canvas {
         this.solution = null;
         this.draw();
     }
+
+    public double getCellHeight() {
+        double canvasHeight = getHeight();
+        int maze_rows = this.maze.getMaze_matrix().length;
+        double cellHeight = canvasHeight / maze_rows;
+        return cellHeight;
+    }
+
+    public double getCellWidth() {
+        double canvasWidth = getWidth();
+        int maze_cols = this.maze.getMaze_matrix()[0].length;
+        double cellWidth = canvasWidth / maze_cols;
+        return cellWidth;
+    }
 }
+
+
