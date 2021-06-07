@@ -17,6 +17,7 @@ public class MazeDisplayer extends Canvas {
     private Maze maze;
     private Solution solution;
     private Position player_position = new Position(0,0);
+    private double zooming_value = 0;
 
     StringProperty imageFileNameWall = new SimpleStringProperty();
     StringProperty imageFileNamePlayer = new SimpleStringProperty();
@@ -77,6 +78,7 @@ public class MazeDisplayer extends Canvas {
     public void drawMaze(Maze maze){
         this.maze = maze;
         this.player_position = this.maze.getStartPosition();
+        ResetZoom();
         draw();
     }
     public void drawMaze(Maze maze,Position player_position){
@@ -201,15 +203,32 @@ public class MazeDisplayer extends Canvas {
     public double getCellHeight() {
         double canvasHeight = getHeight();
         int maze_rows = this.maze.getMaze_matrix().length;
-        double cellHeight = canvasHeight / maze_rows;
+        double cellHeight = (canvasHeight + this.zooming_value) / maze_rows;
         return cellHeight;
     }
 
     public double getCellWidth() {
         double canvasWidth = getWidth();
         int maze_cols = this.maze.getMaze_matrix()[0].length;
-        double cellWidth = canvasWidth / maze_cols;
+        double cellWidth = (canvasWidth + this.zooming_value) / maze_cols;
         return cellWidth;
+    }
+
+    public void ZoomIn() {
+        this.zooming_value+=20;
+        draw();
+    }
+
+    public void ZoomOut() {
+        if (((double)this.getHeight() + this.zooming_value) / this.maze.getMaze_matrix().length >= 1 && ((double) this.getWidth() + this.zooming_value)/this.maze.getMaze_matrix()[0].length >= 1){
+            this.zooming_value-=20;
+            draw();
+        }
+    }
+
+    public void ResetZoom(){
+        this.zooming_value = 0;
+        draw();
     }
 }
 

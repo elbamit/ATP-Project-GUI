@@ -41,7 +41,7 @@
       </VBox>
    </top>
    <center>
-      <Pane onDragDetected="#DragDetected" onKeyPressed="#KeyPressed" onMouseDragged="#MouseDragged" onMousePressed="#MousePressed" onMouseReleased="#MouseReleased" prefHeight="395.0" prefWidth="698.0" BorderPane.alignment="CENTER">
+      <Pane onDragDetected="#DragDetected" onKeyPressed="#KeyPressed" onMouseDragged="#MouseDragged" onMousePressed="#MousePressed" onMouseReleased="#MouseReleased" onScroll="#MouseScrolled" prefHeight="395.0" prefWidth="698.0" BorderPane.alignment="CENTER">
          <children>
             <MazeDisplayer fx:id="mazeDisplayer" height="400.0" imageFileNameGoal="./resources/images/melech.jpeg" imageFileNamePlayer="./resources/images/mario.png" imageFileNameWall="./resources/images/wall.png" width="400.0" />
          </children>

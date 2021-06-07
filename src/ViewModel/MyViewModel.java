@@ -120,6 +120,6 @@ public class MyViewModel extends Observable implements Observer {
     }
 
 
-    //TODO add a configuration method
+
 
 }

@@ -14,6 +14,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Alert;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -233,4 +234,14 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
     }
 
 
+    public void MouseScrolled(ScrollEvent scrollEvent) {
+        if (scrollEvent.isControlDown()){//holds control simultaneously of scrolling
+            if(scrollEvent.getDeltaY() > 0){//zoom in
+                this.mazeDisplayer.ZoomIn();
+            }
+            else {
+                this.mazeDisplayer.ZoomOut();
+            }
+        }
+    }
 }
