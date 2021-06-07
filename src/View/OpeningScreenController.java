@@ -31,45 +31,19 @@ public class OpeningScreenController extends ASceneChanger{
 
 
     public void Properties_click(ActionEvent actionEvent) throws IOException {
-//        Stage stage =(Stage) root.getScene().getWindow();
-//        new_stage(stage,"Properties.fxml", "Properties screen");
-        ActionEvent a = (ActionEvent)actionEvent.getSource();
+    new_stage("Properties.fxml", "Properties");
 
-        //Stage stage =(Stage) root.getScene().getWindow();
-        change_scene(a,"Properties.fxml");
-//TODO make it open a new stage with properties
     }
+
+
     public void help_click(ActionEvent actionEvent) throws IOException {
-        try {
-            Stage stage = new Stage();
-            stage.setTitle("Help");
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            Parent root = fxmlLoader.load(getClass().getResource("HelpScreen.fxml").openStream());
-            Scene scene = new Scene(root, 600, 400);
-            stage.setScene(scene);
-            stage.initModality(Modality.APPLICATION_MODAL); //Lock the window until it closes
-            stage.show();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        //change_scene(actionEvent,"HelpScreen.fxml");
+        new_stage("HelpScreen.fxml", "Help");
 
     }
 
     public void about_click(ActionEvent actionEvent) throws IOException {
-        try {
-            Stage stage = new Stage();
-            stage.setTitle("About");
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            Parent root = fxmlLoader.load(getClass().getResource("AboutScreen.fxml").openStream());
-            Scene scene = new Scene(root, 600, 400);
-            stage.setScene(scene);
-            stage.initModality(Modality.APPLICATION_MODAL); //Lock the window until it closes
-            stage.show();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        //change_scene(actionEvent,"HelpScreen.fxml");
+        new_stage("AboutScreen.fxml", "About");
+
 
     }
 }

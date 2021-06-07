@@ -35,16 +35,19 @@ public abstract class ASceneChanger {
         thisStage.show();
     }
 
-    public void new_stage(Stage stage, String fxml_name, String stage_name) throws IOException {
-//        Stage new_stage = stage;
-//        new_stage.setTitle(stage_name);
-//        FXMLLoader loader = new FXMLLoader();
-//        Parent root = loader.load(getClass().getResource(fxml_name).openStream());
-//        PropertiesController settingController = loader.getController();
-//        Scene scene = new Scene(root);
-//        new_stage.setScene(scene);
-//        stage.initModality(Modality.APPLICATION_MODAL);
-//        new_stage.show();
+    public void new_stage(String fxml_name, String stage_name) throws IOException {
+        try {
+            Stage stage = new Stage();
+            stage.setTitle(stage_name);
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            Parent root = fxmlLoader.load(getClass().getResource(fxml_name).openStream());
+            Scene scene = new Scene(root, 600, 400);
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL); //Lock the window until it closes
+            stage.show();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         //TODO make a function that opens a new stage
 
     }
