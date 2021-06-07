@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
+<?import View.*?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.PropertiesController">
    <children>
       <Text layoutX="100.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Properties" textAlignment="CENTER" underline="true" wrappingWidth="417.13671875">
@@ -31,6 +32,10 @@
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Threads:" textAlignment="CENTER" wrappingWidth="131.13671875" />
             <TextField GridPane.columnIndex="2" />
             <Text fx:id="Thread_Num_Past" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="130.13671875" GridPane.columnIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Generating Algorithm:" textAlignment="CENTER" wrappingWidth="134.91925048828125" GridPane.rowIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Solving Algorithm:" textAlignment="CENTER" wrappingWidth="124.39520263671875" GridPane.rowIndex="2" />
+            <ComboBox fx:id="Generating_Algorithm_Box" prefWidth="150.0" promptText="Choose Generating Algorithm:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <ComboBox fx:id="Searching_Algorithm_Box" prefWidth="150.0" promptText="Choose Solving Algorithm" GridPane.columnIndex="2" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </children>
