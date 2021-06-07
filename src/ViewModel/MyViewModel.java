@@ -95,6 +95,30 @@ public class MyViewModel extends Observable implements Observer {
         this.model.saveGame();
     }
 
+    public void getThreadNum() {
+        this.model.getThreadNum();
+    }
+
+    public void getGeneratingAlgo() throws CloneNotSupportedException {
+        this.model.getGeneratingAlgo();
+    }
+
+    public void getSearchingAlgo() throws CloneNotSupportedException {
+        this.model.getSearchingAlgo();
+    }
+
+    public void setThreadNum(int num) {
+        this.model.setThreadNum(num);
+    }
+
+    public void setGeneratingAlgo(String gener_algo_name) {
+        this.model.setGeneratingAlgo(gener_algo_name);
+    }
+
+    public void setSolvingAlgo(String solving_algo_name) {
+        this.model.setSolvingAlgo(solving_algo_name);
+    }
+
 
     //TODO add a configuration method
 
