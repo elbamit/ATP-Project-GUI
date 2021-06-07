@@ -19,7 +19,10 @@ public abstract class ASceneChanger {
         //Loads the Game options scene into the stage
         Scene new_scene = new Scene(FXMLLoader.load(getClass().getResource(fxml_name)));
         thisStage.setScene(new_scene);
-        thisStage.sizeToScene();
+//        thisStage.sizeToScene();
+        thisStage.setWidth(900);
+        thisStage.setHeight(500);
+
         thisStage.show();
     }
 

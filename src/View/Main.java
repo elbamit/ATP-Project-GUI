@@ -26,7 +26,8 @@ public class Main extends Application {
 
         primaryStage.setTitle("Maze Game");
         primaryStage.setScene(new Scene(root));
-        primaryStage.sizeToScene();
+        primaryStage.setWidth(900);
+        primaryStage.setHeight(500);
         primaryStage.show();
     }
 
