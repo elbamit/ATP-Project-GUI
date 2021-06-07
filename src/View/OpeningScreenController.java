@@ -30,20 +30,16 @@ public class OpeningScreenController extends ASceneChanger{
     }
 
 
-    public void Properties_click(ActionEvent actionEvent) throws IOException {
-    new_stage("Properties.fxml", "Properties");
-
+    public void Properties_Click(ActionEvent actionEvent) throws IOException {
+        new_stage("Properties.fxml", "Properties");
     }
 
 
-    public void help_click(ActionEvent actionEvent) throws IOException {
+    public void Help_Click(ActionEvent actionEvent) throws IOException {
         new_stage("HelpScreen.fxml", "Help");
-
     }
 
-    public void about_click(ActionEvent actionEvent) throws IOException {
+    public void About_Click(ActionEvent actionEvent) throws IOException {
         new_stage("AboutScreen.fxml", "About");
-
-
     }
 }

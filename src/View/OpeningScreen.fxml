@@ -34,13 +34,13 @@
                         </Menu>
                         <Menu mnemonicParsing="false" text="Options">
                             <items>
-                                <MenuItem mnemonicParsing="false" onAction="#Properties_click" text="Properties" />
+                                <MenuItem mnemonicParsing="false" onAction="#Properties_Click" text="Properties" />
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="More">
                             <items>
-                                <MenuItem mnemonicParsing="false" onAction="#about_click" text="About" />
-                                <MenuItem mnemonicParsing="false" onAction="#help_click" text="Help" />
+                                <MenuItem mnemonicParsing="false" onAction="#About_Click" text="About" />
+                                <MenuItem mnemonicParsing="false" onAction="#Help_Click" text="Help" />
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Exit" />

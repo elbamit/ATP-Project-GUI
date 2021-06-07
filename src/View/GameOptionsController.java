@@ -49,6 +49,7 @@ public class GameOptionsController extends ASceneChanger {
         change_scene(actionEvent, "MyView.fxml");
     }
 
+    //TODO maybe deal with trying to cancel a load game
     public void Load_Game_From_Menu_Bar_Click(ActionEvent actionEvent) throws IOException {
         MyViewController.loaded=true;
         Stage stage =(Stage) root.getScene().getWindow();
@@ -58,7 +59,16 @@ public class GameOptionsController extends ASceneChanger {
     }
 
 
-    //TODO MAKE ALL THE BUTTONS CLICKS (FOR ALL OPTIONS)
+    public void Properties_Click(ActionEvent actionEvent) throws IOException {
+        new_stage("Properties.fxml", "Properties");
+    }
 
+    public void About_Click(ActionEvent actionEvent) throws IOException {
+        new_stage("AboutScreen.fxml", "About");
 
+    }
+
+    public void Help_Click(ActionEvent actionEvent) throws IOException {
+        new_stage("HelpScreen.fxml", "Help");
+    }
 }

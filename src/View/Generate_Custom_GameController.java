@@ -68,4 +68,17 @@ public class Generate_Custom_GameController extends ASceneChanger{
         Stage stage =(Stage) textField_mazeRows.getScene().getWindow();
         change_scene_stage(stage, "GameOptions.fxml");
     }
+
+    public void Properties_Click(ActionEvent actionEvent) throws IOException {
+        new_stage("Properties.fxml", "Properties");
+    }
+
+
+    public void Help_Click(ActionEvent actionEvent) throws IOException {
+        new_stage("HelpScreen.fxml", "Help");
+    }
+
+    public void About_Click(ActionEvent actionEvent) throws IOException {
+        new_stage("AboutScreen.fxml", "About");
+    }
 }

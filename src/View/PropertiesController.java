@@ -10,10 +10,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 
 import java.net.URL;
@@ -37,6 +36,10 @@ public class PropertiesController extends ASceneChanger implements Initializable
     public ComboBox Solving_Algorithm_Box;
     @FXML
     public Text Solving_Algo_Past;
+
+    @FXML
+    private Button CancelButton;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -93,7 +96,10 @@ public class PropertiesController extends ASceneChanger implements Initializable
                 this.viewModel.setThreadNum(Integer.parseInt(thread_number));
             }
             else {
-                //TODO POP ERROR MESSAGE
+                Alert a = new Alert(Alert.AlertType.ERROR);
+                a.setContentText("Wrong input in Thread number field!");
+                a.show();
+                return;
             }
         }
 
@@ -116,5 +122,7 @@ public class PropertiesController extends ASceneChanger implements Initializable
     }
 
     public void Cancel_Button_Click(ActionEvent actionEvent) {
+        Stage stage = (Stage)this.CancelButton.getScene().getWindow();
+        stage.close();
     }
 }

@@ -44,7 +44,7 @@
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Change Value" textAlignment="CENTER" underline="true" wrappingWidth="165.13671875" GridPane.columnIndex="2" />
          </children>
       </GridPane>
-      <Button layoutX="174.0" layoutY="339.0" mnemonicParsing="false" onAction="#Cancel_Button_Click" prefHeight="35.0" prefWidth="92.0" text="Cancel" />
+      <Button fx:id="CancelButton" layoutX="174.0" layoutY="339.0" mnemonicParsing="false" onAction="#Cancel_Button_Click" prefHeight="35.0" prefWidth="92.0" text="Cancel" />
       <Button layoutX="321.0" layoutY="339.0" mnemonicParsing="false" onAction="#Save_Settings_Click" prefHeight="35.0" prefWidth="92.0" text="Save Settings" />
    </children>
 </AnchorPane>

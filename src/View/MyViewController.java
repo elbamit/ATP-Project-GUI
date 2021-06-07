@@ -9,12 +9,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Alert;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.URL;
@@ -24,6 +26,7 @@ import java.util.ResourceBundle;
 
 public class MyViewController extends ASceneChanger implements Initializable, Observer,IView{
     public MyViewModel viewModel;
+    @FXML
     public MazeDisplayer mazeDisplayer = new MazeDisplayer();
     public static int row;
     public static int col;
@@ -208,6 +211,25 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
        else {
            return false;
         }
+    }
+
+    public void Properties_Click(ActionEvent actionEvent) throws IOException {
+        new_stage("Properties.fxml", "Properties");
+    }
+
+
+    public void Help_Click(ActionEvent actionEvent) throws IOException {
+        new_stage("HelpScreen.fxml", "Help");
+    }
+
+    public void About_Click(ActionEvent actionEvent) throws IOException {
+        new_stage("AboutScreen.fxml", "About");
+    }
+
+    public void New_Game_From_Menu_Click(ActionEvent actionEvent) throws IOException{
+        Stage stage =(Stage) this.mazeDisplayer.getScene().getWindow();
+        change_scene_stage(stage, "GameOptions.fxml");
+
     }
 
 
