@@ -48,7 +48,7 @@ public class Generate_Custom_GameController extends ASceneChanger{
         change_scene(actionEvent, "GameOptions.fxml");
     }
 
-    private static boolean isNumeric(String str) {
+    public static boolean isNumeric(String str) {
         try {
             Integer.parseInt(str);
             return true;

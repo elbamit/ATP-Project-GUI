@@ -26,4 +26,16 @@ public interface IModel {
     void saveGame();
 
     void updatePlayerLocation(MouseEvent mouseEvent, double mouseX, double mouseY, double cellHeight, double cellWidth);
+
+    void getThreadNum();
+
+    void getGeneratingAlgo() throws CloneNotSupportedException;
+
+    void getSearchingAlgo() throws CloneNotSupportedException;
+
+    void setThreadNum(int num);
+
+    void setGeneratingAlgo(String gener_algo_name);
+
+    void setSolvingAlgo(String solving_algo_name);
 }

@@ -3,11 +3,14 @@ package Model;
 import Client.Client;
 import IO.MyDecompressorInputStream;
 import Server.Server;
+import algorithms.mazeGenerators.AMazeGenerator;
 import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.Position;
+import algorithms.search.ASearchingAlgorithm;
 import algorithms.search.Solution;
 import Server.ServerStrategyGenerateMaze;
 import Server.ServerStrategySolveSearchProblem;
+import Server.Configurations;
 import Client.IClientStrategy;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
@@ -31,11 +34,13 @@ public class MyModel extends Observable implements IModel {
         this.maze = null;
         this.solution = null;
         this.player_Position = null;
-        this.mazeGeneratorServer = new Server(5400, 1000, new ServerStrategyGenerateMaze());
-        this.mazeSolverServer = new Server(5401, 1000, new ServerStrategySolveSearchProblem());
+        this.mazeGeneratorServer = null;
+        this.mazeSolverServer = null;
     }
 
     public void startServers(){
+        this.mazeGeneratorServer = new Server(5400, 1000, new ServerStrategyGenerateMaze());
+        this.mazeSolverServer = new Server(5401, 1000, new ServerStrategySolveSearchProblem());
         this.mazeGeneratorServer.start();
         this.mazeSolverServer.start();
     }
@@ -220,6 +225,66 @@ public class MyModel extends Observable implements IModel {
                     return;
                 }
             }
+        }
+    }
+
+    @Override
+    public void getThreadNum() {
+        Configurations config = Configurations.getInstance();
+        int size = config.getThreadPoolSize();
+        setChanged();
+        notifyObservers(size);
+
+    }
+
+    @Override
+    public void getGeneratingAlgo() throws CloneNotSupportedException {
+        Configurations config = Configurations.getInstance();
+        AMazeGenerator gener_algo = config.getmazeGeneratingAlgorithm();
+
+        setChanged();
+        notifyObservers(gener_algo);
+    }
+
+    @Override
+    public void getSearchingAlgo() throws CloneNotSupportedException {
+        Configurations config = Configurations.getInstance();
+        ASearchingAlgorithm search_algo = config.getmazeSearchingAlgorithm();
+        setChanged();
+        notifyObservers(search_algo);
+    }
+
+    @Override
+    public void setThreadNum(int num) {
+        Configurations config = Configurations.getInstance();
+        config.setThreadPoolSize(num);
+        setChanged();
+        notifyObservers(num);
+    }
+
+    @Override
+    public void setGeneratingAlgo(String gener_algo_name) {
+        Configurations config = Configurations.getInstance();
+        config.setMazeGeneratingAlgorithm(gener_algo_name);
+
+        setChanged();
+        try {
+            notifyObservers(config.getmazeGeneratingAlgorithm());
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void setSolvingAlgo(String solving_algo_name) {
+        Configurations config = Configurations.getInstance();
+        config.setMazeSearchingAlgorithm(solving_algo_name);
+
+        setChanged();
+        try {
+            notifyObservers(config.getmazeSearchingAlgorithm());
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
         }
     }
 
