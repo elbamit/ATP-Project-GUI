@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
@@ -20,7 +21,8 @@ import java.io.IOException;
 
 public class OpeningScreenController extends ASceneChanger{
 
-
+    @FXML
+    public Button start_game_button;
     @FXML
     private Pane root;
 
@@ -54,5 +56,29 @@ public class OpeningScreenController extends ASceneChanger{
 
     public void About_Click(ActionEvent actionEvent) throws IOException {
         new_stage("AboutScreen.fxml", "About");
+    }
+
+    public void setResizeEvent(Stage stage) {
+
+
+        stage.heightProperty().addListener((observable, oldValue, newValue) -> {
+
+            root.setPrefWidth(stage.getHeight());
+            start_game_button.setPrefHeight(stage.getHeight()/3.5);
+            start_game_button.setLayoutY(stage.getHeight()/3);
+
+        });
+
+        stage.widthProperty().addListener((observable, oldValue, newValue) -> {
+
+            root.setPrefWidth(stage.getWidth());
+
+            start_game_button.setPrefWidth(stage.getWidth()*0.32);
+            start_game_button.setLayoutX(stage.getX()/2);
+
+
+
+
+        });
     }
 }

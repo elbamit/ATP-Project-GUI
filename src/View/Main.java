@@ -21,6 +21,7 @@ public class Main extends Application {
         Configurations config = Configurations.getInstance();
         config.setProperty(4, "MyMazeGenerator", "DepthFirstSearch");
 
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("OpeningScreen.fxml"));
         Parent root = loader.load();
 
@@ -28,6 +29,8 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root));
         primaryStage.setWidth(900);
         primaryStage.setHeight(500);
+        OpeningScreenController mv =(OpeningScreenController) loader.getController();
+        mv.setResizeEvent(primaryStage);
         primaryStage.show();
     }
 

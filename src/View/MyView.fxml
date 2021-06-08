@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import View.MazeDisplayer?>
-<BorderPane onMouseClicked="#mouseClicked" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MyViewController">
+<BorderPane fx:id="border_pane" onMouseClicked="#mouseClicked" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MyViewController">
    <top>
       <VBox prefHeight="30.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
@@ -41,7 +41,7 @@
       </VBox>
    </top>
    <center>
-      <Pane onDragDetected="#DragDetected" onKeyPressed="#KeyPressed" onMouseDragged="#MouseDragged" onMousePressed="#MousePressed" onMouseReleased="#MouseReleased" onScroll="#MouseScrolled" prefHeight="420.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <Pane fx:id="MazePane" onDragDetected="#DragDetected" onKeyPressed="#KeyPressed" onMouseDragged="#MouseDragged" onMousePressed="#MousePressed" onMouseReleased="#MouseReleased" onScroll="#MouseScrolled" prefHeight="420.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <MazeDisplayer fx:id="mazeDisplayer" height="420.0" imageFileNameGoal="./resources/images/melech.jpeg" imageFileNamePlayer="./resources/images/mario.png" imageFileNameWall="./resources/images/wall.png" width="600.0" />
          </children>
@@ -51,11 +51,11 @@
       </Pane>
    </center>
    <left>
-      <Pane prefHeight="500.0" prefWidth="150.0" BorderPane.alignment="CENTER">
+      <Pane fx:id="button_pane" prefHeight="500.0" prefWidth="150.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="9.0" layoutY="26.0" mnemonicParsing="false" onAction="#Restart_Game_Click" prefHeight="33.0" prefWidth="129.0" text="Restart Game" />
-            <Button layoutX="8.0" layoutY="84.0" mnemonicParsing="false" onAction="#SolveMaze" prefHeight="34.0" prefWidth="132.0" text="Solve" />
-            <Button layoutX="6.0" layoutY="144.0" mnemonicParsing="false" onAction="#Back_To_Game_Options" prefHeight="36.0" prefWidth="135.0" text="Back to game options" />
+            <Button fx:id="restart_game_button" layoutX="9.0" layoutY="26.0" mnemonicParsing="false" onAction="#Restart_Game_Click" prefHeight="33.0" prefWidth="129.0" text="Restart Game" />
+            <Button fx:id="solve_button" layoutX="8.0" layoutY="84.0" mnemonicParsing="false" onAction="#SolveMaze" prefHeight="34.0" prefWidth="132.0" text="Solve" />
+            <Button fx:id="back_button" layoutX="6.0" layoutY="144.0" mnemonicParsing="false" onAction="#Back_To_Game_Options" prefHeight="36.0" prefWidth="135.0" text="Back to game options" />
          </children>
       </Pane>
    </left>

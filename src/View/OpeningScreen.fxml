@@ -10,7 +10,7 @@
 
 <Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.OpeningScreenController">
     <children>
-        <Button layoutX="307.0" layoutY="102.0" mnemonicParsing="false" onAction="#Start_Game_Click" prefHeight="130.0" prefWidth="300.0" text="Start game">
+        <Button fx:id="start_game_button" layoutX="307.0" layoutY="102.0" mnemonicParsing="false" onAction="#Start_Game_Click" prefHeight="130.0" prefWidth="300.0" text="Start game">
             <font>
                 <Font size="40.0" />
             </font>

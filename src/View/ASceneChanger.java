@@ -51,7 +51,50 @@ public abstract class ASceneChanger {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        //TODO make a function that opens a new stage
 
+    }
+
+
+
+    public void change_scene_MyView(ActionEvent actionEvent) throws IOException {
+        Node node = (Node) actionEvent.getSource();
+        Stage thisStage = (Stage) node.getScene().getWindow();
+
+        //Loads the Game options scene into the stage
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MyView.fxml"));
+        Parent x = loader.load();
+
+
+        Scene new_scene = new Scene(x);
+
+        thisStage.setScene(new_scene);
+
+        thisStage.setWidth(900);
+        thisStage.setHeight(500);
+
+        MyViewController mv =(MyViewController) loader.getController();
+        mv.setResizeEvent(thisStage);
+        thisStage.show();
+    }
+
+    public void change_scene_opening_screen(ActionEvent actionEvent) throws IOException {
+        Node node = (Node) actionEvent.getSource();
+        Stage thisStage = (Stage) node.getScene().getWindow();
+
+        //Loads the Game options scene into the stage
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("OpeningScreen.fxml"));
+        Parent x = loader.load();
+
+
+        Scene new_scene = new Scene(x);
+
+        thisStage.setScene(new_scene);
+
+        thisStage.setWidth(900);
+        thisStage.setHeight(500);
+
+        MyViewController mv =(MyViewController) loader.getController();
+        mv.setResizeEvent(thisStage);
+        thisStage.show();
     }
 }

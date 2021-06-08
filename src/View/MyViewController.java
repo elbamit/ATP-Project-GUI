@@ -10,12 +10,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -29,6 +32,18 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
     public MyViewModel viewModel;
     @FXML
     public MazeDisplayer mazeDisplayer = new MazeDisplayer();
+    @FXML
+    public BorderPane border_pane;
+    @FXML
+    public Pane button_pane;
+    @FXML
+    public Button restart_game_button;
+    @FXML
+    public Button solve_button;
+    @FXML
+    public Button back_button;
+    @FXML
+    private Pane MazePane;
     public static int row;
     public static int col;
     public static boolean loaded=false;
@@ -90,6 +105,7 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
             }
         }
         else{
+
             generateMazeAuto();
         }
 
@@ -168,11 +184,13 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
     }
 
     public void Restart_Game_Click(ActionEvent actionEvent) {
+        Restart_Game();
+    }
+
+    private void Restart_Game(){
         this.viewModel.restartGame();
         this.mazeDisplayer.deleteSolutionPath();
         this.mazeDisplayer.requestFocus();
-
-
     }
 
     public void DragDetected(MouseEvent mouseEvent) {
@@ -243,5 +261,45 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
                 this.mazeDisplayer.ZoomOut();
             }
         }
+    }
+
+    public void setResizeEvent(Stage stage) {
+        mazeDisplayer.widthProperty().bind(MazePane.widthProperty());
+        mazeDisplayer.heightProperty().bind(MazePane.heightProperty());
+
+        MazePane.heightProperty().addListener((observable, oldValue, newValue) -> {
+            MazePane.setPrefWidth(stage.getHeight()*(2/3));
+
+            button_pane.setPrefHeight(stage.getHeight());
+
+            back_button.setPrefHeight(stage.getHeight()*0.066);
+            back_button.setMaxHeight(50);
+
+            solve_button.setPrefHeight(stage.getHeight()*0.066);
+            solve_button.setMaxHeight(50);
+
+            restart_game_button.setPrefHeight(stage.getHeight()*0.066);
+            restart_game_button.setMaxHeight(50);
+
+            mazeDisplayer.drawMaze(viewModel.getMaze());
+
+
+        });
+
+        MazePane.widthProperty().addListener((observable, oldValue, newValue) -> {
+            MazePane.setPrefWidth(stage.getWidth()*0.84);
+
+            button_pane.setPrefWidth(stage.getWidth()/6);
+
+            back_button.setPrefWidth(stage.getWidth()*(0.15));
+            back_button.setMaxWidth(260);
+            solve_button.setPrefWidth(stage.getWidth()*(0.15));
+            solve_button.setMaxWidth(260);
+            restart_game_button.setPrefWidth(stage.getWidth()*(0.15));
+            restart_game_button.setMaxWidth(260);
+
+            mazeDisplayer.drawMaze(viewModel.getMaze());
+        });
+
     }
 }
