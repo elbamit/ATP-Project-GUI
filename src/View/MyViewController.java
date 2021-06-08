@@ -19,6 +19,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -42,6 +43,8 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
     public Button solve_button;
     @FXML
     public Button back_button;
+    @FXML
+    public VBox menu_bar;
     @FXML
     private Pane MazePane;
     public static int row;
@@ -87,6 +90,7 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
     //Function that does stuff upon loading the MyView fxml
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         if (this.viewModel== null){
 
             MyModel model = new MyModel();
@@ -134,7 +138,7 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
 
             } catch (Exception e) {
                 Alert a = new Alert((Alert.AlertType.ERROR));
-                a.setContentText("No maze to Load ! Ya ben zone");
+                a.setContentText("No maze to Load ! Ya ben zone");//TODO remove that comment
                 a.show();
                 MyViewController.row = 10;
                 MyViewController.col = 10;
@@ -267,8 +271,11 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
         mazeDisplayer.widthProperty().bind(MazePane.widthProperty());
         mazeDisplayer.heightProperty().bind(MazePane.heightProperty());
 
+        MazePane.setLayoutX(0);
+        MazePane.setLayoutY(0);
+
         MazePane.heightProperty().addListener((observable, oldValue, newValue) -> {
-            MazePane.setPrefWidth(stage.getHeight()*(2/3));
+            MazePane.setPrefHeight(stage.getHeight()*0.84);
 
             button_pane.setPrefHeight(stage.getHeight());
 
@@ -281,25 +288,32 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
             restart_game_button.setPrefHeight(stage.getHeight()*0.066);
             restart_game_button.setMaxHeight(50);
 
+            menu_bar.setPrefHeight(menu_bar.getPrefHeight());
+
             mazeDisplayer.drawMaze(viewModel.getMaze());
 
 
         });
 
         MazePane.widthProperty().addListener((observable, oldValue, newValue) -> {
-            MazePane.setPrefWidth(stage.getWidth()*0.84);
+            MazePane.setPrefWidth(stage.getWidth()*0.666);
 
             button_pane.setPrefWidth(stage.getWidth()/6);
 
             back_button.setPrefWidth(stage.getWidth()*(0.15));
             back_button.setMaxWidth(260);
+
             solve_button.setPrefWidth(stage.getWidth()*(0.15));
             solve_button.setMaxWidth(260);
+
             restart_game_button.setPrefWidth(stage.getWidth()*(0.15));
             restart_game_button.setMaxWidth(260);
 
+            menu_bar.setPrefWidth(stage.getWidth());
+
             mazeDisplayer.drawMaze(viewModel.getMaze());
         });
+
 
     }
 }

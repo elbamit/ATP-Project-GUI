@@ -12,7 +12,7 @@
 <?import View.MazeDisplayer?>
 <BorderPane fx:id="border_pane" onMouseClicked="#mouseClicked" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MyViewController">
    <top>
-      <VBox prefHeight="30.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="menu_bar" prefHeight="30.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
             <MenuBar prefHeight="30.0" prefWidth="900.0">
                <menus>
@@ -43,7 +43,7 @@
    <center>
       <Pane fx:id="MazePane" onDragDetected="#DragDetected" onKeyPressed="#KeyPressed" onMouseDragged="#MouseDragged" onMousePressed="#MousePressed" onMouseReleased="#MouseReleased" onScroll="#MouseScrolled" prefHeight="420.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <MazeDisplayer fx:id="mazeDisplayer" height="420.0" imageFileNameGoal="./resources/images/melech.jpeg" imageFileNamePlayer="./resources/images/mario.png" imageFileNameWall="./resources/images/wall.png" width="600.0" />
+            <MazeDisplayer fx:id="mazeDisplayer" height="420.0" imageFileNameGoal="./resources/images/melech.jpeg" imageFileNamePlayer="./resources/images/mario.png" imageFileNameWall="./resources/images/wall.png" width="600.0" BorderPane.alignment="CENTER" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

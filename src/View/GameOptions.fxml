@@ -8,37 +8,37 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.GameOptionsController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.GameOptionsController">
    <children>
-      <Button layoutX="80.0" layoutY="70.0" mnemonicParsing="false" onAction="#Easy_Game_Click" prefHeight="68.0" prefWidth="155.0" text="Easy">
+      <Button fx:id="easy_game" layoutX="80.0" layoutY="70.0" mnemonicParsing="false" onAction="#Easy_Game_Click" prefHeight="68.0" prefWidth="155.0" text="Easy">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button layoutX="380.0" layoutY="70.0" mnemonicParsing="false" onAction="#Medium_Game_Click" prefHeight="68.0" prefWidth="155.0" text="Medium">
+      <Button  fx:id="medium_game" layoutX="380.0" layoutY="70.0" mnemonicParsing="false" onAction="#Medium_Game_Click" prefHeight="68.0" prefWidth="155.0" text="Medium">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button layoutX="680.0" layoutY="70.0" mnemonicParsing="false" onAction="#Hard_Game_Click" prefHeight="68.0" prefWidth="155.0" text="Hard">
+      <Button fx:id="hard_game" layoutX="680.0" layoutY="70.0" mnemonicParsing="false" onAction="#Hard_Game_Click" prefHeight="68.0" prefWidth="155.0" text="Hard">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button layoutX="80.0" layoutY="195.0" mnemonicParsing="false" onAction="#Custom_Game_Click" prefHeight="68.0" prefWidth="155.0" text="Custom Game">
+      <Button fx:id="custom_game" layoutX="80.0" layoutY="195.0" mnemonicParsing="false" onAction="#Custom_Game_Click" prefHeight="68.0" prefWidth="155.0" text="Custom Game">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button layoutX="380.0" layoutY="195.0" mnemonicParsing="false" onAction="#Wide_Game_Click" prefHeight="68.0" prefWidth="155.0" text="Wide">
+      <Button fx:id="wide_game" layoutX="380.0" layoutY="195.0" mnemonicParsing="false" onAction="#Wide_Game_Click" prefHeight="68.0" prefWidth="155.0" text="Wide">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button layoutX="680.0" layoutY="195.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="155.0" text="Invisible">
+      <Button fx:id="invisible_game" layoutX="680.0" layoutY="195.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="155.0" text="Invisible">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button layoutX="380.0" layoutY="320.0" mnemonicParsing="false" onAction="#Load_Game_Click" prefHeight="68.0" prefWidth="155.0" text="Load Maze">
+      <Button  fx:id="load_game" layoutX="380.0" layoutY="320.0" mnemonicParsing="false" onAction="#Load_Game_Click" prefHeight="68.0" prefWidth="155.0" text="Load Maze">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <VBox prefHeight="30.0" prefWidth="900.0">
+      <VBox fx:id="menu_bar" prefHeight="30.0" prefWidth="900.0">
          <children>
             <MenuBar prefHeight="30.0" prefWidth="900.0">
                <menus>

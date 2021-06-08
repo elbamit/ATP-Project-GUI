@@ -41,7 +41,7 @@ public class OpeningScreenController extends ASceneChanger{
 //
 //        thisStage.show();
 
-        change_scene(actionEvent, "GameOptions.fxml");
+        change_scene_game_options(actionEvent);
     }
 
 

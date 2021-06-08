@@ -6,7 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
@@ -16,9 +21,23 @@ import java.io.IOException;
 public class Generate_Custom_GameController extends ASceneChanger{
 
     @FXML
-    private TextField textField_mazeRows;
+    public Pane pane;
     @FXML
-    private TextField textField_mazeColumns;
+    public Text maze_rows_text;
+    @FXML
+    public Text maze_col_text;
+    @FXML
+    public Button generate_button;
+    @FXML
+    public Button back_button;
+    @FXML
+    public GridPane grid_pane;
+    @FXML
+    public TextField textField_mazeRows;
+    @FXML
+    public TextField textField_mazeColumns;
+    @FXML
+    public VBox menu_bar;
 
 
     public void Generate_Maze_Custom_Click(ActionEvent actionEvent) throws IOException {
@@ -80,5 +99,29 @@ public class Generate_Custom_GameController extends ASceneChanger{
 
     public void About_Click(ActionEvent actionEvent) throws IOException {
         new_stage("AboutScreen.fxml", "About");
+    }
+
+    public void setResizeEvent(Stage stage) {
+        maze_rows_text.wrappingWidthProperty().bind(stage.widthProperty());
+        maze_col_text.wrappingWidthProperty().bind(stage.widthProperty());
+        pane.heightProperty().addListener((observable, oldValue, newValue) -> {
+            pane.setPrefHeight(stage.getHeight());
+
+            grid_pane.setPrefHeight(stage.getHeight());
+            back_button.setPrefHeight(stage.getHeight() * ((double) 80/500));
+            generate_button.setPrefHeight(stage.getHeight() * ((double) 80/500));
+            menu_bar.setPrefHeight(menu_bar.getPrefHeight());
+
+        });
+
+        pane.widthProperty().addListener((observable, oldValue, newValue) -> {
+            pane.setPrefWidth(stage.getWidth());
+            grid_pane.setPrefWidth(stage.getWidth());
+            textField_mazeRows.setPrefWidth(stage.getWidth()/3);
+            textField_mazeColumns.setPrefWidth(stage.getWidth()/3);
+            back_button.setPrefWidth(stage.getWidth() * ((double) 250/900));
+            generate_button.setPrefWidth(stage.getWidth() * ((double) 250/900));
+            menu_bar.setPrefWidth(stage.getWidth());
+        });
     }
 }

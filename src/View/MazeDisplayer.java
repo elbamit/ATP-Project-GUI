@@ -95,17 +95,29 @@ public class MazeDisplayer extends Canvas {
     }
 
 
+    @Override
+    public double prefWidth(double v) {
+        return getWidth();
+    }
+
+    @Override
+    public double prefHeight(double v) {
+        return getHeight();
+    }
+
     private void draw(){
         if(this.maze != null){
 
             double cellHeight = getCellHeight();
             double cellWidth = getCellWidth();
+//            System.out.println(this.getHeight());
+//            System.out.println(this.getWidth());
 
             GraphicsContext gc = getGraphicsContext2D();
 
             //Clears the entire canvas
-            double h = getHeight()+200;
-            double w = getWidth()+200;
+            double h = getHeight()*4;
+            double w = getWidth()*4;
             gc.clearRect(0,0,h,w);
 
             draw_Maze_Walls(gc, cellHeight, cellWidth);
@@ -231,7 +243,12 @@ public class MazeDisplayer extends Canvas {
 
     public void ResetZoom(){
         this.zooming_value = 0;
-        draw();
+//        draw();
+    }
+
+    @Override
+    public boolean isResizable() {
+        return true;
     }
 }
 
