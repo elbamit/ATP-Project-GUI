@@ -29,6 +29,7 @@ public class MyModel extends Observable implements IModel {
     private Position player_Position;
     private Server mazeGeneratorServer;
     private Server mazeSolverServer;
+    public static boolean serverworking;
 
     public MyModel() {
         this.maze = null;
@@ -36,6 +37,7 @@ public class MyModel extends Observable implements IModel {
         this.player_Position = null;
         this.mazeGeneratorServer = null;
         this.mazeSolverServer = null;
+        serverworking = false;
     }
 
     public void startServers(){
@@ -43,12 +45,20 @@ public class MyModel extends Observable implements IModel {
         this.mazeSolverServer = new Server(5401, 1000, new ServerStrategySolveSearchProblem());
         this.mazeGeneratorServer.start();
         this.mazeSolverServer.start();
+
     }
 
     public void stopServers(){
         this.mazeGeneratorServer.stop();
         this.mazeSolverServer.stop();
+
     }
+
+//    public static boolean exit_procedure(){
+//        if (serverworking){
+//            MyModel.stopServers();
+//        }
+//    }
 
     @Override
     public void generateMaze(int rows, int cols) {

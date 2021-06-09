@@ -29,7 +29,7 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
 
-public class MyViewController extends ASceneChanger implements Initializable, Observer,IView{
+public class MyViewController extends ASceneChanger implements Initializable, Observer,IView, IController{
     public MyViewModel viewModel;
     @FXML
     public MazeDisplayer mazeDisplayer = new MazeDisplayer();
@@ -81,6 +81,10 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
 
     }
 
+    public MyViewController returnthis(){
+        return this;
+    }
+
 
     public void mouseClicked(MouseEvent mouseEvent) {
         mazeDisplayer.requestFocus();
@@ -115,9 +119,7 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
 
     }
 
-    public void SaveGame(ActionEvent actionEvent) {
-        this.viewModel.saveGame();
-    }
+
 
     private void Load_Maze_and_display() throws IOException {
         //open window for user to load
@@ -138,7 +140,7 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
 
             } catch (Exception e) {
                 Alert a = new Alert((Alert.AlertType.ERROR));
-                a.setContentText("No maze to Load ! Ya ben zone");//TODO remove that comment
+                a.setContentText("Error in loading the maze... Please try again");
                 a.show();
                 MyViewController.row = 10;
                 MyViewController.col = 10;
@@ -146,11 +148,16 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
             }
         }
         else{
+            Alert a1 = new Alert((Alert.AlertType.INFORMATION));
+            a1.setContentText("Please don't look for bugs, just enjoy our awesome game ;)"); //TODO maybe remove
+            a1.show();
             Alert a = new Alert((Alert.AlertType.ERROR));
-            a.setContentText("No maze to Load ! ya Sharmota");
+            a.setContentText("Error in loading the maze... Please try again");
             a.show();
             MyViewController.row = 10;
             MyViewController.col = 10;
+
+
 
         }
         loaded = false;
@@ -166,15 +173,7 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
         keyEvent.consume();
     }
 
-    public void generateNewMaze(ActionEvent actionEvent) {
-        viewModel.generateMaze(row,col);
-    }
 
-
-    public void SolveMaze(ActionEvent actionEvent) {
-        this.viewModel.solveMaze();
-        this.mazeDisplayer.requestFocus();
-    }
 
 
     @Override
@@ -183,13 +182,9 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
     }
 
 
-    public void Back_To_Game_Options(ActionEvent actionEvent) throws IOException {
-        change_scene(actionEvent, "GameOptions.fxml");
-    }
 
-    public void Restart_Game_Click(ActionEvent actionEvent) {
-        Restart_Game();
-    }
+
+
 
     private void Restart_Game(){
         this.viewModel.restartGame();
@@ -236,24 +231,15 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
         }
     }
 
-    public void Properties_Click(ActionEvent actionEvent) throws IOException {
-        new_stage("Properties.fxml", "Properties");
+    public void setInvisible(){
+        this.mazeDisplayer.setInvisible();
+    }
+
+    public void setvisible(){
+        this.mazeDisplayer.setVisible();
     }
 
 
-    public void Help_Click(ActionEvent actionEvent) throws IOException {
-        new_stage("HelpScreen.fxml", "Help");
-    }
-
-    public void About_Click(ActionEvent actionEvent) throws IOException {
-        new_stage("AboutScreen.fxml", "About");
-    }
-
-    public void New_Game_From_Menu_Click(ActionEvent actionEvent) throws IOException{
-        Stage stage =(Stage) this.mazeDisplayer.getScene().getWindow();
-        change_scene_stage(stage, "GameOptions.fxml");
-
-    }
 
 
     public void MouseScrolled(ScrollEvent scrollEvent) {
@@ -267,6 +253,48 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
         }
     }
 
+    public void SolveMaze(ActionEvent actionEvent) {
+        this.viewModel.solveMaze();
+        this.mazeDisplayer.requestFocus();
+    }
+
+    public void Back_To_Game_Options(ActionEvent actionEvent) throws IOException {
+        change_scene(actionEvent, "Game Options", "GameOptions.fxml");
+    }
+
+    public void Restart_Game_Click(ActionEvent actionEvent) {
+        Restart_Game();
+    }
+
+    public void Properties_Click(ActionEvent actionEvent) throws IOException {
+        new_stage("Properties.fxml", "Properties");
+    }
+
+    public void Help_Click(ActionEvent actionEvent) throws IOException {
+        new_stage("HelpScreen.fxml", "Help");
+    }
+
+    public void About_Click(ActionEvent actionEvent) throws IOException {
+        new_stage("AboutScreen.fxml", "About");
+    }
+
+
+    public void New_Game_From_Menu_Click(ActionEvent actionEvent) throws IOException{
+        Stage stage =(Stage) this.mazeDisplayer.getScene().getWindow();
+        change_scene_menu(stage, "Game Options", "GameOptions.fxml");
+
+    }
+
+    public void SaveGame(ActionEvent actionEvent) {
+        this.viewModel.saveGame();
+    }
+
+    public void Load_From_Menu_Bar_Click(ActionEvent actionEvent) throws IOException {
+        MyViewController.loaded=true;
+        Stage stage =(Stage) this.mazeDisplayer.getScene().getWindow();
+        OpeningScreenController.background_music = false;
+        change_scene_menu(stage, "Game", "MyView.fxml");
+    }
     public void setResizeEvent(Stage stage) {
         mazeDisplayer.widthProperty().bind(MazePane.widthProperty());
         mazeDisplayer.heightProperty().bind(MazePane.heightProperty());
@@ -316,4 +344,6 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
 
 
     }
+
+
 }

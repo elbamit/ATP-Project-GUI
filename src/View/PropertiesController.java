@@ -20,7 +20,7 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
 
-public class PropertiesController extends ASceneChanger implements Initializable, Observer {
+public class PropertiesController extends ASceneChanger implements Initializable, Observer{
 
     private MyViewModel viewModel;
 

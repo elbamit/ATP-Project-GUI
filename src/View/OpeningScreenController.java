@@ -6,42 +6,42 @@ import com.sun.glass.ui.View;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-
-
-public class OpeningScreenController extends ASceneChanger{
+public class OpeningScreenController extends ASceneChanger implements Initializable, IController {
 
     @FXML
     public Button start_game_button;
+    public Menu exit_button;
+    public MenuBar menu_bar;
     @FXML
     private Pane root;
 
+//    public Thread musicThread;
+    public static boolean background_music = false;
+
 
     public void Start_Game_Click(ActionEvent actionEvent) throws IOException {
-        //Gets the stage that we are inside right now
-//        Node node = (Node) actionEvent.getSource();
-//        Stage thisStage = (Stage) node.getScene().getWindow();
-//
-//        //Loads the Game options scene into the stage
-//        Scene new_scene = new Scene(FXMLLoader.load(getClass().getResource("GameOptions.fxml")));
-//        thisStage.setScene(new_scene);
-////        thisStage.sizeToScene();
-//        thisStage.setWidth(900);
-//        thisStage.setHeight(500);
-//
-//        thisStage.show();
-
-        change_scene_game_options(actionEvent);
+//        change_scene_game_options(actionEvent);
+        change_scene(actionEvent, "Game Options", "GameOptions.fxml");
     }
 
 
@@ -52,14 +52,23 @@ public class OpeningScreenController extends ASceneChanger{
 
     public void Help_Click(ActionEvent actionEvent) throws IOException {
         new_stage("HelpScreen.fxml", "Help");
+
     }
 
     public void About_Click(ActionEvent actionEvent) throws IOException {
         new_stage("AboutScreen.fxml", "About");
     }
 
-    public void setResizeEvent(Stage stage) {
+    //TODO
+    public void close_button_click(ActionEvent actionEvent){
+//        close_app(root);
 
+
+    }
+
+
+    public void setResizeEvent(Stage stage) {
+//        playTheme();
 
         stage.heightProperty().addListener((observable, oldValue, newValue) -> {
 
@@ -76,9 +85,50 @@ public class OpeningScreenController extends ASceneChanger{
             start_game_button.setPrefWidth(stage.getWidth()*0.32);
             start_game_button.setLayoutX(stage.getX()/2);
 
-
-
-
         });
+    }
+
+    private void playMusic(){
+        String path = this.getClass().getResource("/sounds/Opening_music.mp3").toString();
+        Media sound = new Media(path);
+        MediaPlayer themeMediaPlayer = new MediaPlayer(sound);
+        themeMediaPlayer.play();
+    }
+
+    private void playTheme() {
+
+        //String musicFile = "resources/Sounds/theme.mp3";
+        //Media sound = new Media(new File(musicFile).toURI().toString());
+        background_music = true;
+        Thread musicThread = new Thread(() -> {
+            try {
+                while (background_music) {
+                    String path = this.getClass().getResource("/sounds/Opening_music.mp3").toString();
+                    Media sound = new Media(path);
+                    MediaPlayer themeMediaPlayer = new MediaPlayer(sound);
+                    themeMediaPlayer.play();
+
+                    //Media sound = new Media(new File(musicFile).toURI().toString());
+
+//                    String path = "C:/Users/elbam/OneDrive/Documents/Study/Year2/Semester B/Advanced Topics Programming/ATP-Project-GUI/resources/sounds/Opening_music.mp3";
+//                    Media sound = new Media(new File(path).toURI().toString());
+//                    MediaPlayer mediaPlayer = new MediaPlayer(sound);
+//                    mediaPlayer.play();
+                    int time = 70000;
+                    while(background_music){
+                        Thread.sleep(10);
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        });
+        musicThread.start();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        playTheme();
+
     }
 }

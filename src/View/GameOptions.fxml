@@ -14,7 +14,7 @@
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button  fx:id="medium_game" layoutX="380.0" layoutY="70.0" mnemonicParsing="false" onAction="#Medium_Game_Click" prefHeight="68.0" prefWidth="155.0" text="Medium">
+      <Button fx:id="medium_game" layoutX="380.0" layoutY="70.0" mnemonicParsing="false" onAction="#Medium_Game_Click" prefHeight="68.0" prefWidth="155.0" text="Medium">
          <font>
             <Font size="20.0" />
          </font></Button>
@@ -30,11 +30,11 @@
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button fx:id="invisible_game" layoutX="680.0" layoutY="195.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="155.0" text="Invisible">
+      <Button fx:id="invisible_game" layoutX="680.0" layoutY="195.0" mnemonicParsing="false" onAction="#Invisible_Button_Click" prefHeight="68.0" prefWidth="155.0" text="Invisible">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button  fx:id="load_game" layoutX="380.0" layoutY="320.0" mnemonicParsing="false" onAction="#Load_Game_Click" prefHeight="68.0" prefWidth="155.0" text="Load Maze">
+      <Button fx:id="load_game" layoutX="380.0" layoutY="320.0" mnemonicParsing="false" onAction="#Load_Game_Click" prefHeight="68.0" prefWidth="155.0" text="Load Maze">
          <font>
             <Font size="20.0" />
          </font></Button>

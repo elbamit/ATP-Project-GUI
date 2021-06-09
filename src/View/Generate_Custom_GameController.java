@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
-public class Generate_Custom_GameController extends ASceneChanger{
+public class Generate_Custom_GameController extends ASceneChanger implements IController{
 
     @FXML
     public Pane pane;
@@ -51,7 +51,7 @@ public class Generate_Custom_GameController extends ASceneChanger{
 
             MyViewController.row = Integer.parseInt(textField_mazeRows.getText());
             MyViewController.col = Integer.parseInt(textField_mazeColumns.getText());
-            change_scene(actionEvent, "MyView.fxml");
+            change_scene(actionEvent, "Game", "MyView.fxml");
 
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -64,7 +64,7 @@ public class Generate_Custom_GameController extends ASceneChanger{
     }
 
     public void Back_to_game_options_click(ActionEvent actionEvent) throws IOException {
-        change_scene(actionEvent, "GameOptions.fxml");
+        change_scene(actionEvent, "Game Options", "GameOptions.fxml");
     }
 
     public static boolean isNumeric(String str) {
@@ -79,19 +79,18 @@ public class Generate_Custom_GameController extends ASceneChanger{
     public void Load_Game_From_Menu_Bar_Click(ActionEvent actionEvent) throws IOException {
         MyViewController.loaded=true;
         Stage stage =(Stage) textField_mazeRows.getScene().getWindow();
-        change_scene_stage(stage, "MyView.fxml");
+        change_scene_menu(stage, "Game", "MyView.fxml");
     }
 
     public void Back_to_game_options_From_Menu_click(ActionEvent actionEvent) throws IOException {
         MyViewController.loaded=true;
         Stage stage =(Stage) textField_mazeRows.getScene().getWindow();
-        change_scene_stage(stage, "GameOptions.fxml");
+        change_scene_menu(stage, "Game Options","GameOptions.fxml" );
     }
 
     public void Properties_Click(ActionEvent actionEvent) throws IOException {
         new_stage("Properties.fxml", "Properties");
     }
-
 
     public void Help_Click(ActionEvent actionEvent) throws IOException {
         new_stage("HelpScreen.fxml", "Help");

@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class GameOptionsController extends ASceneChanger {
+public class GameOptionsController extends ASceneChanger implements IController {
     public Pane pane;
     public Button easy_game;
     public Button medium_game;
@@ -27,45 +27,58 @@ public class GameOptionsController extends ASceneChanger {
 
 
     public void Custom_Game_Click(ActionEvent actionEvent) throws IOException {
-        change_scene_custom_game(actionEvent);
+        change_scene(actionEvent, "Custom Game", "Generate_Custom_Game.fxml");
     }
 
     public void Easy_Game_Click(ActionEvent actionEvent) throws IOException {
         MyViewController.row = 10;
         MyViewController.col = 10;
-        change_scene_MyView(actionEvent);
+        OpeningScreenController.background_music = false;
+        change_scene(actionEvent, "Game", "MyView.fxml");
 
     }
 
     public void Medium_Game_Click(ActionEvent actionEvent) throws IOException {
         MyViewController.row = 25;
         MyViewController.col = 25;
-        change_scene_MyView(actionEvent);
+        OpeningScreenController.background_music = false;
+        change_scene(actionEvent, "Game", "MyView.fxml");
     }
 
     public void Hard_Game_Click(ActionEvent actionEvent) throws IOException {
         MyViewController.row = 40;
         MyViewController.col = 40;
-        change_scene_MyView(actionEvent);
+        OpeningScreenController.background_music = false;
+        change_scene(actionEvent, "Game", "MyView.fxml");
     }
 
     public void Wide_Game_Click(ActionEvent actionEvent) throws IOException {
         MyViewController.row = 10;
         MyViewController.col = 40;
-        change_scene_MyView(actionEvent);
+        OpeningScreenController.background_music = false;
+        change_scene(actionEvent, "Game", "MyView.fxml");
     }
 
     public void Load_Game_Click(ActionEvent actionEvent) throws IOException {
         MyViewController.loaded=true;
-        change_scene_MyView(actionEvent);
+        OpeningScreenController.background_music = false;
+        change_scene(actionEvent, "Game", "MyView.fxml");
     }
 
-    //TODO maybe deal with trying to cancel a load game
+
     public void Load_Game_From_Menu_Bar_Click(ActionEvent actionEvent) throws IOException {
         MyViewController.loaded=true;
         Stage stage =(Stage) pane.getScene().getWindow();
-        change_scene_MyView(actionEvent);
+        OpeningScreenController.background_music = false;
+        change_scene_menu(stage, "Game", "MyView.fxml");
 
+    }
+
+    public void Invisible_Button_Click(ActionEvent actionEvent) throws IOException {
+        MyViewController.row = 15;
+        MyViewController.col = 15;
+        OpeningScreenController.background_music = false;
+        change_scene_MyView_Invisible(actionEvent);
     }
 
 
@@ -81,6 +94,8 @@ public class GameOptionsController extends ASceneChanger {
     public void Help_Click(ActionEvent actionEvent) throws IOException {
         new_stage("HelpScreen.fxml", "Help");
     }
+
+
 
     public void setResizeEvent(Stage stage) {
 
@@ -139,4 +154,6 @@ public class GameOptionsController extends ASceneChanger {
             menu_bar.setPrefWidth(stage.getWidth());
         });
     }
+
+
 }

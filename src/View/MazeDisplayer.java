@@ -16,11 +16,17 @@ import java.io.FileInputStream;
 public class MazeDisplayer extends Canvas {
     private Maze maze;
     private Solution solution;
+    private Position last_position;
     private Position player_position = new Position(0,0);
     private double zooming_value = 0;
+    private boolean isInvisible = false;
+
 
     StringProperty imageFileNameWall = new SimpleStringProperty();
-    StringProperty imageFileNamePlayer = new SimpleStringProperty();
+    StringProperty imageFileNamePlayer = new SimpleStringProperty(); //Right
+    StringProperty imageFileNamePlayerLeft = new SimpleStringProperty();
+    StringProperty imageFileNamePlayerUp = new SimpleStringProperty();
+    StringProperty imageFileNamePlayerDown = new SimpleStringProperty();
     StringProperty imageFileNameGoal = new SimpleStringProperty();
 
     public String getImageFileNameWall() {
@@ -31,7 +37,17 @@ public class MazeDisplayer extends Canvas {
         return imageFileNamePlayer.get();
     }
 
-    //TODO change the picture
+    public String getImageFileNamePlayerLeft() {
+        return imageFileNamePlayerLeft.get();
+    }
+    public String getImageFileNamePlayerUp() {
+        return imageFileNamePlayerUp.get();
+    }
+    public String getImageFileNamePlayerDown() {
+        return imageFileNamePlayerDown.get();
+    }
+
+
     public String getImageFileNameGoal() { return imageFileNameGoal.get(); }
 
     public String imageFileNameWallProperty() {
@@ -39,11 +55,23 @@ public class MazeDisplayer extends Canvas {
     }
 
     public String imageFileNameGoalProperty() {
-        return imageFileNamePlayer.get();
+        return imageFileNameGoal.get();
     }
+
 
     public String imageFileNamePlayerProperty() {
         return imageFileNamePlayer.get();
+    }
+
+    public String imageFileNamePlayerLeftProperty() {
+        return imageFileNamePlayerLeft.get();
+    }
+
+    public String imageFileNamePlayerUpProperty() {
+        return imageFileNamePlayerUp.get();
+    }
+    public String imageFileNamePlayerDownProperty() {
+        return imageFileNamePlayerDown.get();
     }
 
 
@@ -59,6 +87,32 @@ public class MazeDisplayer extends Canvas {
         this.imageFileNamePlayer.set(imageFileNamePlayer);
     }
 
+    public void setImageFileNamePlayerLeft(String imageFileNamePlayerLeft) {
+        this.imageFileNamePlayerLeft.set(imageFileNamePlayerLeft);
+    }
+
+    public void setImageFileNamePlayerUp(String imageFileNamePlayerUp) {
+        this.imageFileNamePlayerUp.set(imageFileNamePlayerUp);
+    }
+
+    public void setImageFileNamePlayerDown(String imageFileNamePlayerDown) {
+        this.imageFileNamePlayerDown.set(imageFileNamePlayerDown);
+    }
+
+
+
+
+
+
+
+
+    public void setInvisible(){
+        this.isInvisible = true;
+    }
+
+    public void setVisible(){
+        this.isInvisible = false;
+    }
 
 
 
@@ -77,18 +131,23 @@ public class MazeDisplayer extends Canvas {
 
     public void drawMaze(Maze maze){
         this.maze = maze;
-        this.player_position = this.maze.getStartPosition();
+        if (this.maze != null){
+            this.player_position = this.maze.getStartPosition();
+            this.last_position = this.maze.getStartPosition();
+        }
         ResetZoom();
         draw();
     }
     public void drawMaze(Maze maze,Position player_position){
         this.maze = maze;
+        this.last_position = this.player_position;
         this.player_position = player_position;
         draw();
     }
 
     public void drawMaze(Maze maze, Position position, Solution solution) {
         this.maze = maze;
+        this.last_position = this.player_position;
         this.player_position = position;
         this.solution = solution;
         draw();
@@ -183,6 +242,10 @@ public class MazeDisplayer extends Canvas {
                     double y = i * cellHeight;
                     if(wallImage == null)
                         gc.fillRect(x, y, cellWidth, cellHeight);
+                    else if (this.isInvisible){
+                        gc.setFill(Color.TRANSPARENT);
+                        gc.fillRect(x,y,cellWidth, cellHeight);
+                    }
                     else
                         gc.drawImage(wallImage, x, y, cellWidth, cellHeight);
                 }
@@ -195,18 +258,40 @@ public class MazeDisplayer extends Canvas {
         double x = this.player_position.getColumnIndex() * cellWidth;
         double y = this.player_position.getRowIndex() * cellHeight;
 
+
         graphicsContext.setFill(Color.RED);
 
-        Image playerImage = null;
+        Image playerImageright = null;
+        Image playerImageleft = null;
+        Image playerImageup = null;
+        Image playerImagedown = null;
         try {
-            playerImage = new Image(new FileInputStream(getImageFileNamePlayer()));
+            playerImageright = new Image(new FileInputStream(getImageFileNamePlayer()));
+            playerImageleft = new Image(new FileInputStream(getImageFileNamePlayerLeft()));
+            playerImageup = new Image(new FileInputStream(getImageFileNamePlayerUp()));
+            playerImagedown = new Image(new FileInputStream(getImageFileNamePlayerDown()));
         } catch (Exception e) {
             System.out.println("There is no player image file");
         }
-        if(playerImage == null)
+        if(playerImageright == null){
             graphicsContext.fillRect(x, y, cellWidth, cellHeight);
-        else
-            graphicsContext.drawImage(playerImage, x, y, cellWidth, cellHeight);
+        }
+        else if (last_position.getRowIndex() < this.player_position.getRowIndex()){
+            graphicsContext.drawImage(playerImagedown, x, y, cellWidth, cellHeight);
+        }
+        else if (last_position.getColumnIndex() < this.player_position.getColumnIndex()){
+            graphicsContext.drawImage(playerImageright, x, y, cellWidth, cellHeight);
+        }
+        else if (last_position.getRowIndex() > this.player_position.getRowIndex()){
+            graphicsContext.drawImage(playerImageup, x, y, cellWidth, cellHeight);
+        }
+        else if(last_position.getColumnIndex() > this.player_position.getColumnIndex()){
+            graphicsContext.drawImage(playerImageleft, x, y, cellWidth, cellHeight);
+        }
+        else{
+            graphicsContext.drawImage(playerImageright, x, y, cellWidth, cellHeight);
+        }
+
     }
 
 

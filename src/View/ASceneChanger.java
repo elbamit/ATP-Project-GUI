@@ -1,10 +1,13 @@
 package View;
 
+import Model.MyModel;
+import ViewModel.MyViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuBar;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -55,6 +58,47 @@ public abstract class ASceneChanger {
     }
 
 
+    public void change_scene(ActionEvent actionEvent, String title, String fxml_path) throws IOException {
+        Node node = (Node) actionEvent.getSource();
+        Stage thisStage = (Stage) node.getScene().getWindow();
+        thisStage.setTitle(title);
+
+        //Loads the Game options scene into the stage
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml_path));
+        Parent x = loader.load();
+
+        Scene new_scene = new Scene(x);
+        thisStage.setScene(new_scene);
+
+        thisStage.setWidth(900);
+        thisStage.setHeight(500);
+
+        IController mv = loader.getController();
+        mv.setResizeEvent(thisStage);
+
+        thisStage.show();
+    }
+
+    public void change_scene_menu(Stage stage, String title, String fxml_path) throws IOException {
+        Stage thisStage = stage;
+        thisStage.setTitle(title);
+
+        //Loads the Game options scene into the stage
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml_path));
+        Parent x = loader.load();
+
+        Scene new_scene = new Scene(x);
+        thisStage.setScene(new_scene);
+
+        thisStage.setWidth(900);
+        thisStage.setHeight(500);
+
+        IController mv = loader.getController();
+        mv.setResizeEvent(thisStage);
+
+        thisStage.show();
+    }
+
 
     public void change_scene_MyView(ActionEvent actionEvent) throws IOException {
         Node node = (Node) actionEvent.getSource();
@@ -72,8 +116,32 @@ public abstract class ASceneChanger {
         thisStage.setWidth(900);
         thisStage.setHeight(500);
 
+        MyViewController mv = loader.getController();
+        mv.setResizeEvent(thisStage);
+        mv.setvisible();
+
+        thisStage.show();
+    }
+
+    public void change_scene_MyView_Invisible(ActionEvent actionEvent) throws IOException {
+        Node node = (Node) actionEvent.getSource();
+        Stage thisStage = (Stage) node.getScene().getWindow();
+        thisStage.setTitle("Maze");
+        //Loads the Game options scene into the stage
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MyView.fxml"));
+        Parent x = loader.load();
+
+
+        Scene new_scene = new Scene(x);
+
+        thisStage.setScene(new_scene);
+
+        thisStage.setWidth(900);
+        thisStage.setHeight(500);
+
         MyViewController mv =(MyViewController) loader.getController();
         mv.setResizeEvent(thisStage);
+        mv.setInvisible();
 
         thisStage.show();
     }
@@ -121,6 +189,15 @@ public abstract class ASceneChanger {
 
         thisStage.show();
     }
+
+//    public void close_app(Node node){
+//        if (){
+//            MyModel
+//        }
+//
+//        Stage stage = (Stage) node.getScene().getWindow();
+//        stage.close();
+//    }
 
 //    public void new_stage_help() throws IOException {
 //        try {

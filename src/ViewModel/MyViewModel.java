@@ -51,6 +51,8 @@ public class MyViewModel extends Observable implements Observer {
         return this.model.getSolution();
     }
 
+
+
     //Translates the key event into a MovementDirection enum object, then sends it to the updatePLayerLocation func of Model
     public void movePlayer(KeyEvent keyevent){
         MovementDirection direction;
