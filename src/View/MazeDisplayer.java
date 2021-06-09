@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class MazeDisplayer extends Canvas {
     private Maze maze;
@@ -28,6 +29,7 @@ public class MazeDisplayer extends Canvas {
     StringProperty imageFileNamePlayerUp = new SimpleStringProperty();
     StringProperty imageFileNamePlayerDown = new SimpleStringProperty();
     StringProperty imageFileNameGoal = new SimpleStringProperty();
+    StringProperty imageFileNameSolution = new SimpleStringProperty();
 
     public String getImageFileNameWall() {
         return imageFileNameWall.get();
@@ -49,6 +51,10 @@ public class MazeDisplayer extends Canvas {
 
 
     public String getImageFileNameGoal() { return imageFileNameGoal.get(); }
+    public String getImageFileNameSolution() {
+        return imageFileNameSolution.get();
+    }
+
 
     public String imageFileNameWallProperty() {
         return imageFileNameWall.get();
@@ -72,6 +78,10 @@ public class MazeDisplayer extends Canvas {
     }
     public String imageFileNamePlayerDownProperty() {
         return imageFileNamePlayerDown.get();
+    }
+
+    public String imageFileNameSolutionProperty() {
+        return imageFileNameSolution.get();
     }
 
 
@@ -99,7 +109,9 @@ public class MazeDisplayer extends Canvas {
         this.imageFileNamePlayerDown.set(imageFileNamePlayerDown);
     }
 
-
+    public void setImageFileNameSolution(String imageFileNameSolution) {
+        this.imageFileNameSolution.set(imageFileNameSolution);
+    }
 
 
 
@@ -164,7 +176,7 @@ public class MazeDisplayer extends Canvas {
         return getHeight();
     }
 
-    private void draw(){
+    private void draw() {
         if(this.maze != null){
 
             double cellHeight = getCellHeight();
@@ -212,7 +224,13 @@ public class MazeDisplayer extends Canvas {
 
 
     private void drawSolution(GraphicsContext gc, double cellHeight, double cellWidth) {
-        gc.setFill(Color.YELLOW);
+        Image SolImage = null;
+        try {
+            SolImage = new Image(new FileInputStream(getImageFileNameSolution()));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+//        gc.setFill(Color.YELLOW);
         for (int i = 0; i < this.solution.getSolutionPath().size() - 1; i++){
             MazeState curr_state = (MazeState)this.solution.getSolutionPath().get(i);
             int curr_row = curr_state.getPos().getRowIndex();
@@ -220,7 +238,8 @@ public class MazeDisplayer extends Canvas {
 
             double x = curr_col * cellWidth;
             double y = curr_row * cellHeight;
-            gc.fillRect(x,y,cellWidth,cellHeight);
+//            gc.fillRect(x,y,cellWidth,cellHeight);
+            gc.drawImage(SolImage, x, y, cellWidth, cellHeight);
         }
     }
 

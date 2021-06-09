@@ -15,6 +15,8 @@ import Client.IClientStrategy;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
 
 import java.io.*;
@@ -168,6 +170,10 @@ public class MyModel extends Observable implements IModel {
                     setPlayerPosition(getPlayerRow()-1, getPlayerCol()-1);
             }
         }
+        String path = this.getClass().getResource("/sounds/sound_of_mov.mp3").toString();
+        Media sound = new Media(path);
+        MediaPlayer themeMediaPlayer = new MediaPlayer(sound);
+        themeMediaPlayer.play();
     }
 
     @Override
