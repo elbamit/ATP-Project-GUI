@@ -37,10 +37,11 @@
                                 <MenuItem mnemonicParsing="false" onAction="#Help_Click" text="Help" />
                             </items>
                         </Menu>
-                        <Menu fx:id="exit_button" mnemonicParsing="false" onAction="#close_button_click" text="Exit">
+                        <Menu fx:id="exit_menu" mnemonicParsing="false" text="Exit">
                      <items>
-                        <MenuItem mnemonicParsing="false" onAction="#close_button_click" text="Unspecified Action" />
+                        <MenuItem mnemonicParsing="false" onAction="#close_button_click" text="Exit Game" />
                      </items></Menu>
+
                     </menus>
                 </MenuBar>
             </children>

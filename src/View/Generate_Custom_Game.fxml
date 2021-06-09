@@ -81,7 +81,10 @@
                         <MenuItem mnemonicParsing="false" onAction="#Help_Click" text="Help" />
                      </items>
                   </Menu>
-                  <Menu mnemonicParsing="false" text="Exit" />
+                  <Menu mnemonicParsing="false" text="Exit">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#close_button_click" text="Exit Game" />
+                     </items></Menu>
                </menus>
             </MenuBar>
          </children>

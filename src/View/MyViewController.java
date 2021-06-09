@@ -295,6 +295,11 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
         OpeningScreenController.background_music = false;
         change_scene_menu(stage, "Game", "MyView.fxml");
     }
+
+    public void close_button_click(ActionEvent actionEvent) {
+        exit_from_menu();
+    }
+
     public void setResizeEvent(Stage stage) {
         mazeDisplayer.widthProperty().bind(MazePane.widthProperty());
         mazeDisplayer.heightProperty().bind(MazePane.heightProperty());
@@ -344,6 +349,12 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
 
 
     }
+
+    @Override
+    public void closeWindow() {
+
+    }
+
 
 
 }

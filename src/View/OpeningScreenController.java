@@ -3,26 +3,28 @@ package View;
 import Model.MyModel;
 import ViewModel.MyViewModel;
 import com.sun.glass.ui.View;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -30,7 +32,7 @@ public class OpeningScreenController extends ASceneChanger implements Initializa
 
     @FXML
     public Button start_game_button;
-    public Menu exit_button;
+    public Menu exit_menu;
     public MenuBar menu_bar;
     @FXML
     private Pane root;
@@ -59,16 +61,25 @@ public class OpeningScreenController extends ASceneChanger implements Initializa
         new_stage("AboutScreen.fxml", "About");
     }
 
-    //TODO
-    public void close_button_click(ActionEvent actionEvent){
-//        close_app(root);
+
+    public void close_button_click(Event actionEvent){
+//        closeWindow();
+        exit_from_menu();
+    }
 
 
+    @Override
+    public void closeWindow() {
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setHeaderText("Are you sure you want to leave?");
+        Optional<ButtonType> res = a.showAndWait();
+        if (res.get() == ButtonType.OK){
+            Platform.exit();
+        }
     }
 
 
     public void setResizeEvent(Stage stage) {
-//        playTheme();
 
         stage.heightProperty().addListener((observable, oldValue, newValue) -> {
 
@@ -88,12 +99,7 @@ public class OpeningScreenController extends ASceneChanger implements Initializa
         });
     }
 
-    private void playMusic(){
-        String path = this.getClass().getResource("/sounds/Opening_music.mp3").toString();
-        Media sound = new Media(path);
-        MediaPlayer themeMediaPlayer = new MediaPlayer(sound);
-        themeMediaPlayer.play();
-    }
+
 
     private void playTheme() {
 
@@ -123,7 +129,9 @@ public class OpeningScreenController extends ASceneChanger implements Initializa
                 System.out.println(e);
             }
         });
+        musicThread.setDaemon(true);
         musicThread.start();
+
     }
 
     @Override

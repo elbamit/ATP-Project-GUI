@@ -34,7 +34,10 @@
                         <MenuItem mnemonicParsing="false" onAction="#Help_Click" text="Help" />
                      </items>
                   </Menu>
-                  <Menu mnemonicParsing="false" text="Exit" />
+                  <Menu mnemonicParsing="false" text="Exit">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#close_button_click" text="Exit Game" />
+                     </items></Menu>
                </menus>
             </MenuBar>
          </children>
@@ -43,7 +46,7 @@
    <center>
       <Pane fx:id="MazePane" onDragDetected="#DragDetected" onKeyPressed="#KeyPressed" onMouseDragged="#MouseDragged" onMousePressed="#MousePressed" onMouseReleased="#MouseReleased" onScroll="#MouseScrolled" prefHeight="420.0" prefWidth="600.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
          <children>
-            <MazeDisplayer fx:id="mazeDisplayer" height="420.0" imageFileNameGoal="./resources/images/trophy.jpg" imageFileNamePlayer="./resources/images/car_right.png" imageFileNamePlayerLeft="./resources/images/car_left.png" imageFileNamePlayerUp="./resources/images/car_up.png" imageFileNamePlayerDown="./resources/images/car_down.png" imageFileNameWall="./resources/images/formula_wall.png" width="600.0" BorderPane.alignment="CENTER"  />
+            <MazeDisplayer fx:id="mazeDisplayer" height="420.0" imageFileNameGoal="./resources/images/trophy.jpg" imageFileNamePlayer="./resources/images/car_right.png" imageFileNamePlayerDown="./resources/images/car_down.png" imageFileNamePlayerLeft="./resources/images/car_left.png" imageFileNamePlayerUp="./resources/images/car_up.png" imageFileNameWall="./resources/images/formula_wall.png" width="600.0" BorderPane.alignment="CENTER" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

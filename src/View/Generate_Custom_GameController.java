@@ -100,6 +100,10 @@ public class Generate_Custom_GameController extends ASceneChanger implements ICo
         new_stage("AboutScreen.fxml", "About");
     }
 
+    public void close_button_click(ActionEvent actionEvent) {
+        exit_from_menu();
+    }
+
     public void setResizeEvent(Stage stage) {
         maze_rows_text.wrappingWidthProperty().bind(stage.widthProperty());
         maze_col_text.wrappingWidthProperty().bind(stage.widthProperty());
@@ -123,4 +127,11 @@ public class Generate_Custom_GameController extends ASceneChanger implements ICo
             menu_bar.setPrefWidth(stage.getWidth());
         });
     }
+
+    @Override
+    public void closeWindow() {
+
+    }
+
+
 }

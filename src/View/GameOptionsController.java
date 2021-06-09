@@ -1,18 +1,23 @@
 package View;
 
+import Model.MyModel;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class GameOptionsController extends ASceneChanger implements IController {
     public Pane pane;
@@ -95,6 +100,29 @@ public class GameOptionsController extends ASceneChanger implements IController 
         new_stage("HelpScreen.fxml", "Help");
     }
 
+    public void close_button_click(ActionEvent actionEvent) {
+        exit_from_menu();
+    }
+
+    @Override
+    public void closeWindow() {
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setHeaderText("Are you sure you want to leave?");
+        Optional<ButtonType> res = a.showAndWait();
+        if (res.get() == ButtonType.OK){
+            if (MyModel.serverworking){
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("MyView.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                MyViewController mv = loader.getController();
+                mv.viewModel.stopServers();
+            }
+            Platform.exit();
+        }
+    }
 
 
     public void setResizeEvent(Stage stage) {
@@ -154,6 +182,7 @@ public class GameOptionsController extends ASceneChanger implements IController 
             menu_bar.setPrefWidth(stage.getWidth());
         });
     }
+
 
 
 }

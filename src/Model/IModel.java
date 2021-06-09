@@ -38,4 +38,6 @@ public interface IModel {
     void setGeneratingAlgo(String gener_algo_name);
 
     void setSolvingAlgo(String solving_algo_name);
+
+    void stopServers();
 }

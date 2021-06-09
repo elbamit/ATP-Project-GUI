@@ -30,7 +30,7 @@
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button fx:id="invisible_game" layoutX="680.0" layoutY="195.0" mnemonicParsing="false" onAction="#Invisible_Button_Click" prefHeight="68.0" prefWidth="155.0" text="Invisible">
+      <Button fx:id="invisible_game" layoutX="680.0" layoutY="195.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="155.0" text="Invisible">
          <font>
             <Font size="20.0" />
          </font></Button>
@@ -60,7 +60,10 @@
                         <MenuItem mnemonicParsing="false" onAction="#Help_Click" text="Help" />
                      </items>
                   </Menu>
-                  <Menu mnemonicParsing="false" text="Exit" />
+                  <Menu mnemonicParsing="false" text="Exit">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#close_button_click" text="Exit Game" />
+                     </items></Menu>
                </menus>
             </MenuBar>
          </children>

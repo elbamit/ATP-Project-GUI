@@ -121,6 +121,10 @@ public class MyViewModel extends Observable implements Observer {
         this.model.setSolvingAlgo(solving_algo_name);
     }
 
+    public void stopServers(){
+        this.model.stopServers();
+    }
+
 
 
 

@@ -45,12 +45,15 @@ public class MyModel extends Observable implements IModel {
         this.mazeSolverServer = new Server(5401, 1000, new ServerStrategySolveSearchProblem());
         this.mazeGeneratorServer.start();
         this.mazeSolverServer.start();
+        serverworking=true;
 
     }
 
     public void stopServers(){
         this.mazeGeneratorServer.stop();
         this.mazeSolverServer.stop();
+        serverworking=false;
+        System.out.println("Stopping servers");//TODO delete this
 
     }
 
