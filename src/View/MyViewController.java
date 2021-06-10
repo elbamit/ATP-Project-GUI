@@ -41,6 +41,7 @@ import java.util.Observer;
 import java.util.ResourceBundle;
 
 public class MyViewController extends ASceneChanger implements Initializable, Observer,IView, IController{
+    MediaPlayer player;
     public MyViewModel viewModel;
     @FXML
     public MazeDisplayer mazeDisplayer = new MazeDisplayer();
@@ -92,6 +93,7 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
                 if(((String)arg).equals("Start the party")){
                     //mazeDisplayer.drawMaze(viewModel.getMaze(),viewModel.getMaze().getStartPosition());
                     //displayMaze((Maze) arg);
+                    DJ_PlayMusic();
                     StartTheParty();
                     mazeDisplayer.resetSol();
                     viewModel.restartGame();
@@ -101,11 +103,17 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
 
     }
 
+    private void DJ_PlayMusic() {
+        Media sound = new Media(this.getClass().getResource("/sounds/Aluf.mp3").toString());
+        player = new MediaPlayer(sound);
+        player.play();
+    }
+
     private void StartTheParty() {
         try {
             String path = "C:\\Users\\omrim\\Desktop\\הנדסת מערכות מידע\\שנה ב'\\סימסטר ד'\\נושאים מתקדמים בתכנות\\פרוייקט\\ATP-Project-GUI\\resources\\images\\FinalGoal.mp4";
             //Instantiating Media class
-            Media media = new Media(new File(path).toURI().toString());
+            Media media = new Media(new File(System.getProperty ("user.dir") + "\\resources\\images\\FinalGoal.mp4").toURI().toString());
             //Instantiating MediaPlayer class
             MediaPlayer mediaPlayer = new MediaPlayer(media);
             //Instantiating MediaView class
