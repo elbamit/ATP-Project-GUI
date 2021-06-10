@@ -165,7 +165,7 @@ public class MazeDisplayer extends Canvas {
         draw();
     }
 
-
+    public void resetSol(){this.solution=null;}
     @Override
     public double prefWidth(double v) {
         return getWidth();

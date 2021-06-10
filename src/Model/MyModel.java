@@ -109,8 +109,15 @@ public class MyModel extends Observable implements IModel {
 
     public void setPlayerPosition(Position startPosition) {
         this.player_Position = startPosition;
+        if(startPosition.equals(maze.getGoalPosition()))
+        {
+            setChanged();
+            notifyObservers("Start the party");
+        }
+        else{
         setChanged();
         notifyObservers(startPosition);
+        }
     }
 
     private void setPlayerPosition(int row, int col) {

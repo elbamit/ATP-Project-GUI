@@ -5,11 +5,15 @@ import Server.Configurations;
 import ViewModel.MyViewModel;
 import algorithms.mazeGenerators.*;
 import algorithms.search.Solution;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Alert;
@@ -20,8 +24,15 @@ import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import java.io.FileInputStream;
+import java.io.File;
 
 import java.io.*;
 import java.net.URL;
@@ -77,7 +88,59 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
                 mazeDisplayer.drawMaze(viewModel.getMaze(), (new Position(viewModel.getPlayerPositionRow(), viewModel.getPlayerPositionCol())), (Solution) arg);
 
             }
+            else if(arg instanceof String){
+                if(((String)arg).equals("Start the party")){
+                    //mazeDisplayer.drawMaze(viewModel.getMaze(),viewModel.getMaze().getStartPosition());
+                    //displayMaze((Maze) arg);
+                    StartTheParty();
+                    mazeDisplayer.resetSol();
+                    viewModel.restartGame();
+                }
+            }
         }
+
+    }
+
+    private void StartTheParty() {
+        try {
+            String path = "C:\\Users\\omrim\\Desktop\\הנדסת מערכות מידע\\שנה ב'\\סימסטר ד'\\נושאים מתקדמים בתכנות\\פרוייקט\\ATP-Project-GUI\\resources\\images\\FinalGoal.mp4";
+            //Instantiating Media class
+            Media media = new Media(new File(path).toURI().toString());
+            //Instantiating MediaPlayer class
+            MediaPlayer mediaPlayer = new MediaPlayer(media);
+            //Instantiating MediaView class
+            MediaView mediaView = new MediaView(mediaPlayer);
+            //by setting this property to true, the Video will be played
+            mediaPlayer.setAutoPlay(true);
+            //setting group and scene
+            Group root1 = new Group();
+            root1.getChildren().add(mediaView);
+            Stage stage = new Stage();
+            stage.setTitle("you are the best ! ! !");
+            Scene scene = new Scene(root1, 900, 420);
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+            PauseTransition delay = new PauseTransition(Duration.seconds(3));
+            delay.setOnFinished(event -> {
+                //stage.close();
+                stage.setTitle("Goalllllllllllllllllllll");
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                Parent root = null;
+                try {
+                    root = fxmlLoader.load(getClass().getResource("WinScreen.fxml").openStream());
+                } catch (IOException e) {
+                    System.out.println("here");
+                }
+                Scene scene1 = new Scene(root, 600, 400);
+                stage.setScene(scene1);
+                //stage.initModality(Modality.APPLICATION_MODAL); //Lock the window until it closes
+                stage.show();
+
+            });
+            delay.play();
+            }catch (Exception e){}
+
 
     }
 
