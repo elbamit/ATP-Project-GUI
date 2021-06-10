@@ -5,21 +5,27 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
-public class GameOptionsController extends ASceneChanger implements IController {
+public class GameOptionsController extends ASceneChanger implements IController, Initializable {
     public Pane pane;
     public Button easy_game;
     public Button medium_game;
@@ -29,6 +35,7 @@ public class GameOptionsController extends ASceneChanger implements IController 
     public Button invisible_game;
     public Button load_game;
     public VBox menu_bar;
+    public javafx.scene.image.ImageView background;
 
 
     public void Custom_Game_Click(ActionEvent actionEvent) throws IOException {
@@ -184,5 +191,16 @@ public class GameOptionsController extends ASceneChanger implements IController 
     }
 
 
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Image wallpaper = null;
+        try {
+            wallpaper = new Image(new FileInputStream("./resources/images/wallpaper3.png"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        background.setImage(wallpaper);
+        background.fitHeightProperty().bind(pane.heightProperty());
+        background.fitWidthProperty().bind(pane.widthProperty());
+    }
 }

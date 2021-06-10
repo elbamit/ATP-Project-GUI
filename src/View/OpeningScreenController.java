@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
@@ -23,6 +24,7 @@ import javafx.stage.WindowEvent;
 
 import java.io.FileInputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -37,6 +39,7 @@ public class OpeningScreenController extends ASceneChanger implements Initializa
     public MenuBar menu_bar;
     @FXML
     private Pane root;
+    public javafx.scene.image.ImageView background;
 
 //    public Thread musicThread;
     public static boolean background_music = false;
@@ -137,6 +140,16 @@ public class OpeningScreenController extends ASceneChanger implements Initializa
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //Image wallpaper = new Image(this.getClass().getResourceAsStream("./images/wallpaper.png"));
+        Image wallpaper = null;
+        try {
+            wallpaper = new Image(new FileInputStream("./resources/images/wallpaper3.png"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        background.setImage(wallpaper);
+        background.fitHeightProperty().bind(root.heightProperty());
+        background.fitWidthProperty().bind(root.widthProperty());
         playTheme();
 
     }
