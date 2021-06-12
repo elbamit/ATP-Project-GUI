@@ -111,7 +111,7 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
 
     private void StartTheParty() {
         try {
-            String path = "C:\\Users\\omrim\\Desktop\\הנדסת מערכות מידע\\שנה ב'\\סימסטר ד'\\נושאים מתקדמים בתכנות\\פרוייקט\\ATP-Project-GUI\\resources\\images\\FinalGoal.mp4";
+            String path = this.getClass().getResource("/images/FinalGoal.mp4").toString();
             //Instantiating Media class
             Media media = new Media(new File(System.getProperty ("user.dir") + "\\resources\\images\\FinalGoal.mp4").toURI().toString());
             //Instantiating MediaPlayer class
@@ -184,6 +184,15 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
             }
         }
         else{
+            MazePane.setPrefHeight(420);
+            MazePane.setPrefWidth(600);
+            //TODO try to work here with the resize make it work
+            System.out.println(MazePane.getPrefHeight());
+            System.out.println(MazePane.getPrefWidth());
+
+//            this.mazeDisplayer.heightProperty().bind(this.MazePane.heightProperty());
+//            this.mazeDisplayer.widthProperty().bind(this.MazePane.widthProperty());
+
 
             generateMazeAuto();
         }
@@ -372,14 +381,22 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
     }
 
     public void setResizeEvent(Stage stage) {
-        mazeDisplayer.widthProperty().bind(MazePane.widthProperty());
-        mazeDisplayer.heightProperty().bind(MazePane.heightProperty());
+//        mazeDisplayer.widthProperty().bind(MazePane.widthProperty());
+//        mazeDisplayer.heightProperty().bind(MazePane.heightProperty());
 
-        MazePane.setLayoutX(0);
-        MazePane.setLayoutY(0);
+        //TODO try to change it to a pane not a border pane and print the heightproperty and see if its good values or not
+
+        MazePane.setPrefHeight(420);
+        MazePane.setPrefWidth(600);
+
+//        MazePane.setLayoutX(0);
+//        MazePane.setLayoutY(0);
 
         MazePane.heightProperty().addListener((observable, oldValue, newValue) -> {
-            MazePane.setPrefHeight(stage.getHeight()*0.84);
+//            MazePane.setPrefHeight(stage.getHeight()*0.84);
+
+            System.out.println(this.mazeDisplayer.heightProperty());
+            System.out.println(this.MazePane.heightProperty());
 
             button_pane.setPrefHeight(stage.getHeight());
 
@@ -400,7 +417,10 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
         });
 
         MazePane.widthProperty().addListener((observable, oldValue, newValue) -> {
-            MazePane.setPrefWidth(stage.getWidth()*0.666);
+//            MazePane.setPrefWidth(stage.getWidth()*0.666);
+
+            System.out.println(this.mazeDisplayer.widthProperty());
+            System.out.println(this.MazePane.widthProperty());
 
             button_pane.setPrefWidth(stage.getWidth()/6);
 
