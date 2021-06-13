@@ -16,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
@@ -37,11 +38,13 @@ public class OpeningScreenController extends ASceneChanger implements Initializa
     public Button start_game_button;
     public Menu exit_menu;
     public MenuBar menu_bar;
+    public VBox menu_bar_box;
     @FXML
     private Pane root;
     public javafx.scene.image.ImageView background;
 
-//    public Thread musicThread;
+
+    //    public Thread musicThread;
     public static boolean background_music = false;
 
 
@@ -88,22 +91,24 @@ public class OpeningScreenController extends ASceneChanger implements Initializa
     }
 
 
-    public void setResizeEvent(Stage stage) {
+    public void setResizeEvent(Scene scene) {
 
-        stage.heightProperty().addListener((observable, oldValue, newValue) -> {
+        scene.heightProperty().addListener((observable, oldValue, newValue) -> {
 
-            root.setPrefWidth(stage.getHeight());
-            start_game_button.setPrefHeight(stage.getHeight()/3.5);
-            start_game_button.setLayoutY(stage.getHeight()/3);
+            root.setPrefWidth(scene.getHeight());
+            start_game_button.setPrefHeight(scene.getHeight()/3.5);
+            start_game_button.setLayoutY(scene.getHeight()/3);
+
+            //TODO add resize for the menu bar
 
         });
 
-        stage.widthProperty().addListener((observable, oldValue, newValue) -> {
+        scene.widthProperty().addListener((observable, oldValue, newValue) -> {
 
-            root.setPrefWidth(stage.getWidth());
+            root.setPrefWidth(scene.getWidth());
 
-            start_game_button.setPrefWidth(stage.getWidth()*0.32);
-            start_game_button.setLayoutX(stage.getX()/2);
+            start_game_button.setPrefWidth(scene.getWidth()*0.32);
+            start_game_button.setLayoutX(scene.getX()/2);
 
         });
     }
@@ -145,17 +150,38 @@ public class OpeningScreenController extends ASceneChanger implements Initializa
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //Image wallpaper = new Image(this.getClass().getResourceAsStream("./images/wallpaper.png"));
         Image wallpaper = null;
-        try {
+        try{
             wallpaper = new Image(new FileInputStream("./resources/images/wallpaper3.png"));
-        } catch (FileNotFoundException e) {
+        }catch (FileNotFoundException e){
             e.printStackTrace();
         }
         background.setImage(wallpaper);
         background.fitHeightProperty().bind(root.heightProperty());
         background.fitWidthProperty().bind(root.widthProperty());
-        playTheme();
+//        playTheme();//TODO uncomment this
 
+    }
+
+    public void setResizeEvent1(Scene new_scene) {
+        new_scene.heightProperty().addListener((observable, oldValue, newValue) -> {
+
+            root.setPrefHeight(new_scene.getHeight());
+            menu_bar_box.setPrefHeight(30);
+            start_game_button.setPrefHeight(new_scene.getHeight()/3.5);
+            start_game_button.setLayoutY(new_scene.getHeight()/3);
+
+            //TODO add resize for the menu bar
+
+        });
+
+        new_scene.widthProperty().addListener((observable, oldValue, newValue) -> {
+
+            root.setPrefWidth(new_scene.getWidth());
+            menu_bar_box.setPrefWidth(new_scene.getWidth());
+            start_game_button.setPrefWidth(new_scene.getWidth()*0.32);
+            start_game_button.setLayoutX(new_scene.getWidth()/3);
+
+        });
     }
 }

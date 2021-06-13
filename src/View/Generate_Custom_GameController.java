@@ -104,27 +104,27 @@ public class Generate_Custom_GameController extends ASceneChanger implements ICo
         exit_from_menu();
     }
 
-    public void setResizeEvent(Stage stage) {
-        maze_rows_text.wrappingWidthProperty().bind(stage.widthProperty());
-        maze_col_text.wrappingWidthProperty().bind(stage.widthProperty());
+    public void setResizeEvent(Scene scene) {
+        maze_rows_text.wrappingWidthProperty().bind(scene.widthProperty());
+        maze_col_text.wrappingWidthProperty().bind(scene.widthProperty());
         pane.heightProperty().addListener((observable, oldValue, newValue) -> {
-            pane.setPrefHeight(stage.getHeight());
+            pane.setPrefHeight(scene.getHeight());
 
-            grid_pane.setPrefHeight(stage.getHeight());
-            back_button.setPrefHeight(stage.getHeight() * ((double) 80/500));
-            generate_button.setPrefHeight(stage.getHeight() * ((double) 80/500));
+            grid_pane.setPrefHeight(scene.getHeight());
+            back_button.setPrefHeight(scene.getHeight() * ((double) 80/500));
+            generate_button.setPrefHeight(scene.getHeight() * ((double) 80/500));
             menu_bar.setPrefHeight(menu_bar.getPrefHeight());
 
         });
 
         pane.widthProperty().addListener((observable, oldValue, newValue) -> {
-            pane.setPrefWidth(stage.getWidth());
-            grid_pane.setPrefWidth(stage.getWidth());
-            textField_mazeRows.setPrefWidth(stage.getWidth()/3);
-            textField_mazeColumns.setPrefWidth(stage.getWidth()/3);
-            back_button.setPrefWidth(stage.getWidth() * ((double) 250/900));
-            generate_button.setPrefWidth(stage.getWidth() * ((double) 250/900));
-            menu_bar.setPrefWidth(stage.getWidth());
+            pane.setPrefWidth(scene.getWidth());
+            grid_pane.setPrefWidth(scene.getWidth());
+            textField_mazeRows.setPrefWidth(scene.getWidth()/3);
+            textField_mazeColumns.setPrefWidth(scene.getWidth()/3);
+            back_button.setPrefWidth(scene.getWidth() * ((double) 250/900));
+            generate_button.setPrefWidth(scene.getWidth() * ((double) 250/900));
+            menu_bar.setPrefWidth(scene.getWidth());
         });
     }
 

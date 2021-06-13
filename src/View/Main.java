@@ -33,11 +33,15 @@ public class Main extends Application {
         Parent root = loader.load();
 
         primaryStage.setTitle("Maze Game");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.setWidth(900);
-        primaryStage.setHeight(500);
+        Scene new_scene = new Scene(root, 900, 500);
+        primaryStage.setScene(new_scene);
+
+//        primaryStage.setWidth(900);
+//        primaryStage.setHeight(500)
+//        ;
         OpeningScreenController mv =(OpeningScreenController) loader.getController();
-        mv.setResizeEvent(primaryStage);
+//        mv.setResizeEvent(primaryStage);
+        mv.setResizeEvent1(new_scene);
         SetStageCloseEvent(primaryStage);
         primaryStage.show();
     }

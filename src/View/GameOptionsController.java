@@ -13,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -36,7 +37,8 @@ public class GameOptionsController extends ASceneChanger implements IController,
     public Button load_game;
     public Button Maccabi_game;
     public VBox menu_bar;
-    public javafx.scene.image.ImageView background;
+    @FXML
+    private ImageView background;
 
 
     public void Custom_Game_Click(ActionEvent actionEvent) throws IOException {
@@ -48,7 +50,6 @@ public class GameOptionsController extends ASceneChanger implements IController,
         MyViewController.col = 10;
         OpeningScreenController.background_music = false;
         change_scene(actionEvent, "Game", "MyView.fxml");
-
     }
 
     public void Medium_Game_Click(ActionEvent actionEvent) throws IOException {
@@ -155,67 +156,67 @@ public class GameOptionsController extends ASceneChanger implements IController,
     }
 
 
-    public void setResizeEvent(Stage stage) {
+    public void setResizeEvent(Scene scene) {
 
         pane.heightProperty().addListener((observable, oldValue, newValue) -> {
-            pane.setPrefHeight(stage.getHeight());
+            pane.setPrefHeight(scene.getHeight());
 
-            easy_game.setPrefHeight(stage.getHeight() * ((double) 68/500));
-            easy_game.setLayoutY(stage.getHeight() * ((double) 70/500) );
+            easy_game.setPrefHeight(scene.getHeight() * ((double) 68/500));
+            easy_game.setLayoutY(scene.getHeight() * ((double) 70/500) );
 
-            medium_game.setPrefHeight(stage.getHeight() * ((double) 68/500));
-            medium_game.setLayoutY(stage.getHeight() * ((double) 70/500));
+            medium_game.setPrefHeight(scene.getHeight() * ((double) 68/500));
+            medium_game.setLayoutY(scene.getHeight() * ((double) 70/500));
 
-            hard_game.setPrefHeight(stage.getHeight() * ((double) 68/500));
-            hard_game.setLayoutY(stage.getHeight() * ((double) 70/500));
+            hard_game.setPrefHeight(scene.getHeight() * ((double) 68/500));
+            hard_game.setLayoutY(scene.getHeight() * ((double) 70/500));
 
-            custom_game.setPrefHeight(stage.getHeight() * ((double) 68/500));
-            custom_game.setLayoutY(stage.getHeight() * ((double) 195/500));
+            custom_game.setPrefHeight(scene.getHeight() * ((double) 68/500));
+            custom_game.setLayoutY(scene.getHeight() * ((double) 195/500));
 
-            wide_game.setPrefHeight(stage.getHeight() * ((double) 68/500));
-            wide_game.setLayoutY(stage.getHeight() * ((double) 195/500));
+            wide_game.setPrefHeight(scene.getHeight() * ((double) 68/500));
+            wide_game.setLayoutY(scene.getHeight() * ((double) 195/500));
 
-            invisible_game.setPrefHeight(stage.getHeight() * ((double) 68/500));
-            invisible_game.setLayoutY(stage.getHeight() * ((double) 195/500));
+            invisible_game.setPrefHeight(scene.getHeight() * ((double) 68/500));
+            invisible_game.setLayoutY(scene.getHeight() * ((double) 195/500));
 
-            load_game.setPrefHeight(stage.getHeight() * ((double) 68/500));
-            load_game.setLayoutY(stage.getHeight() * ((double) 320/500));
+            load_game.setPrefHeight(scene.getHeight() * ((double) 68/500));
+            load_game.setLayoutY(scene.getHeight() * ((double) 320/500));
 
-            Maccabi_game.setPrefHeight(stage.getHeight() * ((double) 68/500));
-            Maccabi_game.setLayoutY(stage.getHeight() * ((double) 320/500));
+            Maccabi_game.setPrefHeight(scene.getHeight() * ((double) 68/500));
+            Maccabi_game.setLayoutY(scene.getHeight() * ((double) 320/500));
 
             menu_bar.setPrefHeight(menu_bar.getPrefHeight());
 
         });
 
         pane.widthProperty().addListener((observable, oldValue, newValue) -> {
-            pane.setPrefWidth(stage.getWidth());
+            pane.setPrefWidth(scene.getWidth());
 
-            easy_game.setPrefWidth(stage.getWidth() * ((double) 155/900));
-            easy_game.setLayoutX(stage.getWidth() * ((double) 80/900));
+            easy_game.setPrefWidth(scene.getWidth() * ((double) 155/900));
+            easy_game.setLayoutX(scene.getWidth() * ((double) 80/900));
 
-            medium_game.setPrefWidth(stage.getWidth() *  ((double) 155/900));
-            medium_game.setLayoutX(stage.getWidth() * ((double) 380/900));
+            medium_game.setPrefWidth(scene.getWidth() *  ((double) 155/900));
+            medium_game.setLayoutX(scene.getWidth() * ((double) 380/900));
 
-            hard_game.setPrefWidth(stage.getWidth() *  ((double) 155/900));
-            hard_game.setLayoutX(stage.getWidth() * ((double) 680/900));
+            hard_game.setPrefWidth(scene.getWidth() *  ((double) 155/900));
+            hard_game.setLayoutX(scene.getWidth() * ((double) 680/900));
 
-            custom_game.setPrefWidth(stage.getWidth() *  ((double) 155/900));
-            custom_game.setLayoutX(stage.getWidth() * ((double) 80/900));
+            custom_game.setPrefWidth(scene.getWidth() *  ((double) 155/900));
+            custom_game.setLayoutX(scene.getWidth() * ((double) 80/900));
 
-            wide_game.setPrefWidth(stage.getWidth() *  ((double) 155/900));
-            wide_game.setLayoutX(stage.getWidth() * ((double) 380/900));
+            wide_game.setPrefWidth(scene.getWidth() *  ((double) 155/900));
+            wide_game.setLayoutX(scene.getWidth() * ((double) 380/900));
 
-            invisible_game.setPrefWidth(stage.getWidth() *  ((double) 155/900));
-            invisible_game.setLayoutX(stage.getWidth() * ((double) 680/900));
+            invisible_game.setPrefWidth(scene.getWidth() *  ((double) 155/900));
+            invisible_game.setLayoutX(scene.getWidth() * ((double) 680/900));
 
-            load_game.setPrefWidth(stage.getWidth() *  ((double) 155/900));
-            load_game.setLayoutX(stage.getWidth() * ((double) 380/900));
+            load_game.setPrefWidth(scene.getWidth() *  ((double) 155/900));
+            load_game.setLayoutX(scene.getWidth() * ((double) 380/900));
 
-            Maccabi_game.setPrefWidth(stage.getWidth() *  ((double) 155/900));
-            Maccabi_game.setLayoutX(stage.getWidth() * ((double) 80/900));
+            Maccabi_game.setPrefWidth(scene.getWidth() *  ((double) 155/900));
+            Maccabi_game.setLayoutX(scene.getWidth() * ((double) 80/900));
 
-            menu_bar.setPrefWidth(stage.getWidth());
+            menu_bar.setPrefWidth(scene.getWidth());
         });
     }
 

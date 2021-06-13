@@ -8,8 +8,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import View.*?>
-<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.OpeningScreenController">
+
+<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" stylesheets="@Style_1.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.OpeningScreenController">
     <children>
         <ImageView fx:id="background" fitHeight="514.0" fitWidth="920.0" layoutX="-7.0" pickOnBounds="true" preserveRatio="false">
         </ImageView>
@@ -18,7 +18,7 @@
                 <Font size="40.0" />
             </font>
         </Button>
-        <VBox prefHeight="30.0" prefWidth="900.0">
+        <VBox fx:id="menu_bar_box" prefHeight="30.0" prefWidth="900.0">
             <children>
                 <MenuBar prefHeight="30.0" prefWidth="900.0">
                     <menus>
@@ -49,6 +49,5 @@
                 </MenuBar>
             </children>
         </VBox>
-
     </children>
 </Pane>

@@ -41,6 +41,7 @@ public abstract class ASceneChanger {
 
 
     public void change_scene(ActionEvent actionEvent, String title, String fxml_path) throws IOException {
+
         Node node = (Node) actionEvent.getSource();
         Stage thisStage = (Stage) node.getScene().getWindow();
         thisStage.setTitle(title);
@@ -49,14 +50,15 @@ public abstract class ASceneChanger {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml_path));
         Parent x = loader.load();
 
-        Scene new_scene = new Scene(x);
+        Scene new_scene = new Scene(x, 900, 500);
         thisStage.setScene(new_scene);
+
 
         thisStage.setWidth(900);
         thisStage.setHeight(500);
 
         IController mv = loader.getController();
-        mv.setResizeEvent(thisStage);
+        mv.setResizeEvent(new_scene);
         mv.stopMaccabiSound();
         SetStageCloseEvent(thisStage);
         thisStage.show();
@@ -77,7 +79,7 @@ public abstract class ASceneChanger {
         thisStage.setHeight(500);
 
         IController mv = loader.getController();
-        mv.setResizeEvent(thisStage);
+        mv.setResizeEvent(new_scene);
         mv.stopMaccabiSound();
         SetStageCloseEvent(thisStage);
         thisStage.show();
@@ -103,7 +105,7 @@ public abstract class ASceneChanger {
 
         MyViewController mv =(MyViewController) loader.getController();
         mv.stopMaccabiSound();
-        mv.setResizeEvent(thisStage);
+        mv.setResizeEvent(new_scene);
         mv.setInvisible();
         SetStageCloseEvent(thisStage);
         thisStage.show();
@@ -128,7 +130,7 @@ public abstract class ASceneChanger {
         MyViewController mv =(MyViewController) loader.getController();
         mv.setMaccabi();
         mv.playMaccabiSound();
-        mv.setResizeEvent(thisStage);
+        mv.setResizeEvent(new_scene);
         //mv.setInvisible();
         SetStageCloseEvent(thisStage);
         thisStage.show();

@@ -223,7 +223,12 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
             }
         }
         else{
-
+            MazePane.setPrefHeight(500);
+            MazePane.setPrefWidth(900);
+//            mazeDisplayer.setHeight(MazePane.getHeight());
+//            mazeDisplayer.setWidth(MazePane.getWidth());
+//            mazeDisplayer.heightProperty().bind(MazePane.heightProperty());
+//            mazeDisplayer.widthProperty().bind(MazePane.widthProperty());
             generateMazeAuto();
         }
 
@@ -411,58 +416,7 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
         exit_from_menu();
     }
 
-    public void setResizeEvent(Stage stage) {
 
-
-        mazeDisplayer.widthProperty().bind(MazePane.widthProperty());
-        mazeDisplayer.heightProperty().bind(MazePane.heightProperty());
-
-        MazePane.setLayoutX(0);
-        MazePane.setLayoutY(0);
-
-        //stage.getScene().
-        MazePane.heightProperty().addListener((observable, oldValue, newValue) -> {
-            MazePane.setPrefHeight(stage.getHeight()*0.84);
-
-            button_pane.setPrefHeight(stage.getHeight());
-
-            back_button.setPrefHeight(stage.getHeight()*0.066);
-            back_button.setMaxHeight(50);
-
-            solve_button.setPrefHeight(stage.getHeight()*0.066);
-            solve_button.setMaxHeight(50);
-
-            restart_game_button.setPrefHeight(stage.getHeight()*0.066);
-            restart_game_button.setMaxHeight(50);
-
-            menu_bar.setPrefHeight(menu_bar.getPrefHeight());
-
-            mazeDisplayer.drawMaze(viewModel.getMaze());
-
-
-        });
-
-        MazePane.widthProperty().addListener((observable, oldValue, newValue) -> {
-            MazePane.setPrefWidth(stage.getWidth()*0.666);
-
-            button_pane.setPrefWidth(stage.getWidth()/6);
-
-            back_button.setPrefWidth(stage.getWidth()*(0.15));
-            back_button.setMaxWidth(260);
-
-            solve_button.setPrefWidth(stage.getWidth()*(0.15));
-            solve_button.setMaxWidth(260);
-
-            restart_game_button.setPrefWidth(stage.getWidth()*(0.15));
-            restart_game_button.setMaxWidth(260);
-
-            menu_bar.setPrefWidth(stage.getWidth());
-
-            mazeDisplayer.drawMaze(viewModel.getMaze());
-        });
-
-
-    }
 
     @Override
     public void closeWindow() {
@@ -484,5 +438,58 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
         if(this.themeMediaPlayer !=null){
             themeMediaPlayer.stop();
         }
+    }
+
+    public void setResizeEvent(Scene scene) {
+//        mazeDisplayer.widthProperty().bind(MazePane.widthProperty());
+//        mazeDisplayer.heightProperty().bind(MazePane.heightProperty());
+
+        MazePane.setLayoutX(0);
+        MazePane.setLayoutY(0);
+
+        //stage.getScene().
+        scene.heightProperty().addListener((observable, oldValue, newValue) -> {
+            MazePane.setPrefHeight(scene.getHeight()*0.84);
+            mazeDisplayer.setHeight(MazePane.getHeight());
+            button_pane.setPrefHeight(scene.getHeight());
+
+            back_button.setPrefHeight(scene.getHeight()*0.066);
+            back_button.setMaxHeight(50);
+
+            solve_button.setPrefHeight(scene.getHeight()*0.066);
+            solve_button.setMaxHeight(50);
+
+            restart_game_button.setPrefHeight(scene.getHeight()*0.066);
+            restart_game_button.setMaxHeight(50);
+
+            menu_bar.setPrefHeight(menu_bar.getPrefHeight());
+
+            mazeDisplayer.drawMaze(viewModel.getMaze());
+
+
+        });
+
+        scene.widthProperty().addListener((observable, oldValue, newValue) -> {
+            MazePane.setPrefWidth(scene.getWidth()*0.666);
+            mazeDisplayer.setWidth(MazePane.getWidth());
+
+            button_pane.setPrefWidth(scene.getWidth()/6);
+
+            back_button.setPrefWidth(scene.getWidth()*(0.15));
+            back_button.setMaxWidth(260);
+
+            solve_button.setPrefWidth(scene.getWidth()*(0.15));
+            solve_button.setMaxWidth(260);
+
+            restart_game_button.setPrefWidth(scene.getWidth()*(0.15));
+            restart_game_button.setMaxWidth(260);
+
+            menu_bar.setPrefWidth(scene.getWidth());
+
+            mazeDisplayer.drawMaze(viewModel.getMaze());
+        });
+
+        mazeDisplayer.drawMaze(viewModel.getMaze());
+
     }
 }
