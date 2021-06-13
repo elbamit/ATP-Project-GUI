@@ -12,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuBar;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -20,7 +22,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 public abstract class ASceneChanger {
-
+    MediaPlayer themeMediaPlayer = null;
     public void new_stage(String fxml_name, String stage_name) throws IOException {
         try {
             Stage stage = new Stage();
@@ -55,6 +57,7 @@ public abstract class ASceneChanger {
 
         IController mv = loader.getController();
         mv.setResizeEvent(thisStage);
+        mv.stopMaccabiSound();
         SetStageCloseEvent(thisStage);
         thisStage.show();
     }
@@ -75,6 +78,7 @@ public abstract class ASceneChanger {
 
         IController mv = loader.getController();
         mv.setResizeEvent(thisStage);
+        mv.stopMaccabiSound();
         SetStageCloseEvent(thisStage);
         thisStage.show();
     }
@@ -98,12 +102,37 @@ public abstract class ASceneChanger {
         thisStage.setHeight(500);
 
         MyViewController mv =(MyViewController) loader.getController();
+        mv.stopMaccabiSound();
         mv.setResizeEvent(thisStage);
         mv.setInvisible();
         SetStageCloseEvent(thisStage);
         thisStage.show();
     }
 
+    public void change_scene_MyView_Maccabi(ActionEvent actionEvent) throws IOException {
+        Node node = (Node) actionEvent.getSource();
+        Stage thisStage = (Stage) node.getScene().getWindow();
+        thisStage.setTitle("Maze");
+        //Loads the Game options scene into the stage
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MyView.fxml"));
+        Parent x = loader.load();
+
+
+        Scene new_scene = new Scene(x);
+
+        thisStage.setScene(new_scene);
+
+        thisStage.setWidth(900);
+        thisStage.setHeight(500);
+
+        MyViewController mv =(MyViewController) loader.getController();
+        mv.setMaccabi();
+        mv.playMaccabiSound();
+        mv.setResizeEvent(thisStage);
+        //mv.setInvisible();
+        SetStageCloseEvent(thisStage);
+        thisStage.show();
+    }
 
     public static void SetStageCloseEvent(Stage stage){
 

@@ -21,22 +21,34 @@ public class MazeDisplayer extends Canvas {
     private Position player_position = new Position(0,0);
     private double zooming_value = 0;
     private boolean isInvisible = false;
+    public boolean Maccabi = false;
 
 
     StringProperty imageFileNameWall = new SimpleStringProperty();
+    StringProperty imageFileNameBall = new SimpleStringProperty();
     StringProperty imageFileNamePlayer = new SimpleStringProperty(); //Right
     StringProperty imageFileNamePlayerLeft = new SimpleStringProperty();
     StringProperty imageFileNamePlayerUp = new SimpleStringProperty();
     StringProperty imageFileNamePlayerDown = new SimpleStringProperty();
+    StringProperty imageFileNamePlayerMaccabi = new SimpleStringProperty();
     StringProperty imageFileNameGoal = new SimpleStringProperty();
+    StringProperty imageFileNameGoalMaccabi = new SimpleStringProperty();
     StringProperty imageFileNameSolution = new SimpleStringProperty();
+    StringProperty imageFileNameSolutionMaccabi = new SimpleStringProperty();
 
     public String getImageFileNameWall() {
         return imageFileNameWall.get();
     }
 
+    public String getImageFileNameBall() {
+        return imageFileNameBall.get();
+    }
+
     public String getImageFileNamePlayer() {
         return imageFileNamePlayer.get();
+    }
+    public String getImageFileNamePlayerMaccabi() {
+        return imageFileNamePlayerMaccabi.get();
     }
 
     public String getImageFileNamePlayerLeft() {
@@ -51,22 +63,35 @@ public class MazeDisplayer extends Canvas {
 
 
     public String getImageFileNameGoal() { return imageFileNameGoal.get(); }
+    public String getImageFileNameGoalMaccabi() { return imageFileNameGoalMaccabi.get(); }
     public String getImageFileNameSolution() {
         return imageFileNameSolution.get();
+    }
+    public String getImageFileNameSolutionMaccabi() {
+        return imageFileNameSolutionMaccabi.get();
     }
 
 
     public String imageFileNameWallProperty() {
         return imageFileNameWall.get();
     }
+    public String imageFileNameBallProperty() {
+        return imageFileNameBall.get();
+    }
 
     public String imageFileNameGoalProperty() {
         return imageFileNameGoal.get();
+    }
+    public String imageFileNameGoalMaccabiProperty() {
+        return imageFileNameGoalMaccabi.get();
     }
 
 
     public String imageFileNamePlayerProperty() {
         return imageFileNamePlayer.get();
+    }
+    public String imageFileNamePlayerMaccabiProperty() {
+        return imageFileNamePlayerMaccabi.get();
     }
 
     public String imageFileNamePlayerLeftProperty() {
@@ -83,18 +108,31 @@ public class MazeDisplayer extends Canvas {
     public String imageFileNameSolutionProperty() {
         return imageFileNameSolution.get();
     }
+    public String imageFileNameSolutionMaccabiProperty() {
+        return imageFileNameSolutionMaccabi.get();
+    }
 
 
     public void setImageFileNameWall(String imageFileNameWall) {
         this.imageFileNameWall.set(imageFileNameWall);
     }
+    public void setImageFileNameBall(String imageFileNameBall) {
+        this.imageFileNameBall.set(imageFileNameBall);
+    }
 
     public void setImageFileNameGoal(String imageFileNameGoal) {
         this.imageFileNameGoal.set(imageFileNameGoal);
     }
+    public void setImageFileNameGoalMaccabi(String imageFileNameGoalMaccabi) {
+        this.imageFileNameGoalMaccabi.set(imageFileNameGoalMaccabi);
+    }
 
     public void setImageFileNamePlayer(String imageFileNamePlayer) {
         this.imageFileNamePlayer.set(imageFileNamePlayer);
+    }
+
+    public void setImageFileNamePlayerMaccabi(String imageFileNamePlayer) {
+        this.imageFileNamePlayerMaccabi.set(imageFileNamePlayer);
     }
 
     public void setImageFileNamePlayerLeft(String imageFileNamePlayerLeft) {
@@ -112,6 +150,9 @@ public class MazeDisplayer extends Canvas {
     public void setImageFileNameSolution(String imageFileNameSolution) {
         this.imageFileNameSolution.set(imageFileNameSolution);
     }
+    public void setImageFileNameSolutionMaccabi(String imageFileNameSolution) {
+        this.imageFileNameSolutionMaccabi.set(imageFileNameSolution);
+    }
 
 
 
@@ -126,6 +167,10 @@ public class MazeDisplayer extends Canvas {
         this.isInvisible = false;
     }
 
+    public void setMaccabi(){
+        this.Maccabi = true;
+    }
+    public void setUnMaccabi(){this.Maccabi = false;}
 
 
     public void setPlayer_position(Position player_position) {
@@ -178,7 +223,6 @@ public class MazeDisplayer extends Canvas {
 
     private void draw() {
         if(this.maze != null){
-
             double cellHeight = getCellHeight();
             double cellWidth = getCellWidth();
 //            System.out.println(this.getHeight());
@@ -207,7 +251,21 @@ public class MazeDisplayer extends Canvas {
         double y = this.maze.getGoalPosition().getRowIndex() * cellHeight;
 
         gc.setFill(Color.BLUE);
+        if(this.Maccabi){
+            Image ChampImage = null;
+            try {
+                ChampImage = new Image(new FileInputStream(getImageFileNameGoalMaccabi()));
+            } catch (Exception e) {
 
+            }
+            if(ChampImage == null)
+                gc.fillRect(x, y, cellWidth, cellHeight);
+            else
+                gc.drawImage(ChampImage, x, y, cellWidth, cellHeight);
+
+
+        }
+        else{
         Image GoalImage = null;
         try {
             GoalImage = new Image(new FileInputStream(getImageFileNameGoal()));
@@ -218,28 +276,52 @@ public class MazeDisplayer extends Canvas {
             gc.fillRect(x, y, cellWidth, cellHeight);
         else
             gc.drawImage(GoalImage, x, y, cellWidth, cellHeight);
+        }
     }
 
 
 
 
     private void drawSolution(GraphicsContext gc, double cellHeight, double cellWidth) {
-        Image SolImage = null;
-        try {
-            SolImage = new Image(new FileInputStream(getImageFileNameSolution()));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        if(this.Maccabi){
+            Image SolImageM = null;
+            try {
+                SolImageM = new Image(new FileInputStream(getImageFileNameSolutionMaccabi()));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
 //        gc.setFill(Color.YELLOW);
-        for (int i = 0; i < this.solution.getSolutionPath().size() - 1; i++){
-            MazeState curr_state = (MazeState)this.solution.getSolutionPath().get(i);
-            int curr_row = curr_state.getPos().getRowIndex();
-            int curr_col = curr_state.getPos().getColumnIndex();
+            for (int i = 0; i < this.solution.getSolutionPath().size() - 1; i++){
+                MazeState curr_state = (MazeState)this.solution.getSolutionPath().get(i);
+                int curr_row = curr_state.getPos().getRowIndex();
+                int curr_col = curr_state.getPos().getColumnIndex();
 
-            double x = curr_col * cellWidth;
-            double y = curr_row * cellHeight;
+                double x = curr_col * cellWidth;
+                double y = curr_row * cellHeight;
 //            gc.fillRect(x,y,cellWidth,cellHeight);
-            gc.drawImage(SolImage, x, y, cellWidth, cellHeight);
+                gc.drawImage(SolImageM, x, y, cellWidth, cellHeight);
+            }
+
+        }
+        else{
+            Image SolImage = null;
+            try {
+                SolImage = new Image(new FileInputStream(getImageFileNameSolution()));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+    //        gc.setFill(Color.YELLOW);
+            for (int i = 0; i < this.solution.getSolutionPath().size() - 1; i++){
+                MazeState curr_state = (MazeState)this.solution.getSolutionPath().get(i);
+                int curr_row = curr_state.getPos().getRowIndex();
+                int curr_col = curr_state.getPos().getColumnIndex();
+
+                double x = curr_col * cellWidth;
+                double y = curr_row * cellHeight;
+    //            gc.fillRect(x,y,cellWidth,cellHeight);
+                gc.drawImage(SolImage, x, y, cellWidth, cellHeight);
+            }
+
         }
     }
 
@@ -265,6 +347,23 @@ public class MazeDisplayer extends Canvas {
                         gc.setFill(Color.TRANSPARENT);
                         gc.fillRect(x,y,cellWidth, cellHeight);
                     }
+                    else if(this.Maccabi){
+                        Image ballImage = null;
+                        try{
+                            ballImage = new Image(new FileInputStream(getImageFileNameBall()));
+                        } catch (Exception e) {
+                            System.out.println("There is no wall image file");
+                        }
+                        if(ballImage==null)
+                        {
+                            gc.setFill(Color.GREEN);
+                            gc.fillRect(x,y,cellWidth, cellHeight);
+                        }
+                        else{
+
+                            gc.drawImage(ballImage,x,y,cellWidth,cellHeight);
+                        }
+                    }
                     else
                         gc.drawImage(wallImage, x, y, cellWidth, cellHeight);
                 }
@@ -277,38 +376,59 @@ public class MazeDisplayer extends Canvas {
         double x = this.player_position.getColumnIndex() * cellWidth;
         double y = this.player_position.getRowIndex() * cellHeight;
 
-
         graphicsContext.setFill(Color.RED);
 
-        Image playerImageright = null;
-        Image playerImageleft = null;
-        Image playerImageup = null;
-        Image playerImagedown = null;
-        try {
-            playerImageright = new Image(new FileInputStream(getImageFileNamePlayer()));
-            playerImageleft = new Image(new FileInputStream(getImageFileNamePlayerLeft()));
-            playerImageup = new Image(new FileInputStream(getImageFileNamePlayerUp()));
-            playerImagedown = new Image(new FileInputStream(getImageFileNamePlayerDown()));
-        } catch (Exception e) {
-            System.out.println("There is no player image file");
-        }
-        if(playerImageright == null){
-            graphicsContext.fillRect(x, y, cellWidth, cellHeight);
-        }
-        else if (last_position.getRowIndex() < this.player_position.getRowIndex()){
-            graphicsContext.drawImage(playerImagedown, x, y, cellWidth, cellHeight);
-        }
-        else if (last_position.getColumnIndex() < this.player_position.getColumnIndex()){
-            graphicsContext.drawImage(playerImageright, x, y, cellWidth, cellHeight);
-        }
-        else if (last_position.getRowIndex() > this.player_position.getRowIndex()){
-            graphicsContext.drawImage(playerImageup, x, y, cellWidth, cellHeight);
-        }
-        else if(last_position.getColumnIndex() > this.player_position.getColumnIndex()){
-            graphicsContext.drawImage(playerImageleft, x, y, cellWidth, cellHeight);
+        if (this.Maccabi)
+        {
+            Image playerImagerMaccabi = null;
+            try{
+                playerImagerMaccabi = new Image(new FileInputStream(getImageFileNamePlayerMaccabi()));
+            } catch (Exception e) {
+                System.out.println("There is no wall image file");
+            }
+            if(playerImagerMaccabi==null)
+            {
+                graphicsContext.setFill(Color.GREEN);
+                graphicsContext.fillRect(x,y,cellWidth, cellHeight);
+            }
+            else{
+
+                graphicsContext.drawImage(playerImagerMaccabi,x,y,cellWidth,cellHeight);
+            }
         }
         else{
-            graphicsContext.drawImage(playerImageright, x, y, cellWidth, cellHeight);
+
+            Image playerImageright = null;
+            Image playerImageleft = null;
+            Image playerImageup = null;
+            Image playerImagedown = null;
+            try {
+                playerImageright = new Image(new FileInputStream(getImageFileNamePlayer()));
+                playerImageleft = new Image(new FileInputStream(getImageFileNamePlayerLeft()));
+                playerImageup = new Image(new FileInputStream(getImageFileNamePlayerUp()));
+                playerImagedown = new Image(new FileInputStream(getImageFileNamePlayerDown()));
+            } catch (Exception e) {
+                System.out.println("There is no player image file");
+            }
+            if(playerImageright == null){
+                graphicsContext.fillRect(x, y, cellWidth, cellHeight);
+            }
+            else if (last_position.getRowIndex() < this.player_position.getRowIndex()){
+                graphicsContext.drawImage(playerImagedown, x, y, cellWidth, cellHeight);
+            }
+            else if (last_position.getColumnIndex() < this.player_position.getColumnIndex()){
+                graphicsContext.drawImage(playerImageright, x, y, cellWidth, cellHeight);
+            }
+            else if (last_position.getRowIndex() > this.player_position.getRowIndex()){
+                graphicsContext.drawImage(playerImageup, x, y, cellWidth, cellHeight);
+            }
+            else if(last_position.getColumnIndex() > this.player_position.getColumnIndex()){
+                graphicsContext.drawImage(playerImageleft, x, y, cellWidth, cellHeight);
+            }
+            else{
+                graphicsContext.drawImage(playerImageright, x, y, cellWidth, cellHeight);
+            }
+
         }
 
     }

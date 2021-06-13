@@ -34,6 +34,7 @@ public class GameOptionsController extends ASceneChanger implements IController,
     public Button wide_game;
     public Button invisible_game;
     public Button load_game;
+    public Button Maccabi_game;
     public VBox menu_bar;
     public javafx.scene.image.ImageView background;
 
@@ -91,6 +92,23 @@ public class GameOptionsController extends ASceneChanger implements IController,
         MyViewController.col = 15;
         OpeningScreenController.background_music = false;
         change_scene_MyView_Invisible(actionEvent);
+        //change_scene_MyView_Maccabi(actionEvent);
+    }
+
+    public void Maccabi_Button_Click(ActionEvent actionEvent) throws IOException {
+        MyViewController.row = 15;
+        MyViewController.col = 15;
+        OpeningScreenController.background_music = false;
+        Alert b = new Alert(Alert.AlertType.INFORMATION);
+        b.setContentText("If you are a fan of Hapoel, Maccabi Tel Aviv or any other team other than Maccabi Haifa, we recommend that you return to the previous screen and choose another option.");
+        b.setHeight(550);
+        b.show();
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        a.setContentText("this is A special edition on the occasion of the 13th championship of the Maccabi Haifa football club");
+        a.setHeight(550);
+        a.show();
+        change_scene_MyView_Maccabi(actionEvent);
+        //If you are a fan of Hapoel, Maccabi Tel Aviv or any other team other than Maccabi Haifa, we recommend that you return to the previous screen and choose another option.
     }
 
 
@@ -131,6 +149,11 @@ public class GameOptionsController extends ASceneChanger implements IController,
         }
     }
 
+    @Override
+    public void stopMaccabiSound() {
+        return;
+    }
+
 
     public void setResizeEvent(Stage stage) {
 
@@ -157,6 +180,9 @@ public class GameOptionsController extends ASceneChanger implements IController,
 
             load_game.setPrefHeight(stage.getHeight() * ((double) 68/500));
             load_game.setLayoutY(stage.getHeight() * ((double) 320/500));
+
+            Maccabi_game.setPrefHeight(stage.getHeight() * ((double) 68/500));
+            Maccabi_game.setLayoutY(stage.getHeight() * ((double) 320/500));
 
             menu_bar.setPrefHeight(menu_bar.getPrefHeight());
 
@@ -185,6 +211,9 @@ public class GameOptionsController extends ASceneChanger implements IController,
 
             load_game.setPrefWidth(stage.getWidth() *  ((double) 155/900));
             load_game.setLayoutX(stage.getWidth() * ((double) 380/900));
+
+            Maccabi_game.setPrefWidth(stage.getWidth() *  ((double) 155/900));
+            Maccabi_game.setLayoutX(stage.getWidth() * ((double) 80/900));
 
             menu_bar.setPrefWidth(stage.getWidth());
         });
