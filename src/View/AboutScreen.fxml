@@ -5,25 +5,29 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AboutScreenConroller">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@S.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AboutScreenConroller">
    <children>
       <Pane prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Text layoutX="149.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About" textAlignment="CENTER" underline="true" wrappingWidth="301.0423150062561">
+            <Text layoutX="149.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About us" textAlignment="CENTER" underline="true" wrappingWidth="301.0423150062561">
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
-            <Text layoutX="22.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Who are we ?" wrappingWidth="200.0" />
+            <Text layoutX="14.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SO, WHO ARE WE?" wrappingWidth="239.33331298828125">
+               <font>
+                  <Font name="tahoma" size="31.0" />
+               </font></Text>
             <Pane layoutX="343.0" layoutY="236.0">
                <children>
-                  <ImageView fx:id="about_image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="about_image" fitHeight="150.0" fitWidth="200.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
             <Pane />
-            <Text layoutX="366.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="we are blablabla" wrappingWidth="259.13671875" />
-            <ImageView fx:id="about_image_2" fitHeight="150.0" fitWidth="200.0" layoutX="17.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="about_image_2" fitHeight="150.0" fitWidth="200.0" layoutX="49.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true" />
+            <TextFlow fx:id="text_flow" layoutX="222.0" layoutY="90.0" prefHeight="131.0" prefWidth="353.0" />
          </children>
       </Pane>
    </children>

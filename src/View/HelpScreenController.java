@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
@@ -86,83 +87,26 @@ public class HelpScreenController implements Initializable {
         lst5.add(how_to_report);
 
 
+        Help_title.setFont(Font.font("tahoma", 31));
+
+        how_to_play.setFont(Font.font("tahoma"));
+        how_to_play_title.setFont(Font.font("tahoma"));
+
+        how_to_create.setFont(Font.font("tahoma"));
+        how_to_create_title.setFont(Font.font("tahoma"));
+
+        how_to_save.setFont(Font.font("tahoma"));
+        how_to_save_title.setFont(Font.font("tahoma"));
+
+        how_to_load.setFont(Font.font("tahoma"));
+        how_to_load_title.setFont(Font.font("tahoma"));
+
+        how_to_settings.setFont(Font.font("tahoma"));
+        how_to_settings_title.setFont(Font.font("tahoma"));
+
+        how_to_report.setFont(Font.font("tahoma"));
+        how_to_report_title.setFont(Font.font("tahoma"));
+
     }
-
-//    public void setResizeEvent(Stage stage) {
-//
-//        how_to_play_title.wrappingWidthProperty().bind(stage.widthProperty());
-//        how_to_create_title.wrappingWidthProperty().bind(stage.widthProperty());
-//        how_to_save_title.wrappingWidthProperty().bind(stage.widthProperty());
-//        how_to_load_title.wrappingWidthProperty().bind(stage.widthProperty());
-//        how_to_settings_title.wrappingWidthProperty().bind(stage.widthProperty());
-//        how_to_report_title.wrappingWidthProperty().bind(stage.widthProperty());
-//        Help_title.wrappingWidthProperty().bind(stage.widthProperty());
-
-//        image_left.setFitHeight(pane_img_left.getPrefHeight());
-//        image_right.setFitHeight(pane_img_right.getPrefHeight());
-//
-//        anchor_pane.heightProperty().addListener((observable, oldValue, newValue) -> {
-//            pane.setPrefHeight(stage.getHeight());
-//            pane_img_left.setPrefHeight(stage.getHeight() * ((double) 88/500));
-//            pane_img_right.setPrefHeight(stage.getHeight() * ((double) 88/500));
-
-
-//            how_to_play_txt.setPrefHeight(stage.getHeight() * ((double) 79/500));
-
-//            easy_game.setPrefHeight(stage.getHeight() * ((double) 68/500));
-//            easy_game.setLayoutY(stage.getHeight() * ((double) 70/500) );
-//
-//            medium_game.setPrefHeight(stage.getHeight() * ((double) 68/500));
-//            medium_game.setLayoutY(stage.getHeight() * ((double) 70/500));
-//
-//            hard_game.setPrefHeight(stage.getHeight() * ((double) 68/500));
-//            hard_game.setLayoutY(stage.getHeight() * ((double) 70/500));
-//
-//            custom_game.setPrefHeight(stage.getHeight() * ((double) 68/500));
-//            custom_game.setLayoutY(stage.getHeight() * ((double) 195/500));
-//
-//            wide_game.setPrefHeight(stage.getHeight() * ((double) 68/500));
-//            wide_game.setLayoutY(stage.getHeight() * ((double) 195/500));
-//
-//            invisible_game.setPrefHeight(stage.getHeight() * ((double) 68/500));
-//            invisible_game.setLayoutY(stage.getHeight() * ((double) 195/500));
-//
-//            load_game.setPrefHeight(stage.getHeight() * ((double) 68/500));
-//            load_game.setLayoutY(stage.getHeight() * ((double) 320/500));
-//
-//            menu_bar.setPrefHeight(menu_bar.getPrefHeight());
-
-//        });
-//
-//        anchor_pane.widthProperty().addListener((observable, oldValue, newValue) -> {
-//            pane.setPrefWidth(stage.getWidth());
-//
-//            pane_img_left.setPrefWidth(stage.getWidth() * ((double) 139/900));
-//            pane_img_left.setPrefWidth(stage.getWidth() * ((double) 192/900));
-//            easy_game.setPrefWidth(stage.getWidth() * ((double) 155/900));
-//            easy_game.setLayoutX(stage.getWidth() * ((double) 80/900));
-//
-//            medium_game.setPrefWidth(stage.getWidth() *  ((double) 155/900));
-//            medium_game.setLayoutX(stage.getWidth() * ((double) 380/900));
-//
-//            hard_game.setPrefWidth(stage.getWidth() *  ((double) 155/900));
-//            hard_game.setLayoutX(stage.getWidth() * ((double) 680/900));
-//
-//            custom_game.setPrefWidth(stage.getWidth() *  ((double) 155/900));
-//            custom_game.setLayoutX(stage.getWidth() * ((double) 80/900));
-//
-//            wide_game.setPrefWidth(stage.getWidth() *  ((double) 155/900));
-//            wide_game.setLayoutX(stage.getWidth() * ((double) 380/900));
-//
-//            invisible_game.setPrefWidth(stage.getWidth() *  ((double) 155/900));
-//            invisible_game.setLayoutX(stage.getWidth() * ((double) 680/900));
-//
-//            load_game.setPrefWidth(stage.getWidth() *  ((double) 155/900));
-//            load_game.setLayoutX(stage.getWidth() * ((double) 380/900));
-//
-//            menu_bar.setPrefWidth(stage.getWidth());
-//        });
-//    }
-
 
 }

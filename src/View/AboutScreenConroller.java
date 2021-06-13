@@ -1,7 +1,11 @@
 package View;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -11,6 +15,8 @@ import java.util.ResourceBundle;
 public class AboutScreenConroller implements Initializable {
     public javafx.scene.image.ImageView about_image;
     public javafx.scene.image.ImageView about_image_2;
+    public TextFlow text_flow;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try{
@@ -23,5 +29,12 @@ public class AboutScreenConroller implements Initializable {
         }
         catch (Exception e){
         }
+
+        Text text_to_add = new Text("Hi, we are Omri and Amit, two SISE students from BGU University. We really hope that you enjoy our game! We spent month working to give YOU the best experience possible! So have fun and don't forget to rate us 5-Stars!");
+        text_to_add.setStyle("-fx-font: 15 tahoma;");
+
+        ObservableList<Node> lst = text_flow.getChildren();
+        lst.add(text_to_add);
+
     }
 }
