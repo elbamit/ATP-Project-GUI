@@ -66,6 +66,7 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
     private double MouseX;
     private double MouseY;
     private boolean Drag_started = false;
+    MediaPlayer themeMediaPlayer = null;
 
 
     public void setViewModel(MyViewModel viewModel) {
@@ -90,11 +91,17 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
 
             }
             else if(arg instanceof String){
-                if(((String)arg).equals("Start the party")){
+                if(((String)arg).equals("Start the party") && themeMediaPlayer==null){
                     //mazeDisplayer.drawMaze(viewModel.getMaze(),viewModel.getMaze().getStartPosition());
                     //displayMaze((Maze) arg);
                     DJ_PlayMusic();
                     StartTheParty();
+                    mazeDisplayer.resetSol();
+                    viewModel.restartGame();
+                }
+                else{
+                    stopMaccabiSound();
+                    StartThePartyMaccabi();
                     mazeDisplayer.resetSol();
                     viewModel.restartGame();
                 }
@@ -152,6 +159,39 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
 
     }
 
+    private void StartThePartyMaccabi() {
+        try {
+            //String path = "C:\\Users\\omrim\\Desktop\\הנדסת מערכות מידע\\שנה ב'\\סימסטר ד'\\נושאים מתקדמים בתכנות\\פרוייקט\\ATP-Project-GUI\\resources\\images\\FinalGoal.mp4";
+            //Instantiating Media class
+            Media media = new Media(new File(System.getProperty ("user.dir") + "\\resources\\images\\partyMaccabi.mp4").toURI().toString());
+            //Instantiating MediaPlayer class
+            MediaPlayer mediaPlayer = new MediaPlayer(media);
+            //Instantiating MediaView class
+            MediaView mediaView = new MediaView(mediaPlayer);
+            //by setting this property to true, the Video will be played
+            mediaPlayer.setAutoPlay(true);
+            //setting group and scene
+            Group root1 = new Group();
+            root1.getChildren().add(mediaView);
+            Stage stage = new Stage();
+            stage.setTitle("you are the best ! ! !");
+            Scene scene = new Scene(root1, 900, 620);
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setContentText("after 10 years, Maccabi Haifa is the champion again, the championship is back home to Carmel,Championship number 13!");
+            a.show();
+/*            PauseTransition delay = new PauseTransition(Duration.seconds(160));
+            delay.setOnFinished(event -> {
+                stage.close();
+            });
+            delay.play();*/
+        }catch (Exception e){}
+
+
+    }
+
     public MyViewController returnthis(){
         return this;
     }
@@ -165,7 +205,6 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
     //Function that does stuff upon loading the MyView fxml
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         if (this.viewModel== null){
 
             MyModel model = new MyModel();
@@ -305,6 +344,7 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
     public void setInvisible(){
         this.mazeDisplayer.setInvisible();
     }
+    public void setMaccabi(){this.mazeDisplayer.setMaccabi();}
 
     public void setvisible(){
         this.mazeDisplayer.setVisible();
@@ -372,12 +412,15 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
     }
 
     public void setResizeEvent(Stage stage) {
+
+
         mazeDisplayer.widthProperty().bind(MazePane.widthProperty());
         mazeDisplayer.heightProperty().bind(MazePane.heightProperty());
 
         MazePane.setLayoutX(0);
         MazePane.setLayoutY(0);
 
+        //stage.getScene().
         MazePane.heightProperty().addListener((observable, oldValue, newValue) -> {
             MazePane.setPrefHeight(stage.getHeight()*0.84);
 
@@ -427,5 +470,19 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
     }
 
 
+    public void playMaccabiSound() {
+        if(this.mazeDisplayer.Maccabi){
+            String path = this.getClass().getResource("/sounds/maccabiSound.mp3").toString();
+            Media sound = new Media(path);
+            //MediaPlayer
+            themeMediaPlayer = new MediaPlayer(sound);
+            themeMediaPlayer.play();
 
+        }
+    }
+    public void stopMaccabiSound() {
+        if(this.themeMediaPlayer !=null){
+            themeMediaPlayer.stop();
+        }
+    }
 }

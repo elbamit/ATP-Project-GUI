@@ -82,6 +82,11 @@ public class OpeningScreenController extends ASceneChanger implements Initializa
         }
     }
 
+    @Override
+    public void stopMaccabiSound() {
+        return;
+    }
+
 
     public void setResizeEvent(Stage stage) {
 

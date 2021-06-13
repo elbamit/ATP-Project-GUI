@@ -133,5 +133,10 @@ public class Generate_Custom_GameController extends ASceneChanger implements ICo
 
     }
 
+    @Override
+    public void stopMaccabiSound() {
+        return;
+    }
+
 
 }
