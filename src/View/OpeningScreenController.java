@@ -10,6 +10,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,6 +22,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -157,10 +159,11 @@ public class OpeningScreenController extends ASceneChanger implements Initializa
         }catch (FileNotFoundException e){
             e.printStackTrace();
         }
+
         background.setImage(wallpaper);
         background.fitHeightProperty().bind(root.heightProperty());
         background.fitWidthProperty().bind(root.widthProperty());
-//        playTheme();//TODO uncomment this
+        playTheme();//TODO uncomment this
 
     }
 

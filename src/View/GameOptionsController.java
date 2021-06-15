@@ -74,6 +74,8 @@ public class GameOptionsController extends ASceneChanger implements IController,
     }
 
     public void Load_Game_Click(ActionEvent actionEvent) throws IOException {
+        MyViewController.row = 10;
+        MyViewController.col = 10;
         MyViewController.loaded=true;
         OpeningScreenController.background_music = false;
         change_scene(actionEvent, "Game", "MyView.fxml");

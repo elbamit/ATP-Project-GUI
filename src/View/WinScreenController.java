@@ -56,7 +56,7 @@ public class WinScreenController extends ASceneChanger implements Initializable{
 
     public void Donate_Click(ActionEvent actionEvent) throws IOException {
         Alert a = new Alert(Alert.AlertType.INFORMATION);
-        a.setContentText("We appreciate it, Please contact our secretary at the following email address: elbamit@hotmail.com , Thanks ;-)");
+        a.setContentText("We appreciate it, Tfo Tfo Tfo We are fine, but you can find a wonderful charity that can donate at the following site: https://www.israelgives.org/ , Thanks ;-)");
         a.setHeight(420);
         a.show();
         Node node = (Node) actionEvent.getSource();

@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -29,6 +30,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.FileInputStream;
@@ -132,6 +134,7 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
             root1.getChildren().add(mediaView);
             Stage stage = new Stage();
             stage.setTitle("you are the best ! ! !");
+
             Scene scene = new Scene(root1, 900, 420);
             stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -149,7 +152,6 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
                 }
                 Scene scene1 = new Scene(root, 600, 400);
                 stage.setScene(scene1);
-                //stage.initModality(Modality.APPLICATION_MODAL); //Lock the window until it closes
                 stage.show();
 
             });
@@ -163,7 +165,7 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
         try {
             //String path = "C:\\Users\\omrim\\Desktop\\הנדסת מערכות מידע\\שנה ב'\\סימסטר ד'\\נושאים מתקדמים בתכנות\\פרוייקט\\ATP-Project-GUI\\resources\\images\\FinalGoal.mp4";
             //Instantiating Media class
-            Media media = new Media(new File(System.getProperty ("user.dir") + "\\resources\\images\\partyMaccabi.mp4").toURI().toString());
+            Media media = new Media(new File(System.getProperty ("user.dir") + "\\resources\\images\\partyMaccabi_short.mp4").toURI().toString());
             //Instantiating MediaPlayer class
             MediaPlayer mediaPlayer = new MediaPlayer(media);
             //Instantiating MediaView class
@@ -175,18 +177,29 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
             root1.getChildren().add(mediaView);
             Stage stage = new Stage();
             stage.setTitle("you are the best ! ! !");
-            Scene scene = new Scene(root1, 900, 620);
+            Screen screen = Screen.getPrimary();
+            Rectangle2D bounds = screen.getVisualBounds();
+
+            stage.setX(bounds.getMinX());
+            stage.setY(bounds.getMinY());
+            stage.setWidth(bounds.getWidth());
+            stage.setHeight(bounds.getHeight());
+            Scene scene = new Scene(root1, bounds.getWidth(), bounds.getHeight());
             stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
             Alert a = new Alert(Alert.AlertType.INFORMATION);
             a.setContentText("after 10 years, Maccabi Haifa is the champion again, the championship is back home to Carmel,Championship number 13!");
             a.show();
-/*            PauseTransition delay = new PauseTransition(Duration.seconds(160));
+            PauseTransition delay = new PauseTransition(Duration.seconds(20));
+            //stage.initModality(Modality.APPLICATION_MODAL); //Lock the window until it closes
             delay.setOnFinished(event -> {
                 stage.close();
+                a.setContentText("Thank you so much for being you, hope you enjoyed the championship edition! You can return to the options screen by clicking the bottom button on the left");
+                a.show();
+
             });
-            delay.play();*/
+            delay.play();
         }catch (Exception e){}
 
 
@@ -259,6 +272,9 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
                 a.show();
                 MyViewController.row = 10;
                 MyViewController.col = 10;
+                MazePane.setPrefHeight(500);
+                MazePane.setPrefWidth(900);
+                generateMazeAuto();
 
             }
         }
@@ -267,10 +283,13 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
             a1.setContentText("Please don't look for bugs, just enjoy our awesome game ;)"); //TODO maybe remove
             a1.show();
             Alert a = new Alert((Alert.AlertType.ERROR));
-            a.setContentText("Error in loading the maze... Please try again");
+            a.setContentText("Error in loading the maze...Please try again or play an easy game");
             a.show();
             MyViewController.row = 10;
             MyViewController.col = 10;
+            MazePane.setPrefHeight(500);
+            MazePane.setPrefWidth(900);
+            generateMazeAuto();
 
 
 
