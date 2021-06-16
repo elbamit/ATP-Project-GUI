@@ -95,7 +95,7 @@ public class GameOptionsController extends ASceneChanger implements IController,
         MyViewController.col = 15;
         OpeningScreenController.background_music = false;
         change_scene_MyView_Invisible(actionEvent);
-        //change_scene_MyView_Maccabi(actionEvent);
+
     }
 
     public void Maccabi_Button_Click(ActionEvent actionEvent) throws IOException {
@@ -103,15 +103,15 @@ public class GameOptionsController extends ASceneChanger implements IController,
         MyViewController.col = 15;
         OpeningScreenController.background_music = false;
         Alert b = new Alert(Alert.AlertType.INFORMATION);
-        b.setContentText("If you are a fan of Hapoel, Maccabi Tel Aviv or any other team other than Maccabi Haifa, we recommend that you return to the previous screen and choose another option.");
+        b.setContentText("If you're a fan of Hapoel, Maccabi Tel Aviv, or any other team other than Maccabi Haifa, we recommend that you return to the previous screen and choose another option.");
         b.setHeight(550);
         b.show();
         Alert a = new Alert(Alert.AlertType.INFORMATION);
-        a.setContentText("this is A special edition on the occasion of the 13th championship of the Maccabi Haifa football club");
+        a.setContentText("This is a special easter egg edition for celebrating the 13th championship of Maccabi Haifa Football Club.");
         a.setHeight(550);
         a.show();
         change_scene_MyView_Maccabi(actionEvent);
-        //If you are a fan of Hapoel, Maccabi Tel Aviv or any other team other than Maccabi Haifa, we recommend that you return to the previous screen and choose another option.
+
     }
 
 

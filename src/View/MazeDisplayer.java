@@ -195,7 +195,7 @@ public class MazeDisplayer extends Canvas {
         ResetZoom();
         draw();
     }
-    public void drawMaze(Maze maze,Position player_position){
+    public void drawMaze(Maze maze, Position player_position){
         this.maze = maze;
         this.last_position = this.player_position;
         this.player_position = player_position;

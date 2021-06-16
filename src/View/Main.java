@@ -36,11 +36,8 @@ public class Main extends Application {
         Scene new_scene = new Scene(root, 900, 500);
         primaryStage.setScene(new_scene);
 
-//        primaryStage.setWidth(900);
-//        primaryStage.setHeight(500)
-//        ;
         OpeningScreenController mv =(OpeningScreenController) loader.getController();
-//        mv.setResizeEvent(primaryStage);
+
         mv.setResizeEvent1(new_scene);
         SetStageCloseEvent(primaryStage);
         primaryStage.show();

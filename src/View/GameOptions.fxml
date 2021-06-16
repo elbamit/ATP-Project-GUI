@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?impoet View.*?>
+
 <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" stylesheets="@S.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.GameOptionsController">
    <children>
       <ImageView fx:id="background" fitHeight="514.0" fitWidth="920.0" layoutX="-7.0" pickOnBounds="true" preserveRatio="false">
@@ -71,7 +72,7 @@
             </MenuBar>
          </children>
       </VBox>
-      <Button fx:id="Maccabi_game" layoutX="80.0" layoutY="320.0" mnemonicParsing="false" onAction="#Maccabi_Button_Click" prefHeight="68.0" prefWidth="155.0" text="Championship Edition" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="Maccabi_game" layoutX="80.0" layoutY="320.0" mnemonicParsing="false" onAction="#Maccabi_Button_Click" prefHeight="68.0" prefWidth="155.0" text="Maccabi Haifa Edition" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="8.0" />
          </font>

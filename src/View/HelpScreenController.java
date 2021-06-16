@@ -91,7 +91,6 @@ public class HelpScreenController implements Initializable {
 
         how_to_play.setFont(Font.font("tahoma"));
         how_to_play_title.setFont(Font.font("tahoma"));
-
         how_to_create.setFont(Font.font("tahoma"));
         how_to_create_title.setFont(Font.font("tahoma"));
 
@@ -106,6 +105,8 @@ public class HelpScreenController implements Initializable {
 
         how_to_report.setFont(Font.font("tahoma"));
         how_to_report_title.setFont(Font.font("tahoma"));
+
+        anchor_pane.setStyle("-fx-background-color: IVORY");
 
     }
 

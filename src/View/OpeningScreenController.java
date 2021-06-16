@@ -120,8 +120,6 @@ public class OpeningScreenController extends ASceneChanger implements Initializa
 
     private void playTheme() {
 
-        //String musicFile = "resources/Sounds/theme.mp3";
-        //Media sound = new Media(new File(musicFile).toURI().toString());
         background_music = true;
         Thread musicThread = new Thread(() -> {
             try {
@@ -131,12 +129,6 @@ public class OpeningScreenController extends ASceneChanger implements Initializa
                     MediaPlayer themeMediaPlayer = new MediaPlayer(sound);
                     themeMediaPlayer.play();
 
-                    //Media sound = new Media(new File(musicFile).toURI().toString());
-
-//                    String path = "C:/Users/elbam/OneDrive/Documents/Study/Year2/Semester B/Advanced Topics Programming/ATP-Project-GUI/resources/sounds/Opening_music.mp3";
-//                    Media sound = new Media(new File(path).toURI().toString());
-//                    MediaPlayer mediaPlayer = new MediaPlayer(sound);
-//                    mediaPlayer.play();
                     int time = 70000;
                     while(background_music){
                         Thread.sleep(10);
@@ -160,10 +152,11 @@ public class OpeningScreenController extends ASceneChanger implements Initializa
             e.printStackTrace();
         }
 
+
         background.setImage(wallpaper);
         background.fitHeightProperty().bind(root.heightProperty());
         background.fitWidthProperty().bind(root.widthProperty());
-        playTheme();//TODO uncomment this
+        playTheme();
 
     }
 
@@ -174,8 +167,6 @@ public class OpeningScreenController extends ASceneChanger implements Initializa
             menu_bar_box.setPrefHeight(30);
             start_game_button.setPrefHeight(new_scene.getHeight()/3.5);
             start_game_button.setLayoutY(new_scene.getHeight()/3);
-
-            //TODO add resize for the menu bar
 
         });
 

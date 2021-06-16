@@ -55,15 +55,8 @@ public class MyModel extends Observable implements IModel {
         this.mazeGeneratorServer.stop();
         this.mazeSolverServer.stop();
         serverworking=false;
-        System.out.println("Stopping servers");//TODO delete this
-
     }
 
-//    public static boolean exit_procedure(){
-//        if (serverworking){
-//            MyModel.stopServers();
-//        }
-//    }
 
     @Override
     public void generateMaze(int rows, int cols) {

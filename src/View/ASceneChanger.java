@@ -104,9 +104,9 @@ public abstract class ASceneChanger {
         thisStage.setHeight(500);
 
         MyViewController mv =(MyViewController) loader.getController();
+        mv.setInvisible();
         mv.stopMaccabiSound();
         mv.setResizeEvent(new_scene);
-        mv.setInvisible();
         SetStageCloseEvent(thisStage);
         thisStage.show();
     }
@@ -148,10 +148,12 @@ public abstract class ASceneChanger {
                     if (MyModel.serverworking){
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("MyView.fxml"));
                         try {
+                            MyViewController.Leaving_game();
                             loader.load();
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
+
                         MyViewController mv = loader.getController();
                         mv.viewModel.stopServers();
                         Platform.exit();

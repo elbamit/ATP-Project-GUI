@@ -64,6 +64,11 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
     public static int row;
     public static int col;
     public static boolean loaded=false;
+    private static boolean leaving_game = false;
+
+    public static void Leaving_game() {
+        leaving_game = true;
+    }
 
     private double MouseX;
     private double MouseY;
@@ -189,7 +194,7 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
             Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setContentText("after 10 years, Maccabi Haifa is the champion again, the championship is back home to Carmel,Championship number 13!");
+            a.setContentText("After 10 years, Maccabi Haifa has taken the championship back home to the Carmel for the 13 time!");
             a.show();
             PauseTransition delay = new PauseTransition(Duration.seconds(20));
             //stage.initModality(Modality.APPLICATION_MODAL); //Lock the window until it closes
@@ -218,10 +223,16 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
     //Function that does stuff upon loading the MyView fxml
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Alert a = new Alert(Alert.AlertType.INFORMATION);
-        a.setContentText("Sanity check! To start playing, please click on one of the following: car, track or end point");
-        a.setHeight(550);
-        a.show();
+
+        if (!leaving_game){
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setContentText("To start playing, please click the car, track or the finish line. After that you can use the mouse, keyboard or numpad to move around.");
+            a.setHeight(550);
+            a.show();
+        }
+
+
+
         if (this.viewModel== null){
 
             MyModel model = new MyModel();
@@ -242,10 +253,7 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
         else{
             MazePane.setPrefHeight(500);
             MazePane.setPrefWidth(900);
-//            mazeDisplayer.setHeight(MazePane.getHeight());
-//            mazeDisplayer.setWidth(MazePane.getWidth());
-//            mazeDisplayer.heightProperty().bind(MazePane.heightProperty());
-//            mazeDisplayer.widthProperty().bind(MazePane.widthProperty());
+
             generateMazeAuto();
         }
 
@@ -284,7 +292,7 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
         }
         else{
             Alert a1 = new Alert((Alert.AlertType.INFORMATION));
-            a1.setContentText("Please don't look for bugs, just enjoy our awesome game ;)"); //TODO maybe remove
+            a1.setContentText("Please don't look for bugs, just enjoy our awesome game ;)");
             a1.show();
             Alert a = new Alert((Alert.AlertType.ERROR));
             a.setContentText("Error in loading the maze...Please try again or play an easy game");
@@ -464,8 +472,8 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
     }
 
     public void setResizeEvent(Scene scene) {
-//        mazeDisplayer.widthProperty().bind(MazePane.widthProperty());
 //        mazeDisplayer.heightProperty().bind(MazePane.heightProperty());
+//        mazeDisplayer.widthProperty().bind(MazePane.widthProperty());
 
         MazePane.setLayoutX(0);
         MazePane.setLayoutY(0);

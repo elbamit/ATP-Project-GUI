@@ -4,12 +4,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.TextFlow?>
-<?import View.*?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.WinScreenController">
+
+<AnchorPane fx:id="anchorepane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.WinScreenController">
     <children>
         <TextFlow fx:id="left_text_txt" layoutX="5.0" layoutY="3.0" prefHeight="314.0" prefWidth="282.0" />
-        <Button layoutX="-1.0" layoutY="321.0" mnemonicParsing="false" onAction="#Back_To_Game_Options" prefHeight="79.0" prefWidth="282.0" text="Play Again" textAlignment="CENTER" />
-        <Button layoutX="281.0" layoutY="322.0" mnemonicParsing="false" onAction="#Donate_Click" prefHeight="79.0" prefWidth="319.0" text="Donate us" />
+        <Button fx:id="play_again_button" layoutY="322.0" mnemonicParsing="false" onAction="#Back_To_Game_Options" prefHeight="79.0" prefWidth="299.0" text="Play Again" textAlignment="CENTER" />
+        <Button fx:id="donate_button" layoutX="300.0" layoutY="322.0" mnemonicParsing="false" onAction="#Donate_Click" prefHeight="79.0" prefWidth="299.0" text="Donate us" />
         <ImageView fx:id="image_right" fitHeight="322.0" fitWidth="319.0" layoutX="281.0" pickOnBounds="true" preserveRatio="true" />
     </children>
 </AnchorPane>

@@ -11,6 +11,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -22,6 +23,14 @@ import java.util.ResourceBundle;
 
 public class PropertiesController extends ASceneChanger implements Initializable, Observer{
 
+    public Text title;
+    public Text num_of_threads;
+    public Text gener_algo;
+    public Text solve_algo;
+    public Text property_mini_title;
+    public Text current_value_mini_title;
+    public Text change_value_mini_title;
+    public AnchorPane anchorpane;
     private MyViewModel viewModel;
 
     @FXML
@@ -65,6 +74,20 @@ public class PropertiesController extends ASceneChanger implements Initializable
                 e.printStackTrace();
             }
         }
+        title.setStyle("-fx-font: 30 tahoma");
+        num_of_threads.setStyle("-fx-font: 12 tahoma");
+        gener_algo.setStyle("-fx-font: 12 tahoma");
+        solve_algo.setStyle("-fx-font: 12 tahoma");
+        property_mini_title.setStyle("-fx-font: 12 tahoma");
+        current_value_mini_title.setStyle("-fx-font: 12 tahoma");
+        change_value_mini_title.setStyle("-fx-font: 12 tahoma");
+        Thread_Num_Past.setStyle("-fx-font: 12 tahoma");
+        Gener_algo_past.setStyle("-fx-font: 12 tahoma");
+        Solving_Algo_Past.setStyle("-fx-font: 12 tahoma");
+
+        anchorpane.setStyle("-fx-background-color: IVORY");
+
+
     }
 
     @Override

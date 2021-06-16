@@ -10,9 +10,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.PropertiesController" stylesheets="@S.css">
+<AnchorPane fx:id="anchorpane" prefHeight="400.0" prefWidth="600.0" stylesheets="@S.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.PropertiesController">
    <children>
-      <Text layoutX="97.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Properties" textAlignment="CENTER" underline="true" wrappingWidth="417.13671875">
+      <Text fx:id="title" layoutX="97.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Properties" textAlignment="CENTER" underline="true" wrappingWidth="417.13671875">
          <font>
             <Font size="42.0" />
          </font>
@@ -30,18 +30,18 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Threads:" textAlignment="CENTER" wrappingWidth="131.13671875" GridPane.rowIndex="1" />
+            <Text fx:id="num_of_threads" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Threads:" textAlignment="CENTER" wrappingWidth="131.13671875" GridPane.rowIndex="1" />
             <TextField fx:id="Thread_Num" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Text fx:id="Thread_Num_Past" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="130.13671875" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Generating Algorithm:" textAlignment="CENTER" wrappingWidth="134.91925048828125" GridPane.rowIndex="2" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Solving Algorithm:" textAlignment="CENTER" wrappingWidth="124.39520263671875" GridPane.rowIndex="3" />
+            <Text fx:id="gener_algo" strokeType="OUTSIDE" strokeWidth="0.0" text="Generating Algorithm:" textAlignment="CENTER" wrappingWidth="134.91925048828125" GridPane.rowIndex="2" />
+            <Text fx:id="solve_algo" strokeType="OUTSIDE" strokeWidth="0.0" text="Solving Algorithm:" textAlignment="CENTER" wrappingWidth="124.39520263671875" GridPane.rowIndex="3" />
             <ComboBox fx:id="Generating_Algorithm_Box" prefWidth="150.0" promptText="Choose Generating Algorithm:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <ComboBox fx:id="Solving_Algorithm_Box" prefWidth="150.0" promptText="Choose Solving Algorithm" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Text fx:id="Gener_algo_past" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="130.13671875" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Text fx:id="Solving_Algo_Past" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="130.13671875" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Property" textAlignment="CENTER" underline="true" wrappingWidth="165.13671875" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Current value" textAlignment="CENTER" underline="true" wrappingWidth="165.13671875" GridPane.columnIndex="1" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Change Value" textAlignment="CENTER" underline="true" wrappingWidth="165.13671875" GridPane.columnIndex="2" />
+            <Text fx:id="property_mini_title" strokeType="OUTSIDE" strokeWidth="0.0" text="Property" textAlignment="CENTER" underline="true" wrappingWidth="165.13671875" />
+            <Text fx:id="current_value_mini_title" strokeType="OUTSIDE" strokeWidth="0.0" text="Current value" textAlignment="CENTER" underline="true" wrappingWidth="165.13671875" GridPane.columnIndex="1" />
+            <Text fx:id="change_value_mini_title" strokeType="OUTSIDE" strokeWidth="0.0" text="Change Value" textAlignment="CENTER" underline="true" wrappingWidth="165.13671875" GridPane.columnIndex="2" />
          </children>
       </GridPane>
       <Button fx:id="CancelButton" layoutX="174.0" layoutY="339.0" mnemonicParsing="false" onAction="#Cancel_Button_Click" prefHeight="35.0" prefWidth="92.0" text="Cancel" />
