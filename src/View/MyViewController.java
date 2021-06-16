@@ -218,6 +218,10 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
     //Function that does stuff upon loading the MyView fxml
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        a.setContentText("Sanity check! To start playing, please click on one of the following: car, track or end point");
+        a.setHeight(550);
+        a.show();
         if (this.viewModel== null){
 
             MyModel model = new MyModel();

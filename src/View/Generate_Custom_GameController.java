@@ -3,11 +3,14 @@ package View;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -15,10 +18,14 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class Generate_Custom_GameController extends ASceneChanger implements IController{
+public class Generate_Custom_GameController extends ASceneChanger implements Initializable,IController{
 
     @FXML
     public Pane pane;
@@ -38,6 +45,8 @@ public class Generate_Custom_GameController extends ASceneChanger implements ICo
     public TextField textField_mazeColumns;
     @FXML
     public VBox menu_bar;
+    @FXML
+    private ImageView background;
 
 
     public void Generate_Maze_Custom_Click(ActionEvent actionEvent) throws IOException {
@@ -139,4 +148,18 @@ public class Generate_Custom_GameController extends ASceneChanger implements ICo
     }
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Image wallpaper = null;
+        try{
+            wallpaper = new Image(new FileInputStream("./resources/images/custom_good_back.jpg"));
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+
+        background.setImage(wallpaper);
+        background.fitHeightProperty().bind(pane.heightProperty());
+        background.fitWidthProperty().bind(pane.widthProperty());
+    }
 }
+

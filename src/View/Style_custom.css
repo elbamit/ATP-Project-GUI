@@ -1,0 +1,32 @@
+.root {
+    -fx-background-color: DarkGray;
+}
+
+Button {
+    -fx-text-fill: DimGrey;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-size: 2em;
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#FF6347, #D2B48C);
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+}
+
+Button:hover {
+    -fx-background-color: linear-gradient(FireBrick, #FF6347);
+    -fx-font-size: 2.5em;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-radius: 3px, 3px, 2px, 1px;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em; /* 4 8 4 8 */
+    -fx-text-fill: -fx-text-base-color;
+    -fx-alignment: CENTER;
+    -fx-content-display: LEFT;
+
+}
+
+VBox{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+
+}
