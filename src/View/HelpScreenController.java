@@ -9,8 +9,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
-import javafx.stage.Stage;
-
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.net.URL;
@@ -107,7 +105,5 @@ public class HelpScreenController implements Initializable {
         how_to_report_title.setFont(Font.font("tahoma"));
 
         anchor_pane.setStyle("-fx-background-color: IVORY");
-
     }
-
 }

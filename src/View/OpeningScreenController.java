@@ -47,12 +47,10 @@ public class OpeningScreenController extends ASceneChanger implements Initializa
     public javafx.scene.image.ImageView background;
 
 
-    //    public Thread musicThread;
     public static boolean background_music = false;
 
 
     public void Start_Game_Click(ActionEvent actionEvent) throws IOException {
-//        change_scene_game_options(actionEvent);
         change_scene(actionEvent, "Game Options", "GameOptions.fxml");
     }
 
@@ -73,7 +71,6 @@ public class OpeningScreenController extends ASceneChanger implements Initializa
 
 
     public void close_button_click(Event actionEvent){
-//        closeWindow();
         exit_from_menu();
     }
 
@@ -102,7 +99,6 @@ public class OpeningScreenController extends ASceneChanger implements Initializa
             start_game_button.setPrefHeight(scene.getHeight()/3.5);
             start_game_button.setLayoutY(scene.getHeight()/3);
 
-            //TODO add resize for the menu bar
 
         });
 

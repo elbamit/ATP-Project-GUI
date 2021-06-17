@@ -12,7 +12,6 @@ import Server.ServerStrategyGenerateMaze;
 import Server.ServerStrategySolveSearchProblem;
 import Server.Configurations;
 import Client.IClientStrategy;
-import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
@@ -404,8 +403,6 @@ public class MyModel extends Observable implements IModel {
             a.show();
         }
     }
-
-
 
 
     //Function that restarts the game by putting the player back to its start position

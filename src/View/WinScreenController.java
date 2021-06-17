@@ -1,13 +1,9 @@
 package View;
 
-import javafx.animation.PauseTransition;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -17,7 +13,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
-import javafx.util.Duration;
+
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -79,7 +75,6 @@ public class WinScreenController extends ASceneChanger implements Initializable{
         Node node = (Node) actionEvent.getSource();
         Stage thisStage = (Stage) node.getScene().getWindow();
         thisStage.close();
-        //change_scene(actionEvent, "Game Options", "GameOptions.fxml");
     }
 
     public void Donate_Click(ActionEvent actionEvent) throws IOException {
@@ -90,7 +85,6 @@ public class WinScreenController extends ASceneChanger implements Initializable{
         Node node = (Node) actionEvent.getSource();
         Stage thisStage = (Stage) node.getScene().getWindow();
         thisStage.close();
-        //change_scene(actionEvent, "Game Options", "GameOptions.fxml");
 
     }
 

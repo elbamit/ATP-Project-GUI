@@ -5,7 +5,7 @@ import javafx.stage.Stage;
 
 public interface IController {
     void setResizeEvent(Scene scene);
-    void closeWindow();
+    void closeWindow();//TODO remove
     void stopMaccabiSound();
 
 }

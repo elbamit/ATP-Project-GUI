@@ -1,7 +1,6 @@
 package View;
 
 import Model.MyModel;
-import Server.Configurations;
 import ViewModel.MyViewModel;
 import algorithms.mazeGenerators.*;
 import algorithms.search.Solution;
@@ -10,13 +9,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
@@ -99,8 +95,7 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
             }
             else if(arg instanceof String){
                 if(((String)arg).equals("Start the party") && themeMediaPlayer==null){
-                    //mazeDisplayer.drawMaze(viewModel.getMaze(),viewModel.getMaze().getStartPosition());
-                    //displayMaze((Maze) arg);
+
                     DJ_PlayMusic();
                     StartTheParty();
                     mazeDisplayer.resetSol();
@@ -125,15 +120,21 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
 
     private void StartTheParty() {
         try {
+            //TODO remove
             String path = "C:\\Users\\omrim\\Desktop\\הנדסת מערכות מידע\\שנה ב'\\סימסטר ד'\\נושאים מתקדמים בתכנות\\פרוייקט\\ATP-Project-GUI\\resources\\images\\FinalGoal.mp4";
+
             //Instantiating Media class
             Media media = new Media(new File(System.getProperty ("user.dir") + "\\resources\\images\\FinalGoal.mp4").toURI().toString());
+
             //Instantiating MediaPlayer class
             MediaPlayer mediaPlayer = new MediaPlayer(media);
+
             //Instantiating MediaView class
             MediaView mediaView = new MediaView(mediaPlayer);
+
             //by setting this property to true, the Video will be played
             mediaPlayer.setAutoPlay(true);
+
             //setting group and scene
             Group root1 = new Group();
             root1.getChildren().add(mediaView);
@@ -168,13 +169,16 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
 
     private void StartThePartyMaccabi() {
         try {
-            //String path = "C:\\Users\\omrim\\Desktop\\הנדסת מערכות מידע\\שנה ב'\\סימסטר ד'\\נושאים מתקדמים בתכנות\\פרוייקט\\ATP-Project-GUI\\resources\\images\\FinalGoal.mp4";
+
             //Instantiating Media class
             Media media = new Media(new File(System.getProperty ("user.dir") + "\\resources\\images\\partyMaccabi_short.mp4").toURI().toString());
+
             //Instantiating MediaPlayer class
             MediaPlayer mediaPlayer = new MediaPlayer(media);
+
             //Instantiating MediaView class
             MediaView mediaView = new MediaView(mediaPlayer);
+
             //by setting this property to true, the Video will be played
             mediaPlayer.setAutoPlay(true);
             //setting group and scene
@@ -197,7 +201,7 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
             a.setContentText("After 10 years, Maccabi Haifa has taken the championship back home to the Carmel for the 13 time!");
             a.show();
             PauseTransition delay = new PauseTransition(Duration.seconds(20));
-            //stage.initModality(Modality.APPLICATION_MODAL); //Lock the window until it closes
+
             delay.setOnFinished(event -> {
                 stage.close();
                 a.setContentText("Thank you so much for being you, hope you enjoyed the championship edition! You can return to the options screen by clicking the bottom button on the left");
@@ -210,14 +214,11 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
 
     }
 
-    public MyViewController returnthis(){
-        return this;
-    }
 
 
     public void mouseClicked(MouseEvent mouseEvent) {
         mazeDisplayer.requestFocus();
-    }//מהתרגול
+    }
 
 
     //Function that does stuff upon loading the MyView fxml
@@ -230,8 +231,6 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
             a.setHeight(550);
             a.show();
         }
-
-
 
         if (this.viewModel== null){
 
@@ -258,7 +257,6 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
         }
 
     }
-
 
 
     private void Load_Maze_and_display() throws IOException {
@@ -328,10 +326,6 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
     }
 
 
-
-
-
-
     private void Restart_Game(){
         this.viewModel.restartGame();
         this.mazeDisplayer.deleteSolutionPath();
@@ -381,10 +375,6 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
         this.mazeDisplayer.setInvisible();
     }
     public void setMaccabi(){this.mazeDisplayer.setMaccabi();}
-
-    public void setvisible(){
-        this.mazeDisplayer.setVisible();
-    }
 
 
 
@@ -472,8 +462,6 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
     }
 
     public void setResizeEvent(Scene scene) {
-//        mazeDisplayer.heightProperty().bind(MazePane.heightProperty());
-//        mazeDisplayer.widthProperty().bind(MazePane.widthProperty());
 
         MazePane.setLayoutX(0);
         MazePane.setLayoutY(0);

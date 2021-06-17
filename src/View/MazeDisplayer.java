@@ -170,21 +170,7 @@ public class MazeDisplayer extends Canvas {
     public void setMaccabi(){
         this.Maccabi = true;
     }
-    public void setUnMaccabi(){this.Maccabi = false;}
 
-
-    public void setPlayer_position(Position player_position) {
-        this.player_position = player_position;
-    }
-
-
-    public Solution getSolution() {
-        return solution;
-    }
-
-    public Position getPlayer_position() {
-        return player_position;
-    }
 
     public void drawMaze(Maze maze){
         this.maze = maze;
@@ -225,8 +211,6 @@ public class MazeDisplayer extends Canvas {
         if(this.maze != null){
             double cellHeight = getCellHeight();
             double cellWidth = getCellWidth();
-//            System.out.println(this.getHeight());
-//            System.out.println(this.getWidth());
 
             GraphicsContext gc = getGraphicsContext2D();
 
@@ -263,7 +247,6 @@ public class MazeDisplayer extends Canvas {
             else
                 gc.drawImage(ChampImage, x, y, cellWidth, cellHeight);
 
-
         }
         else{
         Image GoalImage = null;
@@ -290,7 +273,7 @@ public class MazeDisplayer extends Canvas {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-//        gc.setFill(Color.YELLOW);
+
             for (int i = 0; i < this.solution.getSolutionPath().size() - 1; i++){
                 MazeState curr_state = (MazeState)this.solution.getSolutionPath().get(i);
                 int curr_row = curr_state.getPos().getRowIndex();
@@ -298,7 +281,7 @@ public class MazeDisplayer extends Canvas {
 
                 double x = curr_col * cellWidth;
                 double y = curr_row * cellHeight;
-//            gc.fillRect(x,y,cellWidth,cellHeight);
+
                 gc.drawImage(SolImageM, x, y, cellWidth, cellHeight);
             }
 
@@ -310,7 +293,7 @@ public class MazeDisplayer extends Canvas {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-    //        gc.setFill(Color.YELLOW);
+
             for (int i = 0; i < this.solution.getSolutionPath().size() - 1; i++){
                 MazeState curr_state = (MazeState)this.solution.getSolutionPath().get(i);
                 int curr_row = curr_state.getPos().getRowIndex();
@@ -318,7 +301,6 @@ public class MazeDisplayer extends Canvas {
 
                 double x = curr_col * cellWidth;
                 double y = curr_row * cellHeight;
-    //            gc.fillRect(x,y,cellWidth,cellHeight);
                 gc.drawImage(SolImage, x, y, cellWidth, cellHeight);
             }
 
@@ -467,7 +449,6 @@ public class MazeDisplayer extends Canvas {
 
     public void ResetZoom(){
         this.zooming_value = 0;
-//        draw();
     }
 
     @Override

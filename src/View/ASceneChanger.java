@@ -1,7 +1,6 @@
 package View;
 
 import Model.MyModel;
-import ViewModel.MyViewModel;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -11,8 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.MenuBar;
-import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -22,7 +19,8 @@ import java.io.IOException;
 import java.util.Optional;
 
 public abstract class ASceneChanger {
-    MediaPlayer themeMediaPlayer = null;
+//    MediaPlayer themeMediaPlayer = null; //TODO remove
+
     public void new_stage(String fxml_name, String stage_name) throws IOException {
         try {
             Stage stage = new Stage();
@@ -36,7 +34,6 @@ public abstract class ASceneChanger {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
     }
 
 
@@ -91,6 +88,7 @@ public abstract class ASceneChanger {
         Node node = (Node) actionEvent.getSource();
         Stage thisStage = (Stage) node.getScene().getWindow();
         thisStage.setTitle("Maze");
+
         //Loads the Game options scene into the stage
         FXMLLoader loader = new FXMLLoader(getClass().getResource("MyView.fxml"));
         Parent x = loader.load();
@@ -131,7 +129,6 @@ public abstract class ASceneChanger {
         mv.setMaccabi();
         mv.playMaccabiSound();
         mv.setResizeEvent(new_scene);
-        //mv.setInvisible();
         SetStageCloseEvent(thisStage);
         thisStage.show();
     }

@@ -38,8 +38,6 @@ public class AboutScreenConroller implements Initializable {
         Text text_to_add = new Text("Hi, we are Omri and Amit, two SISE students from BGU University. We really hope that you enjoy our game! We spent month working to give YOU the best experience possible! So have fun and don't forget to rate us 5-Stars!");
         text_to_add.setStyle("-fx-font: 15 tahoma;");
 
-//        anchorpane.setStyle("-fx-background-color: ");
-
         title.setStyle("-fx-font: 30 tahoma");
         anchorpane.setStyle("-fx-background-color: IVORY");
         pane.setStyle("-fx-background-color: IVORY");
