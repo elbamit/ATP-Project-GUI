@@ -133,10 +133,6 @@ public class Generate_Custom_GameController extends ASceneChanger implements Ini
         });
     }
 
-    @Override
-    public void closeWindow() {
-
-    }
 
     @Override
     public void stopMaccabiSound() {

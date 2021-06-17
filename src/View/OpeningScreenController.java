@@ -75,15 +75,6 @@ public class OpeningScreenController extends ASceneChanger implements Initializa
     }
 
 
-    @Override
-    public void closeWindow() {
-        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
-        a.setHeaderText("Are you sure you want to leave?");
-        Optional<ButtonType> res = a.showAndWait();
-        if (res.get() == ButtonType.OK){
-            Platform.exit();
-        }
-    }
 
     @Override
     public void stopMaccabiSound() {

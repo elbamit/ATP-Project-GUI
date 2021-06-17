@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.util.Optional;
 
 public abstract class ASceneChanger {
-//    MediaPlayer themeMediaPlayer = null; //TODO remove
 
     public void new_stage(String fxml_name, String stage_name) throws IOException {
         try {

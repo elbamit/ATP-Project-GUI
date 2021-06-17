@@ -120,8 +120,6 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
 
     private void StartTheParty() {
         try {
-            //TODO remove
-            String path = "C:\\Users\\omrim\\Desktop\\הנדסת מערכות מידע\\שנה ב'\\סימסטר ד'\\נושאים מתקדמים בתכנות\\פרוייקט\\ATP-Project-GUI\\resources\\images\\FinalGoal.mp4";
 
             //Instantiating Media class
             Media media = new Media(new File(System.getProperty ("user.dir") + "\\resources\\images\\FinalGoal.mp4").toURI().toString());
@@ -437,12 +435,6 @@ public class MyViewController extends ASceneChanger implements Initializable, Ob
         exit_from_menu();
     }
 
-
-
-    @Override
-    public void closeWindow() {
-
-    }
 
 
     public void playMaccabiSound() {

@@ -128,25 +128,6 @@ public class GameOptionsController extends ASceneChanger implements IController,
         exit_from_menu();
     }
 
-    @Override
-    public void closeWindow() {
-        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
-        a.setHeaderText("Are you sure you want to leave?");
-        Optional<ButtonType> res = a.showAndWait();
-        if (res.get() == ButtonType.OK){
-            if (MyModel.serverworking){
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("MyView.fxml"));
-                try {
-                    loader.load();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                MyViewController mv = loader.getController();
-                mv.viewModel.stopServers();
-            }
-            Platform.exit();
-        }
-    }
 
     @Override
     public void stopMaccabiSound() {
