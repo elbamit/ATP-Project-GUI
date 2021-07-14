@@ -4,7 +4,7 @@ Implementation of the GUI part of the Maze Game for ATP course in SISE departmen
 ## Table of Content
 * [General Information](#General-Information)
 * [Technologies](#Technologies)
-* [Starting the Game](#Start-Game)
+* [Download and run the Game](#Start-Game)
 
 
 ## General Information
@@ -17,5 +17,5 @@ The project was written using:
 - JavaFX 16
 - SceneBuilder
 
-## Start Game
-Downalo
+## Download and run the Game
+
