@@ -13,9 +13,15 @@ Business logic for creating and solving mazes using a multi-threaded version of 
 
 ## Technologies
 The project was written using:
-- Java 15
+- Java JDK-15
 - JavaFX 16
 - SceneBuilder
 
 ## Download and run the Game
+First make sure you have an updated version of JavaFX installed on your computer.
+The following steps are required before launching the game for the first time.
+- Download the entire project
+- Open it from your favorite IDE (Intellij recommended)
+- If you're using Intellij - make sure to follow these steps to configure the JavaFX with Intellij: [how to configure JavaFX with Intellij](https://www.jetbrains.com/help/idea/javafx.html#download-javafx)
+- Run and enjoy!
 
