@@ -1,6 +1,9 @@
 # Advanced Topics in Programming - Maze Game GUI
 Implementation of the GUI part of the Maze Game for ATP course in SISE department of BGU University.
 
+![image](https://user-images.githubusercontent.com/66309521/125794350-f2e9c519-284d-49cf-a030-7d9f05db64b6.png)
+
+
 ## Table of Content
 * [General Information](#General-Information)
 * [Technologies](#Technologies)
