@@ -29,7 +29,7 @@ Choose between:
  - Simple Maze Generator - Randomly places walls to form a maze. It produces simple and not interesting mazes
  - My Maze Generator - Uses Prim's Algorithm to generate interesting mazes with dead ends.
 
-## Maze Solving:
+### Maze Solving:
 You can choose which maze solving algorithm to use.
 Choose between:
  - DFS - Depth First Search
