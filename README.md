@@ -23,6 +23,10 @@ The project was written using:
 - SceneBuilder
 
 ## Algorithms used
+- - Maze Generating:
+You can choose which maze generating algorithm to use.
+Choose between:
+- Simple Maze Generator
 
 
 ## Download and run the Game
