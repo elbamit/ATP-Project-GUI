@@ -29,6 +29,13 @@ Choose between:
  - Simple Maze Generator - Randomly places walls to form a maze. It produces simple and not interesting mazes
  - My Maze Generator - Uses Prim's Algorithm to generate interesting mazes with dead ends.
 
+## Maze Solving:
+You can choose which maze solving algorithm to use.
+Choose between:
+ - DFS - Depth First Search
+ - BFS - Breadth First Search
+ - Best First Search - Variation of the BFS algorithm that chooses the next cell to go to by calculating the cheapest path (a diagonal step costs more than a regular step)
+
 ## Download and run the Game
 First make sure you have an updated version of JavaFX installed on your computer.
 The following steps are required before launching the game for the first time.
