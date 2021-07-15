@@ -8,6 +8,7 @@ Implementation of the GUI part of the Maze Game for ATP course in SISE departmen
 * [General Information](#General-Information)
 * [Technologies](#Technologies)
 * [Download and run the Game](#Download-and-run-the-Game)
+* [ScreenShots](#ScreenShots)
 
 
 ## General Information
@@ -27,4 +28,13 @@ The following steps are required before launching the game for the first time.
 - Open it from your favorite IDE (Intellij recommended)
 - If you're using Intellij - make sure to follow these steps to configure the JavaFX with Intellij: [how to configure JavaFX with Intellij](https://www.jetbrains.com/help/idea/javafx.html#download-javafx)
 - Run and enjoy!
+
+## ScreenShots
+- Choose your game option
+![image](https://user-images.githubusercontent.com/66309521/125794721-eabab252-dacb-4d89-b0a1-f87fcf9944b0.png)
+
+- Easy Game
+- ![image](https://user-images.githubusercontent.com/66309521/125794991-12e3ad66-b129-4199-9c4b-e5db9df86ddd.png)
+
+
 
