@@ -23,11 +23,11 @@ The project was written using:
 - SceneBuilder
 
 ## Algorithms used
-- Maze Generating:
+### Maze Generating:
 You can choose which maze generating algorithm to use.
 Choose between:
- - Simple Maze Generator
-
+ - Simple Maze Generator - Randomly places walls to form a maze. It produces simple and not interesting mazes
+ - My Maze Generator - Uses Prim's Algorithm to generate interesting mazes with dead ends.
 
 ## Download and run the Game
 First make sure you have an updated version of JavaFX installed on your computer.
