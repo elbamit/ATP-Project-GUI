@@ -34,7 +34,15 @@ The following steps are required before launching the game for the first time.
 ![image](https://user-images.githubusercontent.com/66309521/125794721-eabab252-dacb-4d89-b0a1-f87fcf9944b0.png)
 
 - Easy Game
-- ![image](https://user-images.githubusercontent.com/66309521/125794991-12e3ad66-b129-4199-9c4b-e5db9df86ddd.png)
+![image](https://user-images.githubusercontent.com/66309521/125794991-12e3ad66-b129-4199-9c4b-e5db9df86ddd.png)
+
+- Maze Solved
+![image](https://user-images.githubusercontent.com/66309521/125795257-00f59058-ff77-4c3f-acdb-2e885430fd17.png)
+
+- Configure your desired game properties
+![image](https://user-images.githubusercontent.com/66309521/125795722-a54ce4f5-9287-47da-91fc-be676997dfa9.png)
+
+
 
 
 
